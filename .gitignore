@@ -1,0 +1,6 @@
+.idea/
+**/*.pyc
+Configuracion/**
+!Configuracion/Parametros.cfg
+Fich_Salida/**
+Fich_Entrada/**
