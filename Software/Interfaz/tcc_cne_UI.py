@@ -10,12 +10,14 @@ import numpy as np
 import datetime
 
 from Software.Entidades.lectura_ficheros import lectura_excel_crack
-from Software.Entidades.entidades import Rutas, Domain
+from Software.Entidades.entidades import Rutas, Domain, ColumnsDataFrame, get_reason_explat_codes
+from Software.Core.lectura_xml import lectura_SWE_D2_CapDoc_Prop, InfoXML_to_Dataframe
 
 
 from Software.Interfaz.vistas.MainWindow import Ui_MainWindow
 
 df_mon, df_co_dict = lectura_excel_crack()
+list_reason_codes, list_explat_codes =get_reason_explat_codes()
 
 version='1.0'
 __appname__ ='TTC_CNE'
@@ -78,14 +80,9 @@ class Main(QMainWindow,Ui_MainWindow):
 
       self.fecha =datetime.datetime.now()
       self.fecha=self.fecha.replace(day=07)
+      self.columns_df = ColumnsDataFrame.columns
 
-      self.columns_df = ['Sentidos', '00-01',
-                 '01-02','02-03', '03-04',
-                 '04-05','05-06', '06-07','07-08', '08-09',
-                 '09-10', '10-11','11-12', '12-13',
-                 '13-14','14-15', '15-16',
-                 '16-17','17-18', '18-19',
-                 '19-20', '20-21','21-22', '22-23','23-24']
+
 
       self.path_xml_capDoc =None
       self.path_xml_capDoc_Re=None
@@ -121,6 +118,7 @@ class Main(QMainWindow,Ui_MainWindow):
       self.pushButton_EditFecha.setEnabled(True)
       self.pushButton_Save_Fecha.setVisible(False)
       self.dateEdit.setEnabled(False)
+      self.pushButton_EditFecha.setVisible(False)
       self.pushButton_EditFecha.clicked.connect(self.edit_fecha)
       self.pushButton_Save_Fecha.clicked.connect(self.save_fecha)
 
@@ -157,26 +155,34 @@ class Main(QMainWindow,Ui_MainWindow):
 
       self.horizontalHeader_resultados = self.tableView.horizontalHeader()
 
-
-      data={'Sentidos':['FR -> ES','ES -> FR','PT -> ES','ES -> PT'],'00-01':[1223, 34345, 234324,213213], '01-02':[4567, 3455, 23897,23987],
-            '02-03':[236554, 12323, 123333, 23897], '03-04':[4567, 3455, 23897,23987],
-            '04-05':[236554, 12323, 123333, 23897],'05-06':[236554, 12323, 123333, 23897],'06-07':[4567, 3455, 23897,23987],
-            '07-08':[4567, 3455, 23897,23987],'08-09':[4567, 3455, 23897,23987],
-            '09-10':[4567, 3455, 23897,23987],'10-11':[4567, 3455, 23897,23987],
-            '11-12':[4567, 3455, 23897,23987], '12-13':[4567, 3455, 23897,23987],'13-14':[4567, 3455, 23897,23987],
-            '14-15':[4567, 3455, 23897,23987],'15-16':[4567, 3455, 23897,23987],'16-17':[4567, 3455, 23897,23987],
-            '17-18':[4567, 3455, 23897,23987],'18-19':[4567, 3455, 23897,23987],'19-20':[4567, 3455, 23897,23987],'20-21':[4567, 3455, 23897,23987],
-            '21-22':[4567, 3455, 23897,23987],'22-23':[4567, 3455, 23897,23987],'23-24':[4567, 3455, 23897,23987]}
-      dataframe=pd.DataFrame(data)
-
-      self.load_tableWiget(df=dataframe)
+      # self.columns_df = ['Sentidos', '00-01',
+      #            '01-02','02-03', '03-04',
+      #            '04-05','05-06', '06-07','07-08', '08-09',
+      #            '09-10', '10-11','11-12', '12-13',
+      #            '13-14','14-15', '15-16',
+      #            '16-17','17-18', '18-19',
+      #            '19-20', '20-21','21-22', '22-23','23-24']
+      #
+      # data={'Sentidos':['FR -> ES','ES -> FR','PT -> ES','ES -> PT'],'00-01':[1223, 34345, 234324,213213], '01-02':[4567, 3455, 23897,23987],
+      #       '02-03':[236554, 12323, 123333, 23897], '03-04':[4567, 3455, 23897,23987],
+      #       '04-05':[236554, 12323, 123333, 23897],'05-06':[236554, 12323, 123333, 23897],'06-07':[4567, 3455, 23897,23987],
+      #       '07-08':[4567, 3455, 23897,23987],'08-09':[4567, 3455, 23897,23987],
+      #       '09-10':[4567, 3455, 23897,23987],'10-11':[4567, 3455, 23897,23987],
+      #       '11-12':[4567, 3455, 23897,23987], '12-13':[4567, 3455, 23897,23987],'13-14':[4567, 3455, 23897,23987],
+      #       '14-15':[4567, 3455, 23897,23987],'15-16':[4567, 3455, 23897,23987],'16-17':[4567, 3455, 23897,23987],
+      #       '17-18':[4567, 3455, 23897,23987],'18-19':[4567, 3455, 23897,23987],'19-20':[4567, 3455, 23897,23987],'20-21':[4567, 3455, 23897,23987],
+      #       '21-22':[4567, 3455, 23897,23987],'22-23':[4567, 3455, 23897,23987],'23-24':[4567, 3455, 23897,23987]}
+      # dataframe=pd.DataFrame(data)
+      #
+      # self.load_tableWiget(df=dataframe)
+      # self.load_tableView(df=dataframe)
 
       self.tableWidget.setSortingEnabled( False)  # Deshabilito la ordenacion en la tabla de nudo. Da problemas al volver a cargar los nudos
       self.tableWidget.setAlternatingRowColors(True)  # Habilito la elternacia de colores en la tabla de nudos
       self.tableWidget.setEditTriggers(QTableWidget.NoEditTriggers)
       self.tableWidget.setSelectionMode(QTableWidget.NoSelection)
 
-      self.load_tableView(df=dataframe)
+
 
       self.Hide_Console()
 
@@ -211,8 +217,14 @@ class Main(QMainWindow,Ui_MainWindow):
       :return:
       """
       self.tableWidget.clear()
-      for x in range(0,self.tableWidget.rowCount(),1):
-         self.tableWidget.removeRow(x)
+      self.tableWidget.clearContents()
+      self.tableWidget.setRowCount(0)
+      while (self.tableWidget.rowCount() > 0):
+         self.tableWidget.removeRow(0)
+
+
+      # for x in range(0,self.tableWidget.rowCount()+1,1):
+
       if not df.empty:
 
          df = df[self.columns_df]
@@ -224,11 +236,9 @@ class Main(QMainWindow,Ui_MainWindow):
          #self.tableWidget.setRowCount(count_row)
          #header.setResizeMode(0, QHeaderView.Stretch)
 
-         for col in range(0,len(list(df)),1):
-            header.setResizeMode(col, QHeaderView.Stretch)
 
 
-         #self.tabWidget.horizontalHeader().setResizeMode(QHeaderView.ResizeToContents)
+
 
          self.tableWidget.setHorizontalHeaderLabels(list(df.columns.values))
 
@@ -245,9 +255,27 @@ class Main(QMainWindow,Ui_MainWindow):
                j += 1
             i += 1
 
+         hide_columns=False
+
+         for x in range(0, self.tableWidget.columnCount(), 1):
+            columns=self.tableWidget.horizontalHeaderItem(x)
+            column_text=columns.text()
+            if column_text=='Sentidos':
+               continue
+            else:
+               df_none = self.df_table_ini.loc[self.df_table_ini[str(column_text)].isnull()]
+
+               if len(df_none.index.values) ==  len(self.df_table_ini.index.values):
+                  hide_columns=True
+                  self.tableWidget.setColumnHidden(x, True)
 
 
-         fff=self.getQTableWidgetSize(tabla=self.tableWidget)
+         for col in range(0,len(list(df)),1):
+            if hide_columns== False:
+               header.setResizeMode(col, QHeaderView.Stretch)
+            else:
+               header.setResizeMode(x, QHeaderView.ResizeToContents)
+
 
       else:
          raise SystemError('No hay datos que cargar')
@@ -464,7 +492,7 @@ class Main(QMainWindow,Ui_MainWindow):
             try:
                if x =='Sentidos':
                   self.df_table_edit[x]=self.df_table_edit[x].astype(str)
-               else:
+               elif str(self.df_table_edit[x][0]) != str(None) :
                   self.df_table_edit[x] = self.df_table_edit[x].astype(float)
             except Exception as e:
                QMessageBox.warning(self, __appname__, 'Algun dato modificado no es un numero :{}'.format(e))
@@ -476,7 +504,6 @@ class Main(QMainWindow,Ui_MainWindow):
          QMessageBox.warning(self, __appname__, 'Algun dato modificado no es un numero :{}'.format(e))
          self.load_tableWiget(df=self.df_table_ini)
          return False
-
 
    def load_tableView(self,df):
       if not df.empty:
@@ -493,17 +520,20 @@ class Main(QMainWindow,Ui_MainWindow):
 
       try:
          change=False
-         if df_sentido[header] != int(hora_value):
+         if str(hora_value) == str(None):
+            df_add = pd.DataFrame.from_dict(
+               [{'sentido': sentido_label, 'hora': hora_int, 'valor_new': None, 'valor_old': None}])
+         elif float(df_sentido[header]) != float(hora_value):
             change = True
-            df_add=pd.DataFrame.from_dict([{'sentido': sentido_label, 'hora': hora_int, 'valor_new': df_sentido[header], 'valor_old': int(hora_value)}])
+            df_add=pd.DataFrame.from_dict([{'sentido': sentido_label, 'hora': hora_int, 'valor_new': df_sentido[header], 'valor_old': float(hora_value)}])
          else:
             df_add = pd.DataFrame.from_dict(
-               [{'sentido': sentido_label, 'hora': hora_int, 'valor_new': None, 'valor_old': int(hora_value)}])
+               [{'sentido': sentido_label, 'hora': hora_int, 'valor_new': None, 'valor_old': float(hora_value)}])
          self.df_data_edit=pd.concat([self.df_data_edit,df_add],axis=0, ignore_index=True)
 
          return change
       except Exception as e:
-         raise SystemError('Error al ___add_data_edit: {}'.format(e))
+         raise SystemError('Error al ___add_data_edit: {}. Sentido = {}, hora={}, valor={}'.format(e, sentido_label,hora_int,hora_value))
 
    def get_QStandardItems(self,value):
       item=QStandardItem(value)
@@ -544,7 +574,6 @@ class Main(QMainWindow,Ui_MainWindow):
       self.pt_es.periodo = self.fecha
       self.es_pt.periodo = self.fecha
 
-
    def save_fecha(self):
       self.pushButton_Save_Fecha.setVisible(False)
       self.dateEdit.setEnabled(False)
@@ -552,19 +581,33 @@ class Main(QMainWindow,Ui_MainWindow):
 
    def cargar_xml_capdoc(self):
       try:
-         self.fecha=self.dateEdit.date().toPython()
-         self.get_path_fichero_xml()
+         # self.fecha=self.dateEdit.date().toPython()
+         # self.get_path_fichero_xml()
+         # if not os.path.exists(self.path_xml_capDoc):
+         #    QMessageBox.warning(self, __appname__, 'El archivo no existe : {}'.format(self.path_xml_capDoc))
+         # else:
+         #    self.pushButton_EditTable.setVisible(True)
+         #    self.pushButton_GenTable.setVisible(True)
 
-         if not os.path.exists(self.path_xml_capDoc):
-            QMessageBox.warning(self, __appname__, 'El archivo no existe : {}'.format(self.path_xml_capDoc))
-         else:
-            self.pushButton_EditTable.setVisible(True)
-            self.pushButton_GenTable.setVisible(True)
+         try:
+            self.edit_informacion_hora(eneble=False)
+            self.lectura_fichero_SWE_D2_CapDoc_Prop()
 
+            # for col in self.df_table_ini.columns.values:
+            #    hora =self.df_table_ini[col].iloc[0]
+            #    if hora ==None:
+            #       self.df_table_ini.drop(col, axis=1, inplace=True)
 
+            self.columns_df= list(self.df_table_ini.columns.values)
+            self.load_tableWiget(df=self.df_table_ini)
+         except Exception as e:
+            raise SystemError('{}'.format(e))
+
+         self.pushButton_EditTable.setVisible(True)
+         self.pushButton_GenTable.setVisible(True)
 
       except Exception as e:
-         raise SystemError('Error al cargar_xml_capdoc: {} '.format(e))
+         QMessageBox.warning(self, __appname__, 'Error cargar_xml_capdoc : {}'.format(e))
 
    def generar_xml_salida(self):
       try:
@@ -606,7 +649,7 @@ class Main(QMainWindow,Ui_MainWindow):
                list_ele=class_element.get_list_elementos()
                list_class_ele= filter(lambda x: x.hora==hora,list_ele)
                for x in list_class_ele:  # type: Elementos_UI
-                  if row['valor_new'] !=None:
+                  if str(row['valor_new']) !=str(np.nan):
                      x.edit=True
                      x.value_potencia=row['valor_new']
                      x.enable(enable=True)
@@ -623,15 +666,19 @@ class Main(QMainWindow,Ui_MainWindow):
 
       for x in self.es_fr.get_list_elementos():
          x.enable(eneble)
+         x.clear_element()
 
       for x in self.fr_es.get_list_elementos():
          x.enable(eneble)
+         x.clear_element()
 
       for x in self.es_pt.get_list_elementos():
          x.enable(eneble)
+         x.clear_element()
 
       for x in self.pt_es.get_list_elementos():
          x.enable(eneble)
+         x.clear_element()
 
    def load_comboBox(self):
 
@@ -647,6 +694,18 @@ class Main(QMainWindow,Ui_MainWindow):
       for x in self.pt_es.get_list_elementos():
          x.elementos.load_comboBox_Data()
 
+   def lectura_fichero_SWE_D2_CapDoc_Prop(self):
+
+      try:
+         dir = Rutas().ruta_input_xml_coreso
+         fileObj = QFileDialog.getOpenFileName(self, " Selecione el xml CapDoc", dir=dir,
+                                               filter="Archivo XML (*.xml)")
+         path=fileObj[0]
+
+         class_info_xml=lectura_SWE_D2_CapDoc_Prop(path = path)
+         self.df_table_ini = InfoXML_to_Dataframe(info_xml=class_info_xml)
+      except Exception as e:
+         raise SystemError('Error lectura_fichero_SWE_D2_CapDoc_Prop : {}'.format(e))
 
 
 def main():
@@ -688,125 +747,125 @@ class ES_FR():
 
       self.hora_00 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_1,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_1,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_1, reason_text=self.ui.plainTextEdit_RT_ESFR_1,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_1, expla_text=self.ui.plainTextEdit_ET_ESFR_1,hora=0)
+                                  reason_code=self.ui.comboBox_RC_ESFR_1, reason_text=self.ui.plainTextEdit_RT_ESFR_1,
+                                  expla_code=self.ui.comboBox_EC_ESFR_1, expla_text=self.ui.plainTextEdit_ET_ESFR_1,hora=0)
 
       self.hora_01 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_2,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_2,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_2, reason_text=self.ui.plainTextEdit_RT_ESFR_2,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_2, expla_text=self.ui.plainTextEdit_ET_ESFR_2,hora=1)
+                                  reason_code=self.ui.comboBox_RC_ESFR_2, reason_text=self.ui.plainTextEdit_RT_ESFR_2,
+                                  expla_code=self.ui.comboBox_EC_ESFR_2, expla_text=self.ui.plainTextEdit_ET_ESFR_2,hora=1)
 
       self.hora_02 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_3,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_3,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_3, reason_text=self.ui.plainTextEdit_RT_ESFR_3,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_3, expla_text=self.ui.plainTextEdit_ET_ESFR_3,hora=2)
+                                  reason_code=self.ui.comboBox_RC_ESFR_3, reason_text=self.ui.plainTextEdit_RT_ESFR_3,
+                                  expla_code=self.ui.comboBox_EC_ESFR_3, expla_text=self.ui.plainTextEdit_ET_ESFR_3,hora=2)
 
       self.hora_03 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_4,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_4,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_4, reason_text=self.ui.plainTextEdit_RT_ESFR_4,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_4, expla_text=self.ui.plainTextEdit_ET_ESFR_4,hora=3)
+                                  reason_code=self.ui.comboBox_RC_ESFR_4, reason_text=self.ui.plainTextEdit_RT_ESFR_4,
+                                  expla_code=self.ui.comboBox_EC_ESFR_4, expla_text=self.ui.plainTextEdit_ET_ESFR_4,hora=3)
 
       self.hora_04 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_5,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_5,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_5, reason_text=self.ui.plainTextEdit_RT_ESFR_5,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_5, expla_text=self.ui.plainTextEdit_ET_ESFR_5,hora=4)
+                                  reason_code=self.ui.comboBox_RC_ESFR_5, reason_text=self.ui.plainTextEdit_RT_ESFR_5,
+                                  expla_code=self.ui.comboBox_EC_ESFR_5, expla_text=self.ui.plainTextEdit_ET_ESFR_5,hora=4)
 
       self.hora_05 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_6,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_6,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_6, reason_text=self.ui.plainTextEdit_RT_ESFR_6,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_6, expla_text=self.ui.plainTextEdit_ET_ESFR_6,hora=5)
+                                  reason_code=self.ui.comboBox_RC_ESFR_6, reason_text=self.ui.plainTextEdit_RT_ESFR_6,
+                                  expla_code=self.ui.comboBox_EC_ESFR_6, expla_text=self.ui.plainTextEdit_ET_ESFR_6,hora=5)
 
       self.hora_06 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_7,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_7,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_7, reason_text=self.ui.plainTextEdit_RT_ESFR_7,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_7, expla_text=self.ui.plainTextEdit_ET_ESFR_7,hora=6)
+                                  reason_code=self.ui.comboBox_RC_ESFR_7, reason_text=self.ui.plainTextEdit_RT_ESFR_7,
+                                  expla_code=self.ui.comboBox_EC_ESFR_7, expla_text=self.ui.plainTextEdit_ET_ESFR_7,hora=6)
       self.hora_07 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_8,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_8,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_8, reason_text=self.ui.plainTextEdit_RT_ESFR_8,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_8, expla_text=self.ui.plainTextEdit_ET_ESFR_8,hora=7)
+                                  reason_code=self.ui.comboBox_RC_ESFR_8, reason_text=self.ui.plainTextEdit_RT_ESFR_8,
+                                  expla_code=self.ui.comboBox_EC_ESFR_8, expla_text=self.ui.plainTextEdit_ET_ESFR_8,hora=7)
       self.hora_08 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_9,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_9,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_9, reason_text=self.ui.plainTextEdit_RT_ESFR_9,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_9, expla_text=self.ui.plainTextEdit_ET_ESFR_9,hora=8)
+                                  reason_code=self.ui.comboBox_RC_ESFR_9, reason_text=self.ui.plainTextEdit_RT_ESFR_9,
+                                  expla_code=self.ui.comboBox_EC_ESFR_9, expla_text=self.ui.plainTextEdit_ET_ESFR_9,hora=8)
 
       self.hora_09 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_10,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_10,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_10, reason_text=self.ui.plainTextEdit_RT_ESFR_10,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_10, expla_text=self.ui.plainTextEdit_ET_ESFR_10,hora=9)
+                                  reason_code=self.ui.comboBox_RC_ESFR_10, reason_text=self.ui.plainTextEdit_RT_ESFR_10,
+                                  expla_code=self.ui.comboBox_EC_ESFR_10, expla_text=self.ui.plainTextEdit_ET_ESFR_10,hora=9)
 
       self.hora_10 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_11,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_11,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_11, reason_text=self.ui.plainTextEdit_RT_ESFR_11,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_11, expla_text=self.ui.plainTextEdit_ET_ESFR_11,hora=10)
+                                  reason_code=self.ui.comboBox_RC_ESFR_11, reason_text=self.ui.plainTextEdit_RT_ESFR_11,
+                                  expla_code=self.ui.comboBox_EC_ESFR_11, expla_text=self.ui.plainTextEdit_ET_ESFR_11,hora=10)
 
       self.hora_11 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_12,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_12,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_12, reason_text=self.ui.plainTextEdit_RT_ESFR_12,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_12, expla_text=self.ui.plainTextEdit_ET_ESFR_12,hora=11)
+                                  reason_code=self.ui.comboBox_RC_ESFR_12, reason_text=self.ui.plainTextEdit_RT_ESFR_12,
+                                  expla_code=self.ui.comboBox_EC_ESFR_12, expla_text=self.ui.plainTextEdit_ET_ESFR_12,hora=11)
 
       self.hora_12 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_13,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_13,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_13, reason_text=self.ui.plainTextEdit_RT_ESFR_13,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_13, expla_text=self.ui.plainTextEdit_ET_ESFR_13,hora=12)
+                                  reason_code=self.ui.comboBox_RC_ESFR_13, reason_text=self.ui.plainTextEdit_RT_ESFR_13,
+                                  expla_code=self.ui.comboBox_EC_ESFR_13, expla_text=self.ui.plainTextEdit_ET_ESFR_13,hora=12)
 
       self.hora_13 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_14,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_14,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_14, reason_text=self.ui.plainTextEdit_RT_ESFR_14,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_14, expla_text=self.ui.plainTextEdit_ET_ESFR_14,hora=13)
+                                  reason_code=self.ui.comboBox_RC_ESFR_14, reason_text=self.ui.plainTextEdit_RT_ESFR_14,
+                                  expla_code=self.ui.comboBox_EC_ESFR_14, expla_text=self.ui.plainTextEdit_ET_ESFR_14,hora=13)
 
       self.hora_14 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_15,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_15,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_15, reason_text=self.ui.plainTextEdit_RT_ESFR_15,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_15, expla_text=self.ui.plainTextEdit_ET_ESFR_15,hora=14)
+                                  reason_code=self.ui.comboBox_RC_ESFR_15, reason_text=self.ui.plainTextEdit_RT_ESFR_15,
+                                  expla_code=self.ui.comboBox_EC_ESFR_15, expla_text=self.ui.plainTextEdit_ET_ESFR_15,hora=14)
 
       self.hora_15 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_16,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_16,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_16, reason_text=self.ui.plainTextEdit_RT_ESFR_16,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_16, expla_text=self.ui.plainTextEdit_ET_ESFR_16,hora=15)
+                                  reason_code=self.ui.comboBox_RC_ESFR_16, reason_text=self.ui.plainTextEdit_RT_ESFR_16,
+                                  expla_code=self.ui.comboBox_EC_ESFR_16, expla_text=self.ui.plainTextEdit_ET_ESFR_16,hora=15)
 
       self.hora_16 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_17,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_17,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_17, reason_text=self.ui.plainTextEdit_RT_ESFR_17,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_17, expla_text=self.ui.plainTextEdit_ET_ESFR_17,hora=16)
+                                  reason_code=self.ui.comboBox_RC_ESFR_17, reason_text=self.ui.plainTextEdit_RT_ESFR_17,
+                                  expla_code=self.ui.comboBox_EC_ESFR_17, expla_text=self.ui.plainTextEdit_ET_ESFR_17,hora=16)
 
       self.hora_17 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_18,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_18,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_18, reason_text=self.ui.plainTextEdit_RT_ESFR_18,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_18, expla_text=self.ui.plainTextEdit_ET_ESFR_18,hora=17)
+                                  reason_code=self.ui.comboBox_RC_ESFR_18, reason_text=self.ui.plainTextEdit_RT_ESFR_18,
+                                  expla_code=self.ui.comboBox_EC_ESFR_18, expla_text=self.ui.plainTextEdit_ET_ESFR_18,hora=17)
 
       self.hora_18 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_19,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_19,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_19, reason_text=self.ui.plainTextEdit_RT_ESFR_19,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_19, expla_text=self.ui.plainTextEdit_ET_ESFR_19,hora=18)
+                                  reason_code=self.ui.comboBox_RC_ESFR_19, reason_text=self.ui.plainTextEdit_RT_ESFR_19,
+                                  expla_code=self.ui.comboBox_EC_ESFR_19, expla_text=self.ui.plainTextEdit_ET_ESFR_19,hora=18)
 
       self.hora_19 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_20,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_20,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_20, reason_text=self.ui.plainTextEdit_RT_ESFR_20,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_20, expla_text=self.ui.plainTextEdit_ET_ESFR_20,hora=19)
+                                  reason_code=self.ui.comboBox_RC_ESFR_20, reason_text=self.ui.plainTextEdit_RT_ESFR_20,
+                                  expla_code=self.ui.comboBox_EC_ESFR_20, expla_text=self.ui.plainTextEdit_ET_ESFR_20,hora=19)
       self.hora_20 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_21,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_21,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_21, reason_text=self.ui.plainTextEdit_RT_ESFR_21,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_21, expla_text=self.ui.plainTextEdit_ET_ESFR_21,hora=20)
+                                  reason_code=self.ui.comboBox_RC_ESFR_21, reason_text=self.ui.plainTextEdit_RT_ESFR_21,
+                                  expla_code=self.ui.comboBox_EC_ESFR_21, expla_text=self.ui.plainTextEdit_ET_ESFR_21,hora=20)
 
       self.hora_21 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_22,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_22,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_22, reason_text=self.ui.plainTextEdit_RT_ESFR_22,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_22, expla_text=self.ui.plainTextEdit_ET_ESFR_22,hora=21)
+                                  reason_code=self.ui.comboBox_RC_ESFR_22, reason_text=self.ui.plainTextEdit_RT_ESFR_22,
+                                  expla_code=self.ui.comboBox_EC_ESFR_22, expla_text=self.ui.plainTextEdit_ET_ESFR_22,hora=21)
 
       self.hora_22 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_23,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_23,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_23, reason_text=self.ui.plainTextEdit_RT_ESFR_23,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_23, expla_text=self.ui.plainTextEdit_ET_ESFR_23,hora=22)
+                                  reason_code=self.ui.comboBox_RC_ESFR_23, reason_text=self.ui.plainTextEdit_RT_ESFR_23,
+                                  expla_code=self.ui.comboBox_EC_ESFR_23, expla_text=self.ui.plainTextEdit_ET_ESFR_23,hora=22)
 
       self.hora_23 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_24,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_24,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_24, reason_text=self.ui.plainTextEdit_RT_ESFR_24,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_24, expla_text=self.ui.plainTextEdit_ET_ESFR_24,hora=23)
+                                  reason_code=self.ui.comboBox_RC_ESFR_24, reason_text=self.ui.plainTextEdit_RT_ESFR_24,
+                                  expla_code=self.ui.comboBox_EC_ESFR_24, expla_text=self.ui.plainTextEdit_ET_ESFR_24,hora=23)
 
       self.hora_24 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESFR_25,
                                   combox_con_limitante=self.ui.comboBox_CL_ESFR_25,
-                                  reason_code=self.ui.lineEdit_RC_ESFR_25, reason_text=self.ui.plainTextEdit_RT_ESFR_25,
-                                  expla_code=self.ui.lineEdit_EC_ESFR_25, expla_text=self.ui.plainTextEdit_ET_ESFR_25, hora=24)
+                                  reason_code=self.ui.comboBox_RC_ESFR_25, reason_text=self.ui.plainTextEdit_RT_ESFR_25,
+                                  expla_code=self.ui.comboBox_EC_ESFR_25, expla_text=self.ui.plainTextEdit_ET_ESFR_25, hora=24)
 
 
    def get_list_elementos(self):
@@ -856,104 +915,104 @@ class FR_ES():
 
       self.hora_00 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_1,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_1,
-                                  reason_code=self.ui.lineEdit_RC_FRES_1, reason_text=self.ui.plainTextEdit_RT_FRES_1,
-                                  expla_code=self.ui.lineEdit_EC_FRES_1, expla_text=self.ui.plainTextEdit_ET_FRES_1, hora=0)
+                                  reason_code=self.ui.comboBox_RC_FRES_1, reason_text=self.ui.plainTextEdit_RT_FRES_1,
+                                  expla_code=self.ui.comboBox_EC_FRES_1, expla_text=self.ui.plainTextEdit_ET_FRES_1, hora=0)
       self.hora_01 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_2,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_2,
-                                  reason_code=self.ui.lineEdit_RC_FRES_2, reason_text=self.ui.plainTextEdit_RT_FRES_2,
-                                  expla_code=self.ui.lineEdit_EC_FRES_2, expla_text=self.ui.plainTextEdit_ET_FRES_2, hora=1)
+                                  reason_code=self.ui.comboBox_RC_FRES_2, reason_text=self.ui.plainTextEdit_RT_FRES_2,
+                                  expla_code=self.ui.comboBox_EC_FRES_2, expla_text=self.ui.plainTextEdit_ET_FRES_2, hora=1)
       self.hora_02 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_3,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_3,
-                                  reason_code=self.ui.lineEdit_RC_FRES_3, reason_text=self.ui.plainTextEdit_RT_FRES_3,
-                                  expla_code=self.ui.lineEdit_EC_FRES_3, expla_text=self.ui.plainTextEdit_ET_FRES_3, hora=2)
+                                  reason_code=self.ui.comboBox_RC_FRES_3, reason_text=self.ui.plainTextEdit_RT_FRES_3,
+                                  expla_code=self.ui.comboBox_EC_FRES_3, expla_text=self.ui.plainTextEdit_ET_FRES_3, hora=2)
       self.hora_03 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_4,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_4,
-                                  reason_code=self.ui.lineEdit_RC_FRES_4, reason_text=self.ui.plainTextEdit_RT_FRES_4,
-                                  expla_code=self.ui.lineEdit_EC_FRES_4, expla_text=self.ui.plainTextEdit_ET_FRES_4, hora=3)
+                                  reason_code=self.ui.comboBox_RC_FRES_4, reason_text=self.ui.plainTextEdit_RT_FRES_4,
+                                  expla_code=self.ui.comboBox_EC_FRES_4, expla_text=self.ui.plainTextEdit_ET_FRES_4, hora=3)
       self.hora_04 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_5,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_5,
-                                  reason_code=self.ui.lineEdit_RC_FRES_5, reason_text=self.ui.plainTextEdit_RT_FRES_5,
-                                  expla_code=self.ui.lineEdit_EC_FRES_5, expla_text=self.ui.plainTextEdit_ET_FRES_5, hora=4)
+                                  reason_code=self.ui.comboBox_RC_FRES_5, reason_text=self.ui.plainTextEdit_RT_FRES_5,
+                                  expla_code=self.ui.comboBox_EC_FRES_5, expla_text=self.ui.plainTextEdit_ET_FRES_5, hora=4)
       self.hora_05 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_6,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_6,
-                                  reason_code=self.ui.lineEdit_RC_FRES_6, reason_text=self.ui.plainTextEdit_RT_FRES_6,
-                                  expla_code=self.ui.lineEdit_EC_FRES_6, expla_text=self.ui.plainTextEdit_ET_FRES_6, hora=5)
+                                  reason_code=self.ui.comboBox_RC_FRES_6, reason_text=self.ui.plainTextEdit_RT_FRES_6,
+                                  expla_code=self.ui.comboBox_EC_FRES_6, expla_text=self.ui.plainTextEdit_ET_FRES_6, hora=5)
       self.hora_06 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_7,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_7,
-                                  reason_code=self.ui.lineEdit_RC_FRES_7, reason_text=self.ui.plainTextEdit_RT_FRES_7,
-                                  expla_code=self.ui.lineEdit_EC_FRES_7, expla_text=self.ui.plainTextEdit_ET_FRES_7, hora=6)
+                                  reason_code=self.ui.comboBox_RC_FRES_7, reason_text=self.ui.plainTextEdit_RT_FRES_7,
+                                  expla_code=self.ui.comboBox_EC_FRES_7, expla_text=self.ui.plainTextEdit_ET_FRES_7, hora=6)
       self.hora_07 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_8,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_8,
-                                  reason_code=self.ui.lineEdit_RC_FRES_8, reason_text=self.ui.plainTextEdit_RT_FRES_8,
-                                  expla_code=self.ui.lineEdit_EC_FRES_8, expla_text=self.ui.plainTextEdit_ET_FRES_8, hora=7)
+                                  reason_code=self.ui.comboBox_RC_FRES_8, reason_text=self.ui.plainTextEdit_RT_FRES_8,
+                                  expla_code=self.ui.comboBox_EC_FRES_8, expla_text=self.ui.plainTextEdit_ET_FRES_8, hora=7)
       self.hora_08 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_9,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_9,
-                                  reason_code=self.ui.lineEdit_RC_FRES_9, reason_text=self.ui.plainTextEdit_RT_FRES_9,
-                                  expla_code=self.ui.lineEdit_EC_FRES_9, expla_text=self.ui.plainTextEdit_ET_FRES_9, hora=8)
+                                  reason_code=self.ui.comboBox_RC_FRES_9, reason_text=self.ui.plainTextEdit_RT_FRES_9,
+                                  expla_code=self.ui.comboBox_EC_FRES_9, expla_text=self.ui.plainTextEdit_ET_FRES_9, hora=8)
       self.hora_09 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_10,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_10,
-                                  reason_code=self.ui.lineEdit_RC_FRES_10, reason_text=self.ui.plainTextEdit_RT_FRES_10,
-                                  expla_code=self.ui.lineEdit_EC_FRES_10, expla_text=self.ui.plainTextEdit_ET_FRES_10, hora=9)
+                                  reason_code=self.ui.comboBox_RC_FRES_10, reason_text=self.ui.plainTextEdit_RT_FRES_10,
+                                  expla_code=self.ui.comboBox_EC_FRES_10, expla_text=self.ui.plainTextEdit_ET_FRES_10, hora=9)
       self.hora_10 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_11,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_11,
-                                  reason_code=self.ui.lineEdit_RC_FRES_11, reason_text=self.ui.plainTextEdit_RT_FRES_11,
-                                  expla_code=self.ui.lineEdit_EC_FRES_11, expla_text=self.ui.plainTextEdit_ET_FRES_11, hora=10)
+                                  reason_code=self.ui.comboBox_RC_FRES_11, reason_text=self.ui.plainTextEdit_RT_FRES_11,
+                                  expla_code=self.ui.comboBox_EC_FRES_11, expla_text=self.ui.plainTextEdit_ET_FRES_11, hora=10)
       self.hora_11 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_12,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_12,
-                                  reason_code=self.ui.lineEdit_RC_FRES_12, reason_text=self.ui.plainTextEdit_RT_FRES_12,
-                                  expla_code=self.ui.lineEdit_EC_FRES_12, expla_text=self.ui.plainTextEdit_ET_FRES_12, hora=11)
+                                  reason_code=self.ui.comboBox_RC_FRES_12, reason_text=self.ui.plainTextEdit_RT_FRES_12,
+                                  expla_code=self.ui.comboBox_EC_FRES_12, expla_text=self.ui.plainTextEdit_ET_FRES_12, hora=11)
       self.hora_12 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_13,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_13,
-                                  reason_code=self.ui.lineEdit_RC_FRES_13, reason_text=self.ui.plainTextEdit_RT_FRES_13,
-                                  expla_code=self.ui.lineEdit_EC_FRES_13, expla_text=self.ui.plainTextEdit_ET_FRES_13, hora=12)
+                                  reason_code=self.ui.comboBox_RC_FRES_13, reason_text=self.ui.plainTextEdit_RT_FRES_13,
+                                  expla_code=self.ui.comboBox_EC_FRES_13, expla_text=self.ui.plainTextEdit_ET_FRES_13, hora=12)
       self.hora_13 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_14,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_14,
-                                  reason_code=self.ui.lineEdit_RC_FRES_14, reason_text=self.ui.plainTextEdit_RT_FRES_14,
-                                  expla_code=self.ui.lineEdit_EC_FRES_14, expla_text=self.ui.plainTextEdit_ET_FRES_14, hora=13)
+                                  reason_code=self.ui.comboBox_RC_FRES_14, reason_text=self.ui.plainTextEdit_RT_FRES_14,
+                                  expla_code=self.ui.comboBox_EC_FRES_14, expla_text=self.ui.plainTextEdit_ET_FRES_14, hora=13)
       self.hora_14 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_15,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_15,
-                                  reason_code=self.ui.lineEdit_RC_FRES_15, reason_text=self.ui.plainTextEdit_RT_FRES_15,
-                                  expla_code=self.ui.lineEdit_EC_FRES_15, expla_text=self.ui.plainTextEdit_ET_FRES_15, hora=14)
+                                  reason_code=self.ui.comboBox_RC_FRES_15, reason_text=self.ui.plainTextEdit_RT_FRES_15,
+                                  expla_code=self.ui.comboBox_EC_FRES_15, expla_text=self.ui.plainTextEdit_ET_FRES_15, hora=14)
       self.hora_15 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_16,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_16,
-                                  reason_code=self.ui.lineEdit_RC_FRES_16, reason_text=self.ui.plainTextEdit_RT_FRES_16,
-                                  expla_code=self.ui.lineEdit_EC_FRES_16, expla_text=self.ui.plainTextEdit_ET_FRES_16, hora=15)
+                                  reason_code=self.ui.comboBox_RC_FRES_16, reason_text=self.ui.plainTextEdit_RT_FRES_16,
+                                  expla_code=self.ui.comboBox_EC_FRES_16, expla_text=self.ui.plainTextEdit_ET_FRES_16, hora=15)
       self.hora_16 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_17,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_17,
-                                  reason_code=self.ui.lineEdit_RC_FRES_17, reason_text=self.ui.plainTextEdit_RT_FRES_17,
-                                  expla_code=self.ui.lineEdit_EC_FRES_17, expla_text=self.ui.plainTextEdit_ET_FRES_17, hora=16)
+                                  reason_code=self.ui.comboBox_RC_FRES_17, reason_text=self.ui.plainTextEdit_RT_FRES_17,
+                                  expla_code=self.ui.comboBox_EC_FRES_17, expla_text=self.ui.plainTextEdit_ET_FRES_17, hora=16)
       self.hora_17 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_18,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_18,
-                                  reason_code=self.ui.lineEdit_RC_FRES_18, reason_text=self.ui.plainTextEdit_RT_FRES_18,
-                                  expla_code=self.ui.lineEdit_EC_FRES_18, expla_text=self.ui.plainTextEdit_ET_FRES_18, hora=17)
+                                  reason_code=self.ui.comboBox_RC_FRES_18, reason_text=self.ui.plainTextEdit_RT_FRES_18,
+                                  expla_code=self.ui.comboBox_EC_FRES_18, expla_text=self.ui.plainTextEdit_ET_FRES_18, hora=17)
       self.hora_18 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_19,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_19,
-                                  reason_code=self.ui.lineEdit_RC_FRES_19, reason_text=self.ui.plainTextEdit_RT_FRES_19,
-                                  expla_code=self.ui.lineEdit_EC_FRES_19, expla_text=self.ui.plainTextEdit_ET_FRES_19, hora=18)
+                                  reason_code=self.ui.comboBox_RC_FRES_19, reason_text=self.ui.plainTextEdit_RT_FRES_19,
+                                  expla_code=self.ui.comboBox_EC_FRES_19, expla_text=self.ui.plainTextEdit_ET_FRES_19, hora=18)
       self.hora_19 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_20,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_20,
-                                  reason_code=self.ui.lineEdit_RC_FRES_20, reason_text=self.ui.plainTextEdit_RT_FRES_20,
-                                  expla_code=self.ui.lineEdit_EC_FRES_20, expla_text=self.ui.plainTextEdit_ET_FRES_20, hora=19)
+                                  reason_code=self.ui.comboBox_RC_FRES_20, reason_text=self.ui.plainTextEdit_RT_FRES_20,
+                                  expla_code=self.ui.comboBox_EC_FRES_20, expla_text=self.ui.plainTextEdit_ET_FRES_20, hora=19)
       self.hora_20 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_21,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_21,
-                                  reason_code=self.ui.lineEdit_RC_FRES_21, reason_text=self.ui.plainTextEdit_RT_FRES_21,
-                                  expla_code=self.ui.lineEdit_EC_FRES_21, expla_text=self.ui.plainTextEdit_ET_FRES_21, hora=20)
+                                  reason_code=self.ui.comboBox_RC_FRES_21, reason_text=self.ui.plainTextEdit_RT_FRES_21,
+                                  expla_code=self.ui.comboBox_EC_FRES_21, expla_text=self.ui.plainTextEdit_ET_FRES_21, hora=20)
       self.hora_21 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_22,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_22,
-                                  reason_code=self.ui.lineEdit_RC_FRES_22, reason_text=self.ui.plainTextEdit_RT_FRES_22,
-                                  expla_code=self.ui.lineEdit_EC_FRES_22, expla_text=self.ui.plainTextEdit_ET_FRES_22, hora=21)
+                                  reason_code=self.ui.comboBox_RC_FRES_22, reason_text=self.ui.plainTextEdit_RT_FRES_22,
+                                  expla_code=self.ui.comboBox_EC_FRES_22, expla_text=self.ui.plainTextEdit_ET_FRES_22, hora=21)
       self.hora_22 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_23,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_23,
-                                  reason_code=self.ui.lineEdit_RC_FRES_23, reason_text=self.ui.plainTextEdit_RT_FRES_23,
-                                  expla_code=self.ui.lineEdit_EC_FRES_23, expla_text=self.ui.plainTextEdit_ET_FRES_23, hora=22)
+                                  reason_code=self.ui.comboBox_RC_FRES_23, reason_text=self.ui.plainTextEdit_RT_FRES_23,
+                                  expla_code=self.ui.comboBox_EC_FRES_23, expla_text=self.ui.plainTextEdit_ET_FRES_23, hora=22)
       self.hora_23 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_24,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_24,
-                                  reason_code=self.ui.lineEdit_RC_FRES_24, reason_text=self.ui.plainTextEdit_RT_FRES_24,
-                                  expla_code=self.ui.lineEdit_EC_FRES_24, expla_text=self.ui.plainTextEdit_ET_FRES_24, hora=23)
+                                  reason_code=self.ui.comboBox_RC_FRES_24, reason_text=self.ui.plainTextEdit_RT_FRES_24,
+                                  expla_code=self.ui.comboBox_EC_FRES_24, expla_text=self.ui.plainTextEdit_ET_FRES_24, hora=23)
       self.hora_24 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_FRES_25,
                                   combox_con_limitante=self.ui.comboBox_CL_FRES_25,
-                                  reason_code=self.ui.lineEdit_RC_FRES_25, reason_text=self.ui.plainTextEdit_RT_FRES_25,
-                                  expla_code=self.ui.lineEdit_EC_FRES_25, expla_text=self.ui.plainTextEdit_ET_FRES_25, hora=24)
+                                  reason_code=self.ui.comboBox_RC_FRES_25, reason_text=self.ui.plainTextEdit_RT_FRES_25,
+                                  expla_code=self.ui.comboBox_EC_FRES_25, expla_text=self.ui.plainTextEdit_ET_FRES_25, hora=24)
 
    def get_list_elementos(self):
       reul = []
@@ -1001,104 +1060,104 @@ class ES_PT():
 
       self.hora_00 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_1,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_1,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_1, reason_text=self.ui.plainTextEdit_RT_ESPT_1,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_1, expla_text=self.ui.plainTextEdit_ET_ESPT_1,hora=0)
+                                  reason_code=self.ui.comboBox_RC_ESPT_1, reason_text=self.ui.plainTextEdit_RT_ESPT_1,
+                                  expla_code=self.ui.comboBox_EC_ESPT_1, expla_text=self.ui.plainTextEdit_ET_ESPT_1,hora=0)
       self.hora_01 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_2,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_2,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_2, reason_text=self.ui.plainTextEdit_RT_ESPT_2,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_2, expla_text=self.ui.plainTextEdit_ET_ESPT_2,hora=1)
+                                  reason_code=self.ui.comboBox_RC_ESPT_2, reason_text=self.ui.plainTextEdit_RT_ESPT_2,
+                                  expla_code=self.ui.comboBox_EC_ESPT_2, expla_text=self.ui.plainTextEdit_ET_ESPT_2,hora=1)
       self.hora_02 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_3,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_3,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_3, reason_text=self.ui.plainTextEdit_RT_ESPT_3,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_3, expla_text=self.ui.plainTextEdit_ET_ESPT_3,hora=2)
+                                  reason_code=self.ui.comboBox_RC_ESPT_3, reason_text=self.ui.plainTextEdit_RT_ESPT_3,
+                                  expla_code=self.ui.comboBox_EC_ESPT_3, expla_text=self.ui.plainTextEdit_ET_ESPT_3,hora=2)
       self.hora_03 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_4,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_4,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_4, reason_text=self.ui.plainTextEdit_RT_ESPT_4,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_4, expla_text=self.ui.plainTextEdit_ET_ESPT_4,hora=3)
+                                  reason_code=self.ui.comboBox_RC_ESPT_4, reason_text=self.ui.plainTextEdit_RT_ESPT_4,
+                                  expla_code=self.ui.comboBox_EC_ESPT_4, expla_text=self.ui.plainTextEdit_ET_ESPT_4,hora=3)
       self.hora_04 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_5,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_5,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_5, reason_text=self.ui.plainTextEdit_RT_ESPT_5,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_5, expla_text=self.ui.plainTextEdit_ET_ESPT_5,hora=4)
+                                  reason_code=self.ui.comboBox_RC_ESPT_5, reason_text=self.ui.plainTextEdit_RT_ESPT_5,
+                                  expla_code=self.ui.comboBox_EC_ESPT_5, expla_text=self.ui.plainTextEdit_ET_ESPT_5,hora=4)
       self.hora_05 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_6,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_6,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_6, reason_text=self.ui.plainTextEdit_RT_ESPT_6,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_6, expla_text=self.ui.plainTextEdit_ET_ESPT_6,hora=5)
+                                  reason_code=self.ui.comboBox_RC_ESPT_6, reason_text=self.ui.plainTextEdit_RT_ESPT_6,
+                                  expla_code=self.ui.comboBox_EC_ESPT_6, expla_text=self.ui.plainTextEdit_ET_ESPT_6,hora=5)
       self.hora_06 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_7,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_7,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_7, reason_text=self.ui.plainTextEdit_RT_ESPT_7,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_7, expla_text=self.ui.plainTextEdit_ET_ESPT_7,hora=6)
+                                  reason_code=self.ui.comboBox_RC_ESPT_7, reason_text=self.ui.plainTextEdit_RT_ESPT_7,
+                                  expla_code=self.ui.comboBox_EC_ESPT_7, expla_text=self.ui.plainTextEdit_ET_ESPT_7,hora=6)
       self.hora_07 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_8,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_8,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_8, reason_text=self.ui.plainTextEdit_RT_ESPT_8,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_8, expla_text=self.ui.plainTextEdit_ET_ESPT_8,hora=7)
+                                  reason_code=self.ui.comboBox_RC_ESPT_8, reason_text=self.ui.plainTextEdit_RT_ESPT_8,
+                                  expla_code=self.ui.comboBox_EC_ESPT_8, expla_text=self.ui.plainTextEdit_ET_ESPT_8,hora=7)
       self.hora_08 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_9,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_9,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_9, reason_text=self.ui.plainTextEdit_RT_ESPT_9,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_9, expla_text=self.ui.plainTextEdit_ET_ESPT_9,hora=8)
+                                  reason_code=self.ui.comboBox_RC_ESPT_9, reason_text=self.ui.plainTextEdit_RT_ESPT_9,
+                                  expla_code=self.ui.comboBox_EC_ESPT_9, expla_text=self.ui.plainTextEdit_ET_ESPT_9,hora=8)
       self.hora_09 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_10,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_10,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_10, reason_text=self.ui.plainTextEdit_RT_ESPT_10,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_10, expla_text=self.ui.plainTextEdit_ET_ESPT_10,hora=9)
+                                  reason_code=self.ui.comboBox_RC_ESPT_10, reason_text=self.ui.plainTextEdit_RT_ESPT_10,
+                                  expla_code=self.ui.comboBox_EC_ESPT_10, expla_text=self.ui.plainTextEdit_ET_ESPT_10,hora=9)
       self.hora_10 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_11,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_11,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_11, reason_text=self.ui.plainTextEdit_RT_ESPT_11,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_11, expla_text=self.ui.plainTextEdit_ET_ESPT_11,hora=10)
+                                  reason_code=self.ui.comboBox_RC_ESPT_11, reason_text=self.ui.plainTextEdit_RT_ESPT_11,
+                                  expla_code=self.ui.comboBox_EC_ESPT_11, expla_text=self.ui.plainTextEdit_ET_ESPT_11,hora=10)
       self.hora_11 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_12,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_12,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_12, reason_text=self.ui.plainTextEdit_RT_ESPT_12,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_12, expla_text=self.ui.plainTextEdit_ET_ESPT_12,hora=11)
+                                  reason_code=self.ui.comboBox_RC_ESPT_12, reason_text=self.ui.plainTextEdit_RT_ESPT_12,
+                                  expla_code=self.ui.comboBox_EC_ESPT_12, expla_text=self.ui.plainTextEdit_ET_ESPT_12,hora=11)
       self.hora_12 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_13,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_13,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_13, reason_text=self.ui.plainTextEdit_RT_ESPT_13,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_13, expla_text=self.ui.plainTextEdit_ET_ESPT_13,hora=12)
+                                  reason_code=self.ui.comboBox_RC_ESPT_13, reason_text=self.ui.plainTextEdit_RT_ESPT_13,
+                                  expla_code=self.ui.comboBox_EC_ESPT_13, expla_text=self.ui.plainTextEdit_ET_ESPT_13,hora=12)
       self.hora_13 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_14,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_14,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_14, reason_text=self.ui.plainTextEdit_RT_ESPT_14,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_14, expla_text=self.ui.plainTextEdit_ET_ESPT_14,hora=13)
+                                  reason_code=self.ui.comboBox_RC_ESPT_14, reason_text=self.ui.plainTextEdit_RT_ESPT_14,
+                                  expla_code=self.ui.comboBox_EC_ESPT_14, expla_text=self.ui.plainTextEdit_ET_ESPT_14,hora=13)
       self.hora_14 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_15,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_15,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_15, reason_text=self.ui.plainTextEdit_RT_ESPT_15,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_15, expla_text=self.ui.plainTextEdit_ET_ESPT_15,hora=14)
+                                  reason_code=self.ui.comboBox_RC_ESPT_15, reason_text=self.ui.plainTextEdit_RT_ESPT_15,
+                                  expla_code=self.ui.comboBox_EC_ESPT_15, expla_text=self.ui.plainTextEdit_ET_ESPT_15,hora=14)
       self.hora_15 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_16,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_16,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_16, reason_text=self.ui.plainTextEdit_RT_ESPT_16,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_16, expla_text=self.ui.plainTextEdit_ET_ESPT_16,hora=15)
+                                  reason_code=self.ui.comboBox_RC_ESPT_16, reason_text=self.ui.plainTextEdit_RT_ESPT_16,
+                                  expla_code=self.ui.comboBox_EC_ESPT_16, expla_text=self.ui.plainTextEdit_ET_ESPT_16,hora=15)
       self.hora_16 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_17,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_17,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_17, reason_text=self.ui.plainTextEdit_RT_ESPT_17,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_17, expla_text=self.ui.plainTextEdit_ET_ESPT_17,hora=16)
+                                  reason_code=self.ui.comboBox_RC_ESPT_17, reason_text=self.ui.plainTextEdit_RT_ESPT_17,
+                                  expla_code=self.ui.comboBox_EC_ESPT_17, expla_text=self.ui.plainTextEdit_ET_ESPT_17,hora=16)
       self.hora_17 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_18,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_18,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_18, reason_text=self.ui.plainTextEdit_RT_ESPT_18,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_18, expla_text=self.ui.plainTextEdit_ET_ESPT_18,hora=17)
+                                  reason_code=self.ui.comboBox_RC_ESPT_18, reason_text=self.ui.plainTextEdit_RT_ESPT_18,
+                                  expla_code=self.ui.comboBox_EC_ESPT_18, expla_text=self.ui.plainTextEdit_ET_ESPT_18,hora=17)
       self.hora_18 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_19,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_19,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_19, reason_text=self.ui.plainTextEdit_RT_ESPT_19,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_19, expla_text=self.ui.plainTextEdit_ET_ESPT_19,hora=18)
+                                  reason_code=self.ui.comboBox_RC_ESPT_19, reason_text=self.ui.plainTextEdit_RT_ESPT_19,
+                                  expla_code=self.ui.comboBox_EC_ESPT_19, expla_text=self.ui.plainTextEdit_ET_ESPT_19,hora=18)
       self.hora_19 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_20,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_20,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_20, reason_text=self.ui.plainTextEdit_RT_ESPT_20,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_20, expla_text=self.ui.plainTextEdit_ET_ESPT_20,hora=19)
+                                  reason_code=self.ui.comboBox_RC_ESPT_20, reason_text=self.ui.plainTextEdit_RT_ESPT_20,
+                                  expla_code=self.ui.comboBox_EC_ESPT_20, expla_text=self.ui.plainTextEdit_ET_ESPT_20,hora=19)
       self.hora_20 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_21,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_21,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_21, reason_text=self.ui.plainTextEdit_RT_ESPT_21,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_21, expla_text=self.ui.plainTextEdit_ET_ESPT_21,hora=20)
+                                  reason_code=self.ui.comboBox_RC_ESPT_21, reason_text=self.ui.plainTextEdit_RT_ESPT_21,
+                                  expla_code=self.ui.comboBox_EC_ESPT_21, expla_text=self.ui.plainTextEdit_ET_ESPT_21,hora=20)
       self.hora_21 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_22,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_22,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_22, reason_text=self.ui.plainTextEdit_RT_ESPT_22,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_22, expla_text=self.ui.plainTextEdit_ET_ESPT_22,hora=21)
+                                  reason_code=self.ui.comboBox_RC_ESPT_22, reason_text=self.ui.plainTextEdit_RT_ESPT_22,
+                                  expla_code=self.ui.comboBox_EC_ESPT_22, expla_text=self.ui.plainTextEdit_ET_ESPT_22,hora=21)
       self.hora_22 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_23,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_23,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_23, reason_text=self.ui.plainTextEdit_RT_ESPT_23,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_23, expla_text=self.ui.plainTextEdit_ET_ESPT_23,hora=22)
+                                  reason_code=self.ui.comboBox_RC_ESPT_23, reason_text=self.ui.plainTextEdit_RT_ESPT_23,
+                                  expla_code=self.ui.comboBox_EC_ESPT_23, expla_text=self.ui.plainTextEdit_ET_ESPT_23,hora=22)
       self.hora_23 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_24,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_24,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_24, reason_text=self.ui.plainTextEdit_RT_ESPT_24,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_24, expla_text=self.ui.plainTextEdit_ET_ESPT_24,hora=23)
+                                  reason_code=self.ui.comboBox_RC_ESPT_24, reason_text=self.ui.plainTextEdit_RT_ESPT_24,
+                                  expla_code=self.ui.comboBox_EC_ESPT_24, expla_text=self.ui.plainTextEdit_ET_ESPT_24,hora=23)
       self.hora_24 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_ESPT_25,
                                   combox_con_limitante=self.ui.comboBox_CL_ESPT_25,
-                                  reason_code=self.ui.lineEdit_RC_ESPT_25, reason_text=self.ui.plainTextEdit_RT_ESPT_25,
-                                  expla_code=self.ui.lineEdit_EC_ESPT_25, expla_text=self.ui.plainTextEdit_ET_ESPT_25,hora=24)
+                                  reason_code=self.ui.comboBox_RC_ESPT_25, reason_text=self.ui.plainTextEdit_RT_ESPT_25,
+                                  expla_code=self.ui.comboBox_EC_ESPT_25, expla_text=self.ui.plainTextEdit_ET_ESPT_25,hora=24)
 
    def get_list_elementos(self):
       reul = []
@@ -1146,104 +1205,104 @@ class PT_ES():
 
       self.hora_00 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_1,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_1,
-                                  reason_code=self.ui.lineEdit_RC_PTES_1, reason_text=self.ui.plainTextEdit_RT_PTES_1,
-                                  expla_code=self.ui.lineEdit_EC_PTES_1, expla_text=self.ui.plainTextEdit_ET_PTES_1, hora=0)
+                                  reason_code=self.ui.comboBox_RC_PTES_1, reason_text=self.ui.plainTextEdit_RT_PTES_1,
+                                  expla_code=self.ui.comboBox_EC_PTES_1, expla_text=self.ui.plainTextEdit_ET_PTES_1, hora=0)
       self.hora_01 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_2,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_2,
-                                  reason_code=self.ui.lineEdit_RC_PTES_2, reason_text=self.ui.plainTextEdit_RT_PTES_2,
-                                  expla_code=self.ui.lineEdit_EC_PTES_2, expla_text=self.ui.plainTextEdit_ET_PTES_2, hora=1)
+                                  reason_code=self.ui.comboBox_RC_PTES_2, reason_text=self.ui.plainTextEdit_RT_PTES_2,
+                                  expla_code=self.ui.comboBox_EC_PTES_2, expla_text=self.ui.plainTextEdit_ET_PTES_2, hora=1)
       self.hora_02 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_3,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_3,
-                                  reason_code=self.ui.lineEdit_RC_PTES_3, reason_text=self.ui.plainTextEdit_RT_PTES_3,
-                                  expla_code=self.ui.lineEdit_EC_PTES_3, expla_text=self.ui.plainTextEdit_ET_PTES_3, hora=2)
+                                  reason_code=self.ui.comboBox_RC_PTES_3, reason_text=self.ui.plainTextEdit_RT_PTES_3,
+                                  expla_code=self.ui.comboBox_EC_PTES_3, expla_text=self.ui.plainTextEdit_ET_PTES_3, hora=2)
       self.hora_03 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_4,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_4,
-                                  reason_code=self.ui.lineEdit_RC_PTES_4, reason_text=self.ui.plainTextEdit_RT_PTES_4,
-                                  expla_code=self.ui.lineEdit_EC_PTES_4, expla_text=self.ui.plainTextEdit_ET_PTES_4, hora=3)
+                                  reason_code=self.ui.comboBox_RC_PTES_4, reason_text=self.ui.plainTextEdit_RT_PTES_4,
+                                  expla_code=self.ui.comboBox_EC_PTES_4, expla_text=self.ui.plainTextEdit_ET_PTES_4, hora=3)
       self.hora_04 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_5,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_5,
-                                  reason_code=self.ui.lineEdit_RC_PTES_5, reason_text=self.ui.plainTextEdit_RT_PTES_5,
-                                  expla_code=self.ui.lineEdit_EC_PTES_5, expla_text=self.ui.plainTextEdit_ET_PTES_5, hora=4)
+                                  reason_code=self.ui.comboBox_RC_PTES_5, reason_text=self.ui.plainTextEdit_RT_PTES_5,
+                                  expla_code=self.ui.comboBox_EC_PTES_5, expla_text=self.ui.plainTextEdit_ET_PTES_5, hora=4)
       self.hora_05 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_6,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_6,
-                                  reason_code=self.ui.lineEdit_RC_PTES_6, reason_text=self.ui.plainTextEdit_RT_PTES_6,
-                                  expla_code=self.ui.lineEdit_EC_PTES_6, expla_text=self.ui.plainTextEdit_ET_PTES_6, hora=5)
+                                  reason_code=self.ui.comboBox_RC_PTES_6, reason_text=self.ui.plainTextEdit_RT_PTES_6,
+                                  expla_code=self.ui.comboBox_EC_PTES_6, expla_text=self.ui.plainTextEdit_ET_PTES_6, hora=5)
       self.hora_06 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_7,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_7,
-                                  reason_code=self.ui.lineEdit_RC_PTES_7, reason_text=self.ui.plainTextEdit_RT_PTES_7,
-                                  expla_code=self.ui.lineEdit_EC_PTES_7, expla_text=self.ui.plainTextEdit_ET_PTES_7, hora=6)
+                                  reason_code=self.ui.comboBox_RC_PTES_7, reason_text=self.ui.plainTextEdit_RT_PTES_7,
+                                  expla_code=self.ui.comboBox_EC_PTES_7, expla_text=self.ui.plainTextEdit_ET_PTES_7, hora=6)
       self.hora_07 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_8,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_8,
-                                  reason_code=self.ui.lineEdit_RC_PTES_8, reason_text=self.ui.plainTextEdit_RT_PTES_8,
-                                  expla_code=self.ui.lineEdit_EC_PTES_8, expla_text=self.ui.plainTextEdit_ET_PTES_8, hora=7)
+                                  reason_code=self.ui.comboBox_RC_PTES_8, reason_text=self.ui.plainTextEdit_RT_PTES_8,
+                                  expla_code=self.ui.comboBox_EC_PTES_8, expla_text=self.ui.plainTextEdit_ET_PTES_8, hora=7)
       self.hora_08 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_9,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_9,
-                                  reason_code=self.ui.lineEdit_RC_PTES_9, reason_text=self.ui.plainTextEdit_RT_PTES_9,
-                                  expla_code=self.ui.lineEdit_EC_PTES_9, expla_text=self.ui.plainTextEdit_ET_PTES_9, hora=8)
+                                  reason_code=self.ui.comboBox_RC_PTES_9, reason_text=self.ui.plainTextEdit_RT_PTES_9,
+                                  expla_code=self.ui.comboBox_EC_PTES_9, expla_text=self.ui.plainTextEdit_ET_PTES_9, hora=8)
       self.hora_09 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_10,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_10,
-                                  reason_code=self.ui.lineEdit_RC_PTES_10, reason_text=self.ui.plainTextEdit_RT_PTES_10,
-                                  expla_code=self.ui.lineEdit_EC_PTES_10, expla_text=self.ui.plainTextEdit_ET_PTES_10, hora=9)
+                                  reason_code=self.ui.comboBox_RC_PTES_10, reason_text=self.ui.plainTextEdit_RT_PTES_10,
+                                  expla_code=self.ui.comboBox_EC_PTES_10, expla_text=self.ui.plainTextEdit_ET_PTES_10, hora=9)
       self.hora_10 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_11,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_11,
-                                  reason_code=self.ui.lineEdit_RC_PTES_11, reason_text=self.ui.plainTextEdit_RT_PTES_11,
-                                  expla_code=self.ui.lineEdit_EC_PTES_11, expla_text=self.ui.plainTextEdit_ET_PTES_11, hora=10)
+                                  reason_code=self.ui.comboBox_RC_PTES_11, reason_text=self.ui.plainTextEdit_RT_PTES_11,
+                                  expla_code=self.ui.comboBox_EC_PTES_11, expla_text=self.ui.plainTextEdit_ET_PTES_11, hora=10)
       self.hora_11 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_12,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_12,
-                                  reason_code=self.ui.lineEdit_RC_PTES_12, reason_text=self.ui.plainTextEdit_RT_PTES_12,
-                                  expla_code=self.ui.lineEdit_EC_PTES_12, expla_text=self.ui.plainTextEdit_ET_PTES_12, hora=11)
+                                  reason_code=self.ui.comboBox_RC_PTES_12, reason_text=self.ui.plainTextEdit_RT_PTES_12,
+                                  expla_code=self.ui.comboBox_EC_PTES_12, expla_text=self.ui.plainTextEdit_ET_PTES_12, hora=11)
       self.hora_12 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_13,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_13,
-                                  reason_code=self.ui.lineEdit_RC_PTES_13, reason_text=self.ui.plainTextEdit_RT_PTES_13,
-                                  expla_code=self.ui.lineEdit_EC_PTES_13, expla_text=self.ui.plainTextEdit_ET_PTES_13, hora=12)
+                                  reason_code=self.ui.comboBox_RC_PTES_13, reason_text=self.ui.plainTextEdit_RT_PTES_13,
+                                  expla_code=self.ui.comboBox_EC_PTES_13, expla_text=self.ui.plainTextEdit_ET_PTES_13, hora=12)
       self.hora_13 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_14,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_14,
-                                  reason_code=self.ui.lineEdit_RC_PTES_14, reason_text=self.ui.plainTextEdit_RT_PTES_14,
-                                  expla_code=self.ui.lineEdit_EC_PTES_14, expla_text=self.ui.plainTextEdit_ET_PTES_14, hora=13)
+                                  reason_code=self.ui.comboBox_RC_PTES_14, reason_text=self.ui.plainTextEdit_RT_PTES_14,
+                                  expla_code=self.ui.comboBox_EC_PTES_14, expla_text=self.ui.plainTextEdit_ET_PTES_14, hora=13)
       self.hora_14 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_15,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_15,
-                                  reason_code=self.ui.lineEdit_RC_PTES_15, reason_text=self.ui.plainTextEdit_RT_PTES_15,
-                                  expla_code=self.ui.lineEdit_EC_PTES_15, expla_text=self.ui.plainTextEdit_ET_PTES_15, hora=14)
+                                  reason_code=self.ui.comboBox_RC_PTES_15, reason_text=self.ui.plainTextEdit_RT_PTES_15,
+                                  expla_code=self.ui.comboBox_EC_PTES_15, expla_text=self.ui.plainTextEdit_ET_PTES_15, hora=14)
       self.hora_15 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_16,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_16,
-                                  reason_code=self.ui.lineEdit_RC_PTES_16, reason_text=self.ui.plainTextEdit_RT_PTES_16,
-                                  expla_code=self.ui.lineEdit_EC_PTES_16, expla_text=self.ui.plainTextEdit_ET_PTES_16, hora=15)
+                                  reason_code=self.ui.comboBox_RC_PTES_16, reason_text=self.ui.plainTextEdit_RT_PTES_16,
+                                  expla_code=self.ui.comboBox_EC_PTES_16, expla_text=self.ui.plainTextEdit_ET_PTES_16, hora=15)
       self.hora_16 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_17,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_17,
-                                  reason_code=self.ui.lineEdit_RC_PTES_17, reason_text=self.ui.plainTextEdit_RT_PTES_17,
-                                  expla_code=self.ui.lineEdit_EC_PTES_17, expla_text=self.ui.plainTextEdit_ET_PTES_17, hora=16)
+                                  reason_code=self.ui.comboBox_RC_PTES_17, reason_text=self.ui.plainTextEdit_RT_PTES_17,
+                                  expla_code=self.ui.comboBox_EC_PTES_17, expla_text=self.ui.plainTextEdit_ET_PTES_17, hora=16)
       self.hora_17 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_18,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_18,
-                                  reason_code=self.ui.lineEdit_RC_PTES_18, reason_text=self.ui.plainTextEdit_RT_PTES_18,
-                                  expla_code=self.ui.lineEdit_EC_PTES_18, expla_text=self.ui.plainTextEdit_ET_PTES_18, hora=17)
+                                  reason_code=self.ui.comboBox_RC_PTES_18, reason_text=self.ui.plainTextEdit_RT_PTES_18,
+                                  expla_code=self.ui.comboBox_EC_PTES_18, expla_text=self.ui.plainTextEdit_ET_PTES_18, hora=17)
       self.hora_18 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_19,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_19,
-                                  reason_code=self.ui.lineEdit_RC_PTES_19, reason_text=self.ui.plainTextEdit_RT_PTES_19,
-                                  expla_code=self.ui.lineEdit_EC_PTES_19, expla_text=self.ui.plainTextEdit_ET_PTES_19, hora=18)
+                                  reason_code=self.ui.comboBox_RC_PTES_19, reason_text=self.ui.plainTextEdit_RT_PTES_19,
+                                  expla_code=self.ui.comboBox_EC_PTES_19, expla_text=self.ui.plainTextEdit_ET_PTES_19, hora=18)
       self.hora_19 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_20,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_20,
-                                  reason_code=self.ui.lineEdit_RC_PTES_20, reason_text=self.ui.plainTextEdit_RT_PTES_20,
-                                  expla_code=self.ui.lineEdit_EC_PTES_20, expla_text=self.ui.plainTextEdit_ET_PTES_20, hora=19)
+                                  reason_code=self.ui.comboBox_RC_PTES_20, reason_text=self.ui.plainTextEdit_RT_PTES_20,
+                                  expla_code=self.ui.comboBox_EC_PTES_20, expla_text=self.ui.plainTextEdit_ET_PTES_20, hora=19)
       self.hora_20 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_21,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_21,
-                                  reason_code=self.ui.lineEdit_RC_PTES_21, reason_text=self.ui.plainTextEdit_RT_PTES_21,
-                                  expla_code=self.ui.lineEdit_EC_PTES_21, expla_text=self.ui.plainTextEdit_ET_PTES_21, hora=20)
+                                  reason_code=self.ui.comboBox_RC_PTES_21, reason_text=self.ui.plainTextEdit_RT_PTES_21,
+                                  expla_code=self.ui.comboBox_EC_PTES_21, expla_text=self.ui.plainTextEdit_ET_PTES_21, hora=20)
       self.hora_21 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_22,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_22,
-                                  reason_code=self.ui.lineEdit_RC_PTES_22, reason_text=self.ui.plainTextEdit_RT_PTES_22,
-                                  expla_code=self.ui.lineEdit_EC_PTES_22, expla_text=self.ui.plainTextEdit_ET_PTES_22, hora=21)
+                                  reason_code=self.ui.comboBox_RC_PTES_22, reason_text=self.ui.plainTextEdit_RT_PTES_22,
+                                  expla_code=self.ui.comboBox_EC_PTES_22, expla_text=self.ui.plainTextEdit_ET_PTES_22, hora=21)
       self.hora_22 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_23,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_23,
-                                  reason_code=self.ui.lineEdit_RC_PTES_23, reason_text=self.ui.plainTextEdit_RT_PTES_23,
-                                  expla_code=self.ui.lineEdit_EC_PTES_23, expla_text=self.ui.plainTextEdit_ET_PTES_23, hora=22)
+                                  reason_code=self.ui.comboBox_RC_PTES_23, reason_text=self.ui.plainTextEdit_RT_PTES_23,
+                                  expla_code=self.ui.comboBox_EC_PTES_23, expla_text=self.ui.plainTextEdit_ET_PTES_23, hora=22)
       self.hora_23 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_24,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_24,
-                                  reason_code=self.ui.lineEdit_RC_PTES_24, reason_text=self.ui.plainTextEdit_RT_PTES_24,
-                                  expla_code=self.ui.lineEdit_EC_PTES_24, expla_text=self.ui.plainTextEdit_ET_PTES_24, hora=23)
+                                  reason_code=self.ui.comboBox_RC_PTES_24, reason_text=self.ui.plainTextEdit_RT_PTES_24,
+                                  expla_code=self.ui.comboBox_EC_PTES_24, expla_text=self.ui.plainTextEdit_ET_PTES_24, hora=23)
       self.hora_24 = Elementos_UI(combox_ele_limitante=self.ui.comboBox_EL_PTES_25,
                                   combox_con_limitante=self.ui.comboBox_CL_PTES_25,
-                                  reason_code=self.ui.lineEdit_RC_PTES_25, reason_text=self.ui.plainTextEdit_RT_PTES_25,
-                                  expla_code=self.ui.lineEdit_EC_PTES_25, expla_text=self.ui.plainTextEdit_ET_PTES_25, hora=24)
+                                  reason_code=self.ui.comboBox_RC_PTES_25, reason_text=self.ui.plainTextEdit_RT_PTES_25,
+                                  expla_code=self.ui.comboBox_EC_PTES_25, expla_text=self.ui.plainTextEdit_ET_PTES_25, hora=24)
 
    def get_list_elementos(self):
       reul = []
@@ -1286,11 +1345,11 @@ class Elementos_UI():
       :param combox_con_limitante: QComboBox
       :type combox_con_limitante: QComboBox
       :param reason_code: QLineEdit
-      :type reason_code: QLineEdit
+      :type reason_code: QComboBox
       :param reason_text: QPlainTextEdit
       :type reason_text: QPlainTextEdit
       :param expla_code:QPlainTextEdit
-      :type expla_code: QPlainTextEdit
+      :type expla_code: QComboBox
       :param expla_text:QPlainTextEdit
       :type expla_text: QPlainTextEdit
       """
@@ -1314,6 +1373,8 @@ class Elementos_UI():
 
       self.list_mon = df_mon.to_dict('records')
       self.list_co_dict =df_co_dict.to_dict('records')
+      self.list_reason_code=list_reason_codes
+      self.list_explat_codes =list_explat_codes
 
    @property
    def element_limi(self):
@@ -1386,13 +1447,54 @@ class Elementos_UI():
 
       self.load_comboBox_Ele_Limitante()
       self.combox_ele_limitante.clear()
+      self.combox_ele_limitante.addItem('', None)
       for x in self.list_mon:
          DATA = str(x['DESCRIPTION']).replace('[', ' ').replace(']', ' ')
          self.combox_ele_limitante.addItem(DATA, x)
 
       self.load_comboBox_Ele_Con()
       self.combox_con_limitante.clear()
+      self.combox_con_limitante.addItem('', None)
       for x in self.list_co_dict:
          DATA = str(x['name CO Dict'])
          self.combox_con_limitante.addItem(DATA, x)
+
+      self.load_comboBox_ReasonCode()
+      self.line_reason_code.clear()
+      self.line_reason_code.addItem('', None)
+      for x in self.list_reason_code:
+         DATA = str('{} - {} '.format(x.code, x.descrip))
+         self.line_reason_code.addItem(DATA, x)
+
+      self.load_comboBox_ExplanatCode()
+      self.line_expla_code.clear()
+      self.line_expla_code.addItem('', None)
+      for x in self.list_explat_codes:
+         DATA = str('{} - {} '.format(x.code, x.descrip))
+         self.line_expla_code.addItem(DATA, x)
+
+   def load_comboBox_ReasonCode(self):
+      self.line_reason_code.setEditable(True)
+      self.line_reason_code.setInsertPolicy(QComboBox.NoInsert)
+      completer = CustomQCompleter(self.line_reason_code)
+      completer.setCompletionMode(QCompleter.PopupCompletion)
+      completer.setModel(self.line_reason_code.model())
+      self.line_reason_code.setCompleter(completer)
+
+   def load_comboBox_ExplanatCode(self):
+      self.line_expla_code.setEditable(True)
+      self.line_expla_code.setInsertPolicy(QComboBox.NoInsert)
+      completer = CustomQCompleter(self.line_expla_code)
+      completer.setCompletionMode(QCompleter.PopupCompletion)
+      completer.setModel(self.line_expla_code.model())
+      self.line_expla_code.setCompleter(completer)
+
+   def clear_element(self):
+      self.combox_ele_limitante.clear()
+      self.combox_con_limitante.clear()
+      self.line_reason_code.clear()
+      self.line_reason_text.clear()
+      self.line_expla_code.clear()
+      self.line_expla_text.clear()
+
 

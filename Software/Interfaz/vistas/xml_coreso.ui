@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1266</width>
+    <width>1091</width>
     <height>795</height>
    </rect>
   </property>
@@ -141,7 +141,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -251,7 +251,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_17">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_1">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -293,7 +293,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_18">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_1">
+                <widget class="QComboBox" name="comboBox_EC_PTES_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -353,7 +353,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_9">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_1">
+                <widget class="QComboBox" name="comboBox_RC_FRES_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -384,7 +384,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_14">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_1">
+                <widget class="QComboBox" name="comboBox_RC_PTES_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -415,7 +415,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_15">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_1">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -446,7 +446,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_16">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_1">
+                <widget class="QComboBox" name="comboBox_EC_FRES_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -477,7 +477,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_13">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_1">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -606,7 +606,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_19">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_1">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -861,7 +861,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_22">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_2">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_2">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -903,7 +903,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_24">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_2">
+                <widget class="QComboBox" name="comboBox_EC_PTES_2">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -963,7 +963,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_28">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_2">
+                <widget class="QComboBox" name="comboBox_RC_FRES_2">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -994,7 +994,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_29">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_2">
+                <widget class="QComboBox" name="comboBox_RC_PTES_2">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1025,7 +1025,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_30">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_2">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_2">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1056,7 +1056,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_31">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_2">
+                <widget class="QComboBox" name="comboBox_EC_FRES_2">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1087,7 +1087,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_32">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_2">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_2">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1216,7 +1216,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_33">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_2">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_2">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1471,7 +1471,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_38">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_3">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1513,7 +1513,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_40">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_3">
+                <widget class="QComboBox" name="comboBox_EC_PTES_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1573,7 +1573,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_44">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_3">
+                <widget class="QComboBox" name="comboBox_RC_FRES_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1604,7 +1604,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_45">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_3">
+                <widget class="QComboBox" name="comboBox_RC_PTES_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1635,7 +1635,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_46">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_3">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1666,7 +1666,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_47">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_3">
+                <widget class="QComboBox" name="comboBox_EC_FRES_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1697,7 +1697,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_48">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_3">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1826,7 +1826,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_49">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_3">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2081,7 +2081,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_55">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_4">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2123,7 +2123,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_57">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_4">
+                <widget class="QComboBox" name="comboBox_EC_PTES_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2183,7 +2183,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_61">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_4">
+                <widget class="QComboBox" name="comboBox_RC_FRES_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2214,7 +2214,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_62">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_4">
+                <widget class="QComboBox" name="comboBox_RC_PTES_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2245,7 +2245,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_63">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_4">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2276,7 +2276,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_64">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_4">
+                <widget class="QComboBox" name="comboBox_EC_FRES_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2307,7 +2307,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_65">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_4">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2436,7 +2436,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_66">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_4">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2691,7 +2691,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_71">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_5">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_5">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2733,7 +2733,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_73">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_5">
+                <widget class="QComboBox" name="comboBox_EC_PTES_5">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2793,7 +2793,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_77">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_5">
+                <widget class="QComboBox" name="comboBox_RC_FRES_5">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2824,7 +2824,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_78">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_5">
+                <widget class="QComboBox" name="comboBox_RC_PTES_5">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2855,7 +2855,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_79">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_5">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_5">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2886,7 +2886,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_80">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_5">
+                <widget class="QComboBox" name="comboBox_EC_FRES_5">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -2917,7 +2917,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_81">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_5">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_5">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3046,7 +3046,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_82">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_5">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_5">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3301,7 +3301,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_87">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_6">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_6">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3343,7 +3343,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_89">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_6">
+                <widget class="QComboBox" name="comboBox_EC_PTES_6">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3403,7 +3403,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_93">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_6">
+                <widget class="QComboBox" name="comboBox_RC_FRES_6">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3434,7 +3434,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_94">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_6">
+                <widget class="QComboBox" name="comboBox_RC_PTES_6">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3465,7 +3465,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_95">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_6">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_6">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3496,7 +3496,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_96">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_6">
+                <widget class="QComboBox" name="comboBox_EC_FRES_6">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3527,7 +3527,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_97">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_6">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_6">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3656,7 +3656,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_98">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_6">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_6">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3911,7 +3911,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_103">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_7">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_7">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3953,7 +3953,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_105">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_7">
+                <widget class="QComboBox" name="comboBox_EC_PTES_7">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4013,7 +4013,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_109">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_7">
+                <widget class="QComboBox" name="comboBox_RC_FRES_7">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4044,7 +4044,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_110">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_7">
+                <widget class="QComboBox" name="comboBox_RC_PTES_7">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4075,7 +4075,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_111">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_7">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_7">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4106,7 +4106,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_112">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_7">
+                <widget class="QComboBox" name="comboBox_EC_FRES_7">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4137,7 +4137,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_113">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_7">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_7">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4266,7 +4266,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_114">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_7">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_7">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4521,7 +4521,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_119">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_8">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_8">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4563,7 +4563,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_121">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_8">
+                <widget class="QComboBox" name="comboBox_EC_PTES_8">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4623,7 +4623,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_125">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_8">
+                <widget class="QComboBox" name="comboBox_RC_FRES_8">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4654,7 +4654,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_126">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_8">
+                <widget class="QComboBox" name="comboBox_RC_PTES_8">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4685,7 +4685,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_127">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_8">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_8">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4716,7 +4716,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_128">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_8">
+                <widget class="QComboBox" name="comboBox_EC_FRES_8">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4747,7 +4747,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_129">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_8">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_8">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -4876,7 +4876,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_130">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_8">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_8">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5131,7 +5131,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_135">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_9">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_9">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5173,7 +5173,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_137">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_9">
+                <widget class="QComboBox" name="comboBox_EC_PTES_9">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5233,7 +5233,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_141">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_9">
+                <widget class="QComboBox" name="comboBox_RC_FRES_9">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5264,7 +5264,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_142">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_9">
+                <widget class="QComboBox" name="comboBox_RC_PTES_9">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5295,7 +5295,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_143">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_9">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_9">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5326,7 +5326,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_144">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_9">
+                <widget class="QComboBox" name="comboBox_EC_FRES_9">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5357,7 +5357,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_145">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_9">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_9">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5486,7 +5486,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_146">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_9">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_9">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5741,7 +5741,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_151">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_10">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_10">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5783,7 +5783,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_153">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_10">
+                <widget class="QComboBox" name="comboBox_EC_PTES_10">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5843,7 +5843,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_157">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_10">
+                <widget class="QComboBox" name="comboBox_RC_FRES_10">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5874,7 +5874,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_158">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_10">
+                <widget class="QComboBox" name="comboBox_RC_PTES_10">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5905,7 +5905,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_159">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_10">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_10">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5936,7 +5936,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_160">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_10">
+                <widget class="QComboBox" name="comboBox_EC_FRES_10">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -5967,7 +5967,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_161">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_10">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_10">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6096,7 +6096,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_162">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_10">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_10">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6414,7 +6414,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_167">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_11">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_11">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6456,7 +6456,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_169">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_11">
+                <widget class="QComboBox" name="comboBox_EC_PTES_11">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6516,7 +6516,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_173">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_11">
+                <widget class="QComboBox" name="comboBox_RC_FRES_11">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6547,7 +6547,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_174">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_11">
+                <widget class="QComboBox" name="comboBox_RC_PTES_11">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6578,7 +6578,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_175">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_11">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_11">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6609,7 +6609,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_176">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_11">
+                <widget class="QComboBox" name="comboBox_EC_FRES_11">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6640,7 +6640,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_177">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_11">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_11">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6769,7 +6769,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_178">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_11">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_11">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -6961,7 +6961,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_183">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_12">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_12">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7003,7 +7003,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_185">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_12">
+                <widget class="QComboBox" name="comboBox_EC_PTES_12">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7063,7 +7063,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_189">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_12">
+                <widget class="QComboBox" name="comboBox_RC_FRES_12">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7094,7 +7094,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_190">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_12">
+                <widget class="QComboBox" name="comboBox_RC_PTES_12">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7125,7 +7125,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_191">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_12">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_12">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7156,7 +7156,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_192">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_12">
+                <widget class="QComboBox" name="comboBox_EC_FRES_12">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7187,7 +7187,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_193">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_12">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_12">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7316,7 +7316,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_194">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_12">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_12">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7571,7 +7571,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_199">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_13">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_13">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7613,7 +7613,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_201">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_13">
+                <widget class="QComboBox" name="comboBox_EC_PTES_13">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7673,7 +7673,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_205">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_13">
+                <widget class="QComboBox" name="comboBox_RC_FRES_13">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7704,7 +7704,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_206">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_13">
+                <widget class="QComboBox" name="comboBox_RC_PTES_13">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7735,7 +7735,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_207">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_13">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_13">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7766,7 +7766,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_208">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_13">
+                <widget class="QComboBox" name="comboBox_EC_FRES_13">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7797,7 +7797,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_209">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_13">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_13">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -7926,7 +7926,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_210">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_13">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_13">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8181,7 +8181,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_215">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_14">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_14">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8223,7 +8223,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_217">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_14">
+                <widget class="QComboBox" name="comboBox_EC_PTES_14">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8283,7 +8283,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_221">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_14">
+                <widget class="QComboBox" name="comboBox_RC_FRES_14">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8314,7 +8314,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_222">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_14">
+                <widget class="QComboBox" name="comboBox_RC_PTES_14">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8345,7 +8345,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_223">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_14">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_14">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8376,7 +8376,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_224">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_14">
+                <widget class="QComboBox" name="comboBox_EC_FRES_14">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8407,7 +8407,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_225">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_14">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_14">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8536,7 +8536,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_226">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_14">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_14">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8791,7 +8791,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_231">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_15">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_15">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8833,7 +8833,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_233">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_15">
+                <widget class="QComboBox" name="comboBox_EC_PTES_15">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8893,7 +8893,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_237">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_15">
+                <widget class="QComboBox" name="comboBox_RC_FRES_15">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8924,7 +8924,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_238">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_15">
+                <widget class="QComboBox" name="comboBox_RC_PTES_15">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8955,7 +8955,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_239">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_15">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_15">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -8986,7 +8986,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_240">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_15">
+                <widget class="QComboBox" name="comboBox_EC_FRES_15">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9017,7 +9017,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_241">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_15">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_15">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9146,7 +9146,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_242">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_15">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_15">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9401,7 +9401,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_247">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_16">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_16">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9443,7 +9443,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_249">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_16">
+                <widget class="QComboBox" name="comboBox_EC_PTES_16">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9503,7 +9503,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_253">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_16">
+                <widget class="QComboBox" name="comboBox_RC_FRES_16">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9534,7 +9534,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_254">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_16">
+                <widget class="QComboBox" name="comboBox_RC_PTES_16">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9565,7 +9565,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_255">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_16">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_16">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9596,7 +9596,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_256">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_16">
+                <widget class="QComboBox" name="comboBox_EC_FRES_16">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9627,7 +9627,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_257">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_16">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_16">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -9756,7 +9756,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_258">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_16">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_16">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10011,7 +10011,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_263">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_17">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_17">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10053,7 +10053,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_265">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_17">
+                <widget class="QComboBox" name="comboBox_EC_PTES_17">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10113,7 +10113,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_269">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_17">
+                <widget class="QComboBox" name="comboBox_RC_FRES_17">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10144,7 +10144,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_270">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_17">
+                <widget class="QComboBox" name="comboBox_RC_PTES_17">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10175,7 +10175,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_271">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_17">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_17">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10206,7 +10206,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_272">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_17">
+                <widget class="QComboBox" name="comboBox_EC_FRES_17">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10237,7 +10237,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_273">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_17">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_17">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10366,7 +10366,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_274">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_17">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_17">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10621,7 +10621,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_279">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_18">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_18">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10663,7 +10663,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_281">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_18">
+                <widget class="QComboBox" name="comboBox_EC_PTES_18">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10723,7 +10723,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_285">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_18">
+                <widget class="QComboBox" name="comboBox_RC_FRES_18">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10754,7 +10754,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_286">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_18">
+                <widget class="QComboBox" name="comboBox_RC_PTES_18">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10785,7 +10785,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_287">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_18">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_18">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10816,7 +10816,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_288">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_18">
+                <widget class="QComboBox" name="comboBox_EC_FRES_18">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10847,7 +10847,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_289">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_18">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_18">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -10976,7 +10976,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_290">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_18">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_18">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11231,7 +11231,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_295">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_19">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_19">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11273,7 +11273,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_297">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_19">
+                <widget class="QComboBox" name="comboBox_EC_PTES_19">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11333,7 +11333,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_301">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_19">
+                <widget class="QComboBox" name="comboBox_RC_FRES_19">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11364,7 +11364,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_302">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_19">
+                <widget class="QComboBox" name="comboBox_RC_PTES_19">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11395,7 +11395,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_303">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_19">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_19">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11426,7 +11426,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_304">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_19">
+                <widget class="QComboBox" name="comboBox_EC_FRES_19">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11457,7 +11457,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_305">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_19">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_19">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11586,7 +11586,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_306">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_19">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_19">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11841,7 +11841,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_311">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_20">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_20">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11883,7 +11883,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_313">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_20">
+                <widget class="QComboBox" name="comboBox_EC_PTES_20">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11943,7 +11943,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_317">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_20">
+                <widget class="QComboBox" name="comboBox_RC_FRES_20">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -11974,7 +11974,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_318">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_20">
+                <widget class="QComboBox" name="comboBox_RC_PTES_20">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12005,7 +12005,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_319">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_20">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_20">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12036,7 +12036,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_320">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_20">
+                <widget class="QComboBox" name="comboBox_EC_FRES_20">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12067,7 +12067,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_321">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_20">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_20">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12196,7 +12196,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_322">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_20">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_20">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12451,7 +12451,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_327">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_21">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_21">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12493,7 +12493,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_329">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_21">
+                <widget class="QComboBox" name="comboBox_EC_PTES_21">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12553,7 +12553,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_333">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_21">
+                <widget class="QComboBox" name="comboBox_RC_FRES_21">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12584,7 +12584,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_334">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_21">
+                <widget class="QComboBox" name="comboBox_RC_PTES_21">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12615,7 +12615,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_335">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_21">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_21">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12646,7 +12646,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_336">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_21">
+                <widget class="QComboBox" name="comboBox_EC_FRES_21">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12677,7 +12677,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_337">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_21">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_21">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -12806,7 +12806,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_338">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_21">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_21">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13061,7 +13061,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_343">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_22">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_22">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13103,7 +13103,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_345">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_22">
+                <widget class="QComboBox" name="comboBox_EC_PTES_22">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13163,7 +13163,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_349">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_22">
+                <widget class="QComboBox" name="comboBox_RC_FRES_22">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13194,7 +13194,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_350">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_22">
+                <widget class="QComboBox" name="comboBox_RC_PTES_22">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13225,7 +13225,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_351">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_22">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_22">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13256,7 +13256,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_352">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_22">
+                <widget class="QComboBox" name="comboBox_EC_FRES_22">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13287,7 +13287,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_353">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_22">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_22">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13416,7 +13416,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_354">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_22">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_22">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13671,7 +13671,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_359">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_23">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_23">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13713,7 +13713,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_361">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_23">
+                <widget class="QComboBox" name="comboBox_EC_PTES_23">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13773,7 +13773,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_365">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_23">
+                <widget class="QComboBox" name="comboBox_RC_FRES_23">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13804,7 +13804,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_366">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_23">
+                <widget class="QComboBox" name="comboBox_RC_PTES_23">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13835,7 +13835,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_367">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_23">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_23">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13866,7 +13866,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_368">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_23">
+                <widget class="QComboBox" name="comboBox_EC_FRES_23">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -13897,7 +13897,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_369">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_23">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_23">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14026,7 +14026,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_370">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_23">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_23">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14281,7 +14281,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_375">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_24">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_24">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14323,7 +14323,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_377">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_24">
+                <widget class="QComboBox" name="comboBox_EC_PTES_24">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14383,7 +14383,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_381">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_24">
+                <widget class="QComboBox" name="comboBox_RC_FRES_24">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14414,7 +14414,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_382">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_24">
+                <widget class="QComboBox" name="comboBox_RC_PTES_24">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14445,7 +14445,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_383">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_24">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_24">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14476,7 +14476,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_384">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_24">
+                <widget class="QComboBox" name="comboBox_EC_FRES_24">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14507,7 +14507,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_385">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_24">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_24">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14636,7 +14636,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_386">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_24">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_24">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14891,7 +14891,7 @@
              <item row="10" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_391">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESFR_25">
+                <widget class="QComboBox" name="comboBox_EC_ESFR_25">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14933,7 +14933,7 @@
              <item row="10" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_393">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_PTES_25">
+                <widget class="QComboBox" name="comboBox_EC_PTES_25">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -14993,7 +14993,7 @@
              <item row="6" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_397">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_FRES_25">
+                <widget class="QComboBox" name="comboBox_RC_FRES_25">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -15024,7 +15024,7 @@
              <item row="6" column="2">
               <layout class="QHBoxLayout" name="horizontalLayout_398">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_PTES_25">
+                <widget class="QComboBox" name="comboBox_RC_PTES_25">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -15055,7 +15055,7 @@
              <item row="6" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_399">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESPT_25">
+                <widget class="QComboBox" name="comboBox_RC_ESPT_25">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -15086,7 +15086,7 @@
              <item row="10" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_400">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_FRES_25">
+                <widget class="QComboBox" name="comboBox_EC_FRES_25">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -15117,7 +15117,7 @@
              <item row="6" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_401">
                <item>
-                <widget class="QLineEdit" name="lineEdit_RC_ESFR_25">
+                <widget class="QComboBox" name="comboBox_RC_ESFR_25">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -15246,7 +15246,7 @@
              <item row="10" column="3">
               <layout class="QHBoxLayout" name="horizontalLayout_402">
                <item>
-                <widget class="QLineEdit" name="lineEdit_EC_ESPT_25">
+                <widget class="QComboBox" name="comboBox_EC_ESPT_25">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -15402,7 +15402,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1266</width>
+     <width>1091</width>
      <height>21</height>
     </rect>
    </property>
