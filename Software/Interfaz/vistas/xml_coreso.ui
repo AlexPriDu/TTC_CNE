@@ -77,6 +77,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_GenCNE">
+        <property name="text">
+         <string>Generar CNE</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item row="0" column="0">

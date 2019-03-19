@@ -10,13 +10,13 @@ import numpy as np
 import datetime
 
 from Software.Entidades.lectura_ficheros import lectura_excel_crack
-from Software.Entidades.entidades import Rutas, Domain, ColumnsDataFrame, get_reason_explat_codes
-from Software.Core.lectura_xml import lectura_SWE_D2_CapDoc_Prop, InfoXML_to_Dataframe
+from Software.Entidades.entidades import Rutas, Domain, ColumnsDataFrame, get_reason_explat_codes,InfoXML
+from Software.Core.lectura_xml import lectura_SWE_D2_CapDoc_Prop_tree, InfoXML_to_Dataframe, create_XML_CapDoc
 
 
 from Software.Interfaz.vistas.MainWindow import Ui_MainWindow
 
-df_mon, df_co_dict = lectura_excel_crack()
+df_mon, df_co_dict,df_mon_error = lectura_excel_crack()
 list_reason_codes, list_explat_codes =get_reason_explat_codes()
 
 version='1.0'
@@ -71,6 +71,8 @@ class CustomQCompleter(QCompleter):
 
 class Main(QMainWindow,Ui_MainWindow):
 
+   class_info_xml = None  # type: InfoXML
+
    def __init__(self, parent= None):
       super(Main, self).__init__(parent)
       self.setupUi(self)
@@ -79,8 +81,10 @@ class Main(QMainWindow,Ui_MainWindow):
       self.setWindowTitle('TCC CNE {}'.format(version))
 
       self.fecha =datetime.datetime.now()
-      self.fecha=self.fecha.replace(day=07)
+      #self.fecha=self.fecha.replace(day=07)
       self.columns_df = ColumnsDataFrame.columns
+      self.class_info_xml = None
+      self.guid = None
 
 
 
@@ -110,11 +114,6 @@ class Main(QMainWindow,Ui_MainWindow):
 
       self.tabWidget.setCurrentIndex(0)
 
-      self.df_mon, self.df_co_dict = lectura_excel_crack()
-      self.list_mon = self.df_mon.to_dict('records')
-      self.list_co_dict = self.df_co_dict.to_dict('records')
-
-
       self.pushButton_EditFecha.setEnabled(True)
       self.pushButton_Save_Fecha.setVisible(False)
       self.dateEdit.setEnabled(False)
@@ -122,15 +121,19 @@ class Main(QMainWindow,Ui_MainWindow):
       self.pushButton_EditFecha.clicked.connect(self.edit_fecha)
       self.pushButton_Save_Fecha.clicked.connect(self.save_fecha)
 
+      # self.edit_table_Button(enable=False)
+
       self.pushButton_EditTable.setVisible(False)
       self.pushButton_GenTable.setVisible(False)
       self.pushButton_SaveTable.setVisible(False)
+      self.pushButton_GenCNE.setVisible(False)
 
       self.pushButton_LoadTable.clicked.connect(self.cargar_xml_capdoc)
 
-      self.pushButton_EditTable.clicked.connect(lambda: self.edit_table(True))
+      self.pushButton_EditTable.clicked.connect(lambda: self.edit_table_Button(True))
       self.pushButton_SaveTable.clicked.connect(self.guardar_table)
-      self.pushButton_GenTable.clicked.connect(self.generar_xml_salida)
+      self.pushButton_GenTable.clicked.connect(self.generar_xml_CapDocAns)
+      self.pushButton_GenCNE.clicked.connect(self.generar_xml_CNEDetails)
 
       self.showMaximized()
       #
@@ -236,10 +239,6 @@ class Main(QMainWindow,Ui_MainWindow):
          #self.tableWidget.setRowCount(count_row)
          #header.setResizeMode(0, QHeaderView.Stretch)
 
-
-
-
-
          self.tableWidget.setHorizontalHeaderLabels(list(df.columns.values))
 
          self.tableWidget.setVerticalHeaderLabels(list(df.index))
@@ -250,6 +249,8 @@ class Main(QMainWindow,Ui_MainWindow):
             self.tableWidget.insertRow(i)
             j=0
             for coln in row:
+               if coln==None:
+                  coln=''
                data = QTableWidgetItem(str(coln))
                self.tableWidget.setItem(i, j, data)
                j += 1
@@ -257,24 +258,24 @@ class Main(QMainWindow,Ui_MainWindow):
 
          hide_columns=False
 
-         for x in range(0, self.tableWidget.columnCount(), 1):
-            columns=self.tableWidget.horizontalHeaderItem(x)
-            column_text=columns.text()
-            if column_text=='Sentidos':
-               continue
-            else:
-               df_none = self.df_table_ini.loc[self.df_table_ini[str(column_text)].isnull()]
-
-               if len(df_none.index.values) ==  len(self.df_table_ini.index.values):
-                  hide_columns=True
-                  self.tableWidget.setColumnHidden(x, True)
+         # for x in range(0, self.tableWidget.columnCount(), 1):
+         #    columns=self.tableWidget.horizontalHeaderItem(x)
+         #    column_text=columns.text()
+         #    if column_text=='Sentidos':
+         #       continue
+         #    else:
+         #       df_none = self.df_table_ini.loc[self.df_table_ini[str(column_text)].isnull()]
+         #
+         #       if len(df_none.index.values) ==  len(self.df_table_ini.index.values):
+         #          hide_columns=True
+         #          self.tableWidget.setColumnHidden(x, True)
 
 
          for col in range(0,len(list(df)),1):
             if hide_columns== False:
                header.setResizeMode(col, QHeaderView.Stretch)
             else:
-               header.setResizeMode(x, QHeaderView.ResizeToContents)
+               header.setResizeMode(col, QHeaderView.ResizeToContents)
 
 
       else:
@@ -492,7 +493,7 @@ class Main(QMainWindow,Ui_MainWindow):
             try:
                if x =='Sentidos':
                   self.df_table_edit[x]=self.df_table_edit[x].astype(str)
-               elif str(self.df_table_edit[x][0]) != str(None) :
+               elif str(self.df_table_edit[x][0]) != str('') :
                   self.df_table_edit[x] = self.df_table_edit[x].astype(float)
             except Exception as e:
                QMessageBox.warning(self, __appname__, 'Algun dato modificado no es un numero :{}'.format(e))
@@ -520,12 +521,13 @@ class Main(QMainWindow,Ui_MainWindow):
 
       try:
          change=False
-         if str(hora_value) == str(None):
+         if str(hora_value) == str(''):
+            #Cuando las horas no vienen rellenas en el XML
             df_add = pd.DataFrame.from_dict(
                [{'sentido': sentido_label, 'hora': hora_int, 'valor_new': None, 'valor_old': None}])
          elif float(df_sentido[header]) != float(hora_value):
             change = True
-            df_add=pd.DataFrame.from_dict([{'sentido': sentido_label, 'hora': hora_int, 'valor_new': df_sentido[header], 'valor_old': float(hora_value)}])
+            df_add=pd.DataFrame.from_dict([{'sentido': sentido_label, 'hora': hora_int, 'valor_new': float(hora_value), 'valor_old':  df_sentido[header]}])
          else:
             df_add = pd.DataFrame.from_dict(
                [{'sentido': sentido_label, 'hora': hora_int, 'valor_new': None, 'valor_old': float(hora_value)}])
@@ -605,21 +607,50 @@ class Main(QMainWindow,Ui_MainWindow):
 
          self.pushButton_EditTable.setVisible(True)
          self.pushButton_GenTable.setVisible(True)
+         self.pushButton_GenCNE.setVisible(True)
 
       except Exception as e:
          QMessageBox.warning(self, __appname__, 'Error cargar_xml_capdoc : {}'.format(e))
 
-   def generar_xml_salida(self):
+   def generar_xml_CapDocAns(self):
       try:
-         pass
+         ok=self.check_info_genXML()
+         if ok:
+            dir = Rutas().directorio_output_xml
+            fileObj = QFileDialog.getSaveFileName(self, " Selecione el nombre", dir=dir,filter="Archivo XML (*.xml)")
+
+            path = fileObj[0]
+            if self.change_table == True:
+               acept = True
+            else:
+               acept = False
+            if path !='':
+               create_XML_CapDoc(path_output = path, info_xml = self.class_info_xml, acept=True)
+
       except Exception as e :
          raise SystemError('Error al generar_xml_salida : {}'.format(e))
 
-   def edit_table(self,enable):
+   def generar_xml_CNEDetails(self):
+      try:
+         dir = Rutas().directorio_output_xml
+         fileObj = QFileDialog.getSaveFileName(self, " Selecione el nombre", dir=dir,filter="Archivo XML (*.xml)")
+         path = fileObj[0]
+         if self.change_table == True:
+            acept = True
+         else:
+            acept = False
+
+         create_XML_CapDoc(path_output = path, info_xml = self.class_info_xml, acept=True)
+
+      except Exception as e :
+         raise SystemError('Error al generar_xml_salida : {}'.format(e))
+
+   def edit_table_Button(self, enable):
       self.pushButton_SaveTable.setVisible(enable)
       self.pushButton_EditTable.setVisible(not enable)
       self.pushButton_GenTable.setVisible(not enable)
       self.pushButton_LoadTable.setVisible(not enable)
+      self.pushButton_GenCNE.setVisible(not enable)
 
       if enable:
          self.tableWidget.setEditTriggers(QTableWidget.AllEditTriggers)
@@ -639,15 +670,20 @@ class Main(QMainWindow,Ui_MainWindow):
                hora=row['hora']
                if row['sentido']=='ES -> FR':
                   class_element = self.es_fr
+                  info_xml=self.class_info_xml.es_fr
                elif row['sentido']=='FR -> ES':
                   class_element = self.fr_es
+                  info_xml = self.class_info_xml.fr_es
                elif row['sentido']=='ES -> PT':
                   class_element = self.es_pt
+                  info_xml = self.class_info_xml.es_pt
                elif row['sentido'] == 'PT -> ES':
                   class_element = self.pt_es
+                  info_xml = self.class_info_xml.pt_es
 
                list_ele=class_element.get_list_elementos()
-               list_class_ele= filter(lambda x: x.hora==hora,list_ele)
+               list_class_ele= filter(lambda x: x.hora==hora,list_ele)  #
+
                for x in list_class_ele:  # type: Elementos_UI
                   if str(row['valor_new']) !=str(np.nan):
                      x.edit=True
@@ -657,7 +693,23 @@ class Main(QMainWindow,Ui_MainWindow):
                   else:
                      x.value_potencia = row['valor_old']
 
-         self.edit_table(enable=False)
+               if str(row['valor_new']) != str(np.nan):
+                  list_class_ele=list_class_ele[0]  #type: Elementos_UI
+                  info_xml_hora = filter(lambda x: x.hora == hora, info_xml.info_hora)
+                  if info_xml_hora.__len__() > 0:
+                     info_xml_hora = info_xml_hora[0]
+                  else:
+                     raise SystemError(
+                        'No se encnutra la hora {} en la clase donde se gurda la info del xml'.format(hora))
+                  info_xml_hora.aceptada = False
+
+                  info_xml_hora.reason_code=''
+                  info_xml_hora.elements_UI = list_class_ele
+
+                  info_xml_hora.potencia =row['valor_new']
+                  info_xml_hora.potencia_old= row['valor_old']
+
+         self.edit_table_Button(enable=False)
 
       except Exception as e:
          raise SystemError('Error al guardar la tabla: {}'.format(e))
@@ -702,10 +754,55 @@ class Main(QMainWindow,Ui_MainWindow):
                                                filter="Archivo XML (*.xml)")
          path=fileObj[0]
 
-         class_info_xml=lectura_SWE_D2_CapDoc_Prop(path = path)
-         self.df_table_ini = InfoXML_to_Dataframe(info_xml=class_info_xml)
+
+         self.class_info_xml=lectura_SWE_D2_CapDoc_Prop_tree(path = path)
+         fecha=self.class_info_xml.periodo_end
+
+         self.fecha=self.class_info_xml.fecha_end #2019-02-02T23:00Z
+
+         fecha = QDateTime(self.fecha)
+
+         self.dateEdit.setDate(fecha.date())
+
+         self.df_table_ini = InfoXML_to_Dataframe(info_xml=self.class_info_xml)
       except Exception as e:
          raise SystemError('Error lectura_fichero_SWE_D2_CapDoc_Prop : {}'.format(e))
+
+   def check_info_genXML(self):
+      """
+      Obtengo los datos de introducidospor el usuario en la interfaz
+      :return:
+      """
+      ok = True
+      try:
+
+         for frontera in [self.class_info_xml.es_pt, self.class_info_xml.pt_es, self.class_info_xml.fr_es, self.class_info_xml.es_fr]:
+            for hora in filter(lambda x: x.aceptada==False, frontera.info_hora):
+               element_ui =hora.elements_UI  # type: Elementos_UI
+               explat_code=hora.explat_code
+
+               if explat_code == None:
+                  raise SystemError('El codigo de Explat tiene que ser selecionado para la hora: {}'.format(hora.hora))
+
+               reason_code=hora.rea_code
+               if reason_code == None:
+                  raise SystemError('El codigo de Reason tiene que ser selecionado para la hora: {}'.format(hora.hora))
+
+               cont_mRid=hora.cont_mRid
+               if cont_mRid == None:
+                  raise SystemError('La contigencia tiene que ser selecionada para la hora: {}'.format(hora.hora))
+
+               mont_mRid = hora.mont_mRid
+               if mont_mRid == None:
+                  raise SystemError('El elemneto limitnate tiene que ser selecionada para la hora: {}'.format(hora.hora))
+
+
+
+      except Exception as e:
+         ok=False
+         QMessageBox.critical(self, __appname__, u'{}'.format(e))
+
+      return ok
 
 
 def main():
@@ -1335,7 +1432,6 @@ class PT_ES():
       return reul
 
 
-
 class Elementos_UI():
    def __init__(self,combox_ele_limitante,combox_con_limitante,reason_code,reason_text,expla_code,expla_text,hora, edit=False,value_potencia=None, ):
       """
@@ -1344,11 +1440,11 @@ class Elementos_UI():
       :type combox_ele_limitante: QComboBox
       :param combox_con_limitante: QComboBox
       :type combox_con_limitante: QComboBox
-      :param reason_code: QLineEdit
+      :param reason_code: QComboBox
       :type reason_code: QComboBox
       :param reason_text: QPlainTextEdit
       :type reason_text: QPlainTextEdit
-      :param expla_code:QPlainTextEdit
+      :param expla_code:QComboBox
       :type expla_code: QComboBox
       :param expla_text:QPlainTextEdit
       :type expla_text: QPlainTextEdit
@@ -1395,6 +1491,7 @@ class Elementos_UI():
       return self.__reason_code
    @reason_code.getter
    def reason_code(self):
+      xxx=self.line_reason_code.currentIndex()
       self.__reason_code
 
    @property
@@ -1418,6 +1515,16 @@ class Elementos_UI():
    @expla_cod.getter
    def expla_text(self):
       self.__expla_text
+
+   @property
+   def expla_text_free(self):
+      return self.__expla_text_free
+
+   @expla_text_free.getter
+   def expla_text_free(self):
+      text = self.line_expla_text.toPlainText()
+      self.__expla_text_free = text
+      self.__expla_text_free
 
    def enable(self, enable):
       self.combox_ele_limitante.setEnabled(enable)

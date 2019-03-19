@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'D:\TTC_CNE\Software\Interfaz\vistas\xml_coreso.ui'
 #
-# Created: Thu Mar 14 12:57:35 2019
+# Created: Mon Mar 18 12:24:01 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,6 +43,9 @@ class Ui_MainWindow(object):
         self.pushButton_GenTable = QtGui.QPushButton(self.centralwidget)
         self.pushButton_GenTable.setObjectName("pushButton_GenTable")
         self.horizontalLayout_53.addWidget(self.pushButton_GenTable)
+        self.pushButton_GenCNE = QtGui.QPushButton(self.centralwidget)
+        self.pushButton_GenCNE.setObjectName("pushButton_GenCNE")
+        self.horizontalLayout_53.addWidget(self.pushButton_GenCNE)
         self.gridLayout_54.addLayout(self.horizontalLayout_53, 3, 0, 1, 1)
         self.horizontalLayout_10 = QtGui.QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
@@ -7370,6 +7373,7 @@ class Ui_MainWindow(object):
         self.pushButton_SaveTable.setText(QtGui.QApplication.translate("MainWindow", "Guardar", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_LoadTable.setText(QtGui.QApplication.translate("MainWindow", "Cargar CapDoc", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_GenTable.setText(QtGui.QApplication.translate("MainWindow", "Generar CapDoc", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_GenCNE.setText(QtGui.QApplication.translate("MainWindow", "Generar CNE", None, QtGui.QApplication.UnicodeUTF8))
         self.label_22.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" font-size:9pt; font-weight:600;\">Fecha</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_EditFecha.setText(QtGui.QApplication.translate("MainWindow", "Editar", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_Save_Fecha.setText(QtGui.QApplication.translate("MainWindow", "Guardar", None, QtGui.QApplication.UnicodeUTF8))

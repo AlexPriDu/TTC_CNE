@@ -2,6 +2,7 @@ from os.path import dirname, abspath
 from datetime import datetime
 import os as os
 
+
 import ConfigParser as configparse
 
 
@@ -112,7 +113,7 @@ class Contigencia():
       self.NUDO_X = NUDO_X
 
 class InfoXML():
-   def __init__(self,periodo_star,periodo_end,es_fr=None,fr_es=None,es_pt=None,pt_es=None):
+   def __init__(self,mRID,periodo_star,periodo_end,revisionNumber,es_fr=None,fr_es=None,es_pt=None,pt_es=None):
       """
 
       :param periodo_star:
@@ -128,10 +129,21 @@ class InfoXML():
       """
       self.periodo_star=periodo_star
       self.periodo_end= periodo_end
+      self.mRID=mRID
+      self.revisionNumber=revisionNumber
       self.es_fr=es_fr
       self.fr_es=fr_es
       self.es_pt=es_pt
       self.pt_es=pt_es
+
+   @property
+   def fecha_end(self):
+      return self._fecha_end
+
+   @fecha_end.getter
+   def fecha_end(self):
+      self._fecha_end = datetime.strptime(self.periodo_end,'%Y-%m-%dT%H:%MZ')
+      return self._fecha_end
 
 class InfoSentidos():
    def __init__(self,domain_in,domain_out,info_hora=[]):
@@ -159,11 +171,31 @@ class InfoSentidos():
       return self.__sentido
 
 class InfoInterHora():
-   def __init__(self,hora,potencia,aceptada=True):
+
+   def __init__(self,hora,potencia,potencia_old=None,aceptada=True):
       self.hora=hora
       self.potencia=potencia
+      self.potencia_old = potencia_old
       self.aceptada=aceptada
+
+      self.__rea_code=None
+      self.__rea_coment = None
+      self.__rea_text = None
+
+      self.__explat_code = None
+      self.__explat_coment = None
+      self.__explat_text = None
+
+      self.__cont_mRid = None
+      self.__cont_name = None
+
+      self.__mont_mRid = None
+      self.__mont_name = None
+      self.__mont_domainIN = None
+      self.__mont_domainOUT= None
+
       self.__hora_label=None
+      self.elements_UI=None
 
    @property
    def hora_label(self):
@@ -186,6 +218,168 @@ class InfoInterHora():
       self.__hora_label = '{}-{}'.format(hora_in,hora_out)
 
       return self.__hora_label
+
+   @property
+   def rea_code(self):
+      return self.__rea_code
+
+   @rea_code.getter
+   def rea_code(self):
+      if self.__rea_code == None:
+         index = self.elements_UI.line_reason_code.currentIndex()
+         data = self.elements_UI.line_reason_code.itemData(index)
+         if data != None:
+            self.__rea_code = data.code
+         else:
+            self.__rea_code = data
+      return self.__rea_code
+
+   @property
+   def rea_coment(self):
+      return self.__rea_coment
+
+   @rea_coment.getter
+   def rea_coment(self):
+      if self.__rea_coment == None:
+         index = self.elements_UI.line_reason_code.currentIndex()
+         data = self.elements_UI.line_reason_code.itemData(index)
+         if data != None:
+            self.__rea_coment = data.descrip
+         else:
+            self.__rea_coment = data
+
+      return self.__rea_coment
+
+   @property
+   def rea_text(self):
+      return self.__rea_text
+
+   @rea_text.getter
+   def rea_text(self):
+      self.__rea_text=self.elements_UI.line_reason_text.toPlainText()
+      return self.__rea_text
+
+   @property
+   def explat_code(self):
+      return self.__explat_code
+
+   @explat_code.getter
+   def explat_code (self):
+      if self.__explat_code == None:
+         index = self.elements_UI.line_expla_code.currentIndex()
+         data = self.elements_UI.line_expla_code.itemData(index)
+         if data != None:
+            self.__explat_code=data.code
+         else:
+            self.__explat_code =None
+      return self.__explat_code
+
+   @property
+   def explat_coment(self):
+      return self.__explat_coment
+
+   @explat_coment.getter
+   def explat_coment(self):
+      if self.__explat_coment == None:
+         index = self.elements_UI.line_expla_code.currentIndex()
+         data = self.elements_UI.line_expla_code.itemData(index)
+         self.__explat_coment = data.descrip
+      return self.__explat_coment
+
+   @property
+   def explat_text(self):
+      return self.__explat_text
+
+   @explat_text.getter
+   def explat_text(self):
+      self.__explat_text=self.elements_UI.line_expla_text.toPlainText()
+      return self.__explat_text
+
+   @property
+   def cont_mRid(self):
+      return self.__cont_mRid
+
+   @cont_mRid.getter
+   def cont_mRid(self):
+      if self.__cont_mRid == None:
+         index = self.elements_UI.combox_con_limitante.currentIndex()
+         data = self.elements_UI.combox_con_limitante.itemData(index)
+         self.__cont_mRid = data['mRID CO Dict']
+      return self.__cont_mRid
+
+   @property
+   def cont_name(self):
+      return self.__cont_name
+
+   @cont_name.getter
+   def cont_name(self):
+      if self.__cont_name == None:
+         index = self.elements_UI.combox_con_limitante.currentIndex()
+         data = self.elements_UI.combox_con_limitante.itemData(index)
+         self.__cont_name = data['name CO Dict']
+      return self.__cont_name
+
+   @property
+   def mont_mRid(self):
+      return self.__mont_mRid
+
+   @mont_mRid.getter
+   def mont_mRid(self):
+      if self.__mont_mRid == None:
+         index = self.elements_UI.combox_ele_limitante.currentIndex()
+         data = self.elements_UI.combox_ele_limitante.itemData(index)
+         self.__mont_mRid = data['Cim ID']
+      return self.__mont_mRid
+
+   @property
+   def mont_name(self):
+      return self.__mont_name
+
+   @mont_name.getter
+   def mont_name(self):
+      if self.__mont_name == None:
+         index = self.elements_UI.combox_ele_limitante.currentIndex()
+         data = self.elements_UI.combox_ele_limitante.itemData(index)
+         self.__mont_name = data['DESCRIPTION'].replace('[','').replace(']','')
+      return self.__mont_name
+
+   @property
+   def mont_domainIN(self):
+      return self.__mont_domainIN
+
+   @mont_domainIN.getter
+   def mont_domainIN(self):
+      if self.__mont_domainIN == None:
+         index = self.elements_UI.combox_ele_limitante.currentIndex()
+         data = self.elements_UI.combox_ele_limitante.itemData(index)
+         lacation = data['LOCATION'].split('-')
+         if lacation[0]=='ES':
+            self.__mont_domainIN=Domain.ES['mRID']
+         elif lacation[0] == 'PT':
+            self.__mont_domainIN = Domain.PT['mRID']
+         else:
+            self.__mont_domainIN = Domain.FR['mRID']
+
+      return self.__mont_domainIN
+
+   @property
+   def mont_domainOUT(self):
+      return self.__mont_domainOUT
+
+   @mont_domainOUT.getter
+   def mont_domainOUT(self):
+      if self.__mont_domainOUT == None:
+         index = self.elements_UI.combox_ele_limitante.currentIndex()
+         data = self.elements_UI.combox_ele_limitante.itemData(index)
+         lacation = data['LOCATION'].split('-')
+         if lacation[1] == 'ES':
+            self.__mont_domainOUT = Domain.ES['mRID']
+         elif lacation[1] == 'PT':
+            self.__mont_domainOUT = Domain.PT['mRID']
+         else:
+            self.__mont_domainOUT = Domain.FR['mRID']
+
+      return self.__mont_domainOUT
 
 class ReasonCode():
    def __init__(self,code,descrip):
@@ -219,3 +413,39 @@ def get_reason_explat_codes():
 
    except Exception as e:
       raise SystemError('error al obtener los Reason code y explanat code :{}'.format(e))
+
+class ParamXML_CapDoc():
+   def __init__(self):
+      self.namespace_label = 'urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0'
+      self.namespace='{urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0}'
+      self.atribute_capDoc={'xsi:schemaLocation':'urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0 iec62325-451-3-capacity_v8_0.xs',
+                           'xmlns':'urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0','xmlns:xsi':'http://www.w3.org/2001/XMLSchema-instance'}
+      self.type_doc='A26'
+
+      self.MarketParticipant_Role_SO='A04' #System Operator"
+      self.MarketParticipant_Role_CC = 'A36' #Capacity Coordinator"
+
+      self.MarketParticipant_mRID_SO = '10XES-REE------E'  # System Operator"
+      self.MarketParticipant_mRID_CC = '22XCORESO------S'  # Capacity Coordinator"
+      self.processType='A48'
+      self.type='A48'
+      self.domain_mRID='10YCB-FR-ES-PT-S'
+      self.docStatus_Reject='A34'
+      self.docStatus_Acept = 'A37'
+      self.mRID_REE='REE-%Y%m%d-SWECCD2-F019'
+      self.mRID_CORESO = 'Coreso-%Y%m%d-SWECCD2-F019'
+      self.codingScheme = 'A01'
+
+      self.TimeSeries_mRID='REE-Timeseries'
+      self.businessType = 'A81'
+      self.product='8716867000016'
+      self.measure_Unit='MAW'
+      self.resolution='PT60M'
+      self.reason_code_CapDoc='A95'
+      self.reason_text_CapDoc = 'REE'
+
+      self.mRID_Timeseries='REE-Timeseries'
+
+
+
+
