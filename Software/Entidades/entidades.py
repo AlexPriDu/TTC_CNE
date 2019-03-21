@@ -45,20 +45,18 @@ class Rutas():
       param, seccion = lectura_archivo_configura(self.ruta_fichero_config, 'RUTAS')
 
       self.ruta_excel_crack= param.get(seccion, 'RUTA_EXCEL_CRACK')
-
       self.ruta_idReport= param.get(seccion, 'RUTA_IDREPORT')
-      self.ruta_input_xml_coreso = param.get(seccion, 'RUTA_INPUT_CORESO_XML')
       self.ruta_dic_nudox=param.get(seccion, 'RUTA_DICCIONARIO_NUDOS_X')
 
       self.directorio_input_xml_coreso=param.get(seccion, 'RUTA_INPUT_CORESO_XML')
       self.directorio_output_xml=param.get(seccion, 'RUTA_OUTPUT_XML')
 
 
-
-      self.name_xml_capDoc_input = param.get(seccion, 'NOMBRE_XML_CAPDOC')
-      self.name_xml_capDoc_re = param.get(seccion, 'NOMBRE_XML_CAPDOC_RE')
-      self.name_xml_capDoc_ac = param.get(seccion, 'NOMBRE_XML_CAPDOC_AC')
-      self.name_xml_cne_de = param.get(seccion, 'NOMBRE_XML_CNE_DET_REA')
+      #
+      # self.name_xml_capDoc_input = param.get(seccion, 'NOMBRE_XML_CAPDOC')
+      # self.name_xml_capDoc_re = param.get(seccion, 'NOMBRE_XML_CAPDOC_RE')
+      # self.name_xml_capDoc_ac = param.get(seccion, 'NOMBRE_XML_CAPDOC_AC')
+      # self.name_xml_cne_de = param.get(seccion, 'NOMBRE_XML_CNE_DET_REA')
 
 class ColumnsDataFrame():
 
@@ -304,7 +302,10 @@ class InfoInterHora():
       if self.__cont_mRid == None:
          index = self.elements_UI.combox_con_limitante.currentIndex()
          data = self.elements_UI.combox_con_limitante.itemData(index)
-         self.__cont_mRid = data['mRID CO Dict']
+         if data != None:
+            self.__cont_mRid = data['mRID CO Dict']
+         else:
+            self.__cont_mRid = None
       return self.__cont_mRid
 
    @property
@@ -316,7 +317,10 @@ class InfoInterHora():
       if self.__cont_name == None:
          index = self.elements_UI.combox_con_limitante.currentIndex()
          data = self.elements_UI.combox_con_limitante.itemData(index)
-         self.__cont_name = data['name CO Dict']
+         if data != None:
+            self.__cont_name = data['name CO Dict']
+         else:
+            self.__cont_name = None
       return self.__cont_name
 
    @property
@@ -328,7 +332,10 @@ class InfoInterHora():
       if self.__mont_mRid == None:
          index = self.elements_UI.combox_ele_limitante.currentIndex()
          data = self.elements_UI.combox_ele_limitante.itemData(index)
-         self.__mont_mRid = data['Cim ID']
+         if data != None:
+            self.__mont_mRid = data['Cim ID']
+         else:
+            self.__mont_mRid = None
       return self.__mont_mRid
 
    @property
@@ -340,7 +347,10 @@ class InfoInterHora():
       if self.__mont_name == None:
          index = self.elements_UI.combox_ele_limitante.currentIndex()
          data = self.elements_UI.combox_ele_limitante.itemData(index)
-         self.__mont_name = data['DESCRIPTION'].replace('[','').replace(']','')
+         if data != None:
+            self.__mont_name = data['DESCRIPTION'].replace('[','').replace(']','')
+         else:
+            self.__mont_name = None
       return self.__mont_name
 
    @property
@@ -352,13 +362,16 @@ class InfoInterHora():
       if self.__mont_domainIN == None:
          index = self.elements_UI.combox_ele_limitante.currentIndex()
          data = self.elements_UI.combox_ele_limitante.itemData(index)
-         lacation = data['LOCATION'].split('-')
-         if lacation[0]=='ES':
-            self.__mont_domainIN=Domain.ES['mRID']
-         elif lacation[0] == 'PT':
-            self.__mont_domainIN = Domain.PT['mRID']
+         if data != None:
+            lacation = data['LOCATION'].split('-')
+            if lacation[1]=='ES':
+               self.__mont_domainIN=Domain.ES['mRID']
+            elif lacation[1] == 'PT':
+               self.__mont_domainIN = Domain.PT['mRID']
+            else:
+               self.__mont_domainIN = Domain.FR['mRID']
          else:
-            self.__mont_domainIN = Domain.FR['mRID']
+            self.__mont_domainIN= None
 
       return self.__mont_domainIN
 
@@ -371,13 +384,16 @@ class InfoInterHora():
       if self.__mont_domainOUT == None:
          index = self.elements_UI.combox_ele_limitante.currentIndex()
          data = self.elements_UI.combox_ele_limitante.itemData(index)
-         lacation = data['LOCATION'].split('-')
-         if lacation[1] == 'ES':
-            self.__mont_domainOUT = Domain.ES['mRID']
-         elif lacation[1] == 'PT':
-            self.__mont_domainOUT = Domain.PT['mRID']
+         if data != None:
+            lacation = data['LOCATION'].split('-')
+            if lacation[0] == 'ES':
+               self.__mont_domainOUT = Domain.ES['mRID']
+            elif lacation[0] == 'PT':
+               self.__mont_domainOUT = Domain.PT['mRID']
+            else:
+               self.__mont_domainOUT = Domain.FR['mRID']
          else:
-            self.__mont_domainOUT = Domain.FR['mRID']
+            self.__mont_domainOUT= None
 
       return self.__mont_domainOUT
 
@@ -446,6 +462,21 @@ class ParamXML_CapDoc():
 
       self.mRID_Timeseries='REE-Timeseries'
 
+      self.namespace_label_CNE = 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0'
+      self.namespace_CNE = '{urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0'
+      self.atribute_CNE = {
+         'xsi:schemaLocation': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:1 iec62325-451-n-cne_v2_1_draft.xsd',
+         'xmlns': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:1',
+         'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
+      self.type_doc_CNE = 'B06'
 
+      self.mRID_REE_CNE = 'REE-%Y%m%d-SWECCD2-F020'
+      self.businessType_CNE_TimeSerie = 'B37'
+      self.businessType_CNE_Point = 'B37'
+      self.curveType_CNE = 'A2'
+      self.mRID_Constraint_Co = 'REE-Constraint_Series-CoList-'
+      self.mRID_Constraint_Mon = 'REE-Constraint_Series-MRList-'
+      self.mRID_Constraint_CoMon = 'REE-Constraint_Series-CoMR-'
+      self.mRID_Constraint_Nan = 'REE-Constraint_Series-'
 
 

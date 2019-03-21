@@ -5,14 +5,17 @@ from PySide.QtGui import *
 import sys
 import os
 
+
 import pandas as pd
 import numpy as np
 import datetime
 
 from Software.Entidades.lectura_ficheros import lectura_excel_crack
 from Software.Entidades.entidades import Rutas, Domain, ColumnsDataFrame, get_reason_explat_codes,InfoXML
-from Software.Core.lectura_xml import lectura_SWE_D2_CapDoc_Prop_tree, InfoXML_to_Dataframe, create_XML_CapDoc
+from Software.Core.lectura_xml import lectura_SWE_D2_CapDoc_Prop_tree, InfoXML_to_Dataframe, create_XML_CapDoc, create_XML_CNE
 
+# import warnings
+# warnings.simplefilter("error")
 
 from Software.Interfaz.vistas.MainWindow import Ui_MainWindow
 
@@ -189,29 +192,6 @@ class Main(QMainWindow,Ui_MainWindow):
 
       self.Hide_Console()
 
-   def get_path_fichero_xml(self):
-      """
-
-      :param fecha:
-      :return:
-      """
-      try:
-         ruta = Rutas()
-         name_xml=self.fecha.strftime(ruta.name_xml_capDoc_input)
-         self.path_xml_capDoc = os.path.join(ruta.directorio_input_xml_coreso,name_xml)
-
-         name_xml=ruta.name_xml_capDoc_re
-         self.path_xml_capDoc_Re = os.path.join(ruta.directorio_input_xml_coreso,name_xml)
-
-         name_xml = ruta.name_xml_capDoc_ac
-         self.path_xml_capDoc_Acep = os.path.join(ruta.directorio_input_xml_coreso,name_xml)
-
-         name_xml = ruta.name_xml_cne_de
-         self.path_xml_cen_Det = os.path.join(ruta.directorio_input_xml_coreso,name_xml)
-
-      except Exception as e:
-         raise SystemError('Error al get_path_fichero_xml :{}'.format(e))
-
    def load_tableWiget(self,df):
       """
 
@@ -302,14 +282,14 @@ class Main(QMainWindow,Ui_MainWindow):
             header = str(self.tableWidget.horizontalHeaderItem(1).text())
             change = self.___add_data_edit(df_sentido = df_sentido, header= header, hora_value=h0, sentido_label= sentido, hora_int=0)
             if change:
-               self.tableWidget.item(row, 1).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 1).setBackground(QColor(0, 255, 0, 127))
 
 
             h1 = self.tableWidget.item(row, 2).text()
             header = str(self.tableWidget.horizontalHeaderItem(2).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h1, sentido_label=sentido, hora_int=1)
             if change:
-               self.tableWidget.item(row, 2).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 2).setBackground(QColor(0, 255, 0, 127))
 
 
             h2 = self.tableWidget.item(row, 3).text()
@@ -317,96 +297,96 @@ class Main(QMainWindow,Ui_MainWindow):
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h2, sentido_label=sentido,
                                   hora_int=2)
             if change:
-               self.tableWidget.item(row, 3).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 3).setBackground(QColor(0, 255, 0, 127))
 
 
             h3 = self.tableWidget.item(row, 4).text()
             header = str(self.tableWidget.horizontalHeaderItem(4).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h3, sentido_label=sentido,hora_int=3)
             if change:
-               self.tableWidget.item(row, 4).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 4).setBackground(QColor(0, 255, 0, 127))
 
 
             h4 = self.tableWidget.item(row, 5).text()
             header = str(self.tableWidget.horizontalHeaderItem(5).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h4, sentido_label=sentido,hora_int=4)
             if change:
-               self.tableWidget.item(row, 5).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 5).setBackground(QColor(0, 255, 0, 127))
 
             h5 = self.tableWidget.item(row, 6).text()
             header = str(self.tableWidget.horizontalHeaderItem(6).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h5, sentido_label=sentido,hora_int=5)
             if change:
-               self.tableWidget.item(row, 6).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 6).setBackground(QColor(0, 255, 0, 127))
 
             h6 = self.tableWidget.item(row, 7).text()
             header = str(self.tableWidget.horizontalHeaderItem(7).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h6, sentido_label=sentido, hora_int=6)
             if change:
-               self.tableWidget.item(row, 7).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 7).setBackground(QColor(0, 255, 0, 127))
 
             h7 = self.tableWidget.item(row, 8).text()
             header = str(self.tableWidget.horizontalHeaderItem(8).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h7, sentido_label=sentido,
                                   hora_int=7)
             if change:
-               self.tableWidget.item(row, 8).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 8).setBackground(QColor(0, 255, 0, 127))
 
             h8 = self.tableWidget.item(row, 9).text()
             header = str(self.tableWidget.horizontalHeaderItem(9).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h8, sentido_label=sentido,
                                   hora_int=8)
             if change:
-               self.tableWidget.item(row, 9).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 9).setBackground(QColor(0, 255, 0, 127))
 
             h9 = self.tableWidget.item(row, 10).text()
             header = str(self.tableWidget.horizontalHeaderItem(10).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h9, sentido_label=sentido,
                                   hora_int=9)
             if change:
-               self.tableWidget.item(row, 10).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 10).setBackground(QColor(0, 255, 0, 127))
 
             h10 = self.tableWidget.item(row, 11).text()
             header = str(self.tableWidget.horizontalHeaderItem(11).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h10, sentido_label=sentido,
                                   hora_int=10)
             if change:
-               self.tableWidget.item(row, 11).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 11).setBackground(QColor(0, 255, 0, 127))
 
             h11 = self.tableWidget.item(row, 12).text()
             header = str(self.tableWidget.horizontalHeaderItem(12).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h11, sentido_label=sentido,
                                   hora_int=11)
             if change:
-               self.tableWidget.item(row, 12).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 12).setBackground(QColor(0, 255, 0, 127))
 
             h12 = self.tableWidget.item(row, 13).text()
             header = str(self.tableWidget.horizontalHeaderItem(13).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h12, sentido_label=sentido,
                                   hora_int=12)
             if change:
-               self.tableWidget.item(row, 13).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 13).setBackground(QColor(0, 255, 0, 127))
 
             h13 = self.tableWidget.item(row, 14).text()
             header = str(self.tableWidget.horizontalHeaderItem(14).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h13, sentido_label=sentido,
                                   hora_int=13)
             if change:
-               self.tableWidget.item(row, 14).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 14).setBackground(QColor(0, 255, 0, 127))
 
             h14 = self.tableWidget.item(row, 15).text()
             header = str(self.tableWidget.horizontalHeaderItem(15).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h14, sentido_label=sentido,
                                   hora_int=14)
             if change:
-               self.tableWidget.item(row, 10).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 15).setBackground(QColor(0, 255, 0, 127))
 
             h15 = self.tableWidget.item(row, 16).text()
             header = str(self.tableWidget.horizontalHeaderItem(16).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h15, sentido_label=sentido,
                                   hora_int=15)
             if change:
-               self.tableWidget.item(row, 16).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 16).setBackground(QColor(0, 255, 0, 127))
 
             h16 = self.tableWidget.item(row, 17).text()
             header = str(self.tableWidget.horizontalHeaderItem(17).text())
@@ -414,65 +394,62 @@ class Main(QMainWindow,Ui_MainWindow):
                                   hora_int=16)
 
             if change:
-               self.tableWidget.item(row, 17).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 17).setBackground(QColor(0, 255, 0, 127))
 
             h17 = self.tableWidget.item(row, 18).text()
             header = str(self.tableWidget.horizontalHeaderItem(18).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h17, sentido_label=sentido,
                                   hora_int=17)
             if change:
-               self.tableWidget.item(row, 18).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 18).setBackground(QColor(0, 255, 0, 127))
 
             h18 = self.tableWidget.item(row, 19).text()
             header = str(self.tableWidget.horizontalHeaderItem(19).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h18, sentido_label=sentido,
                                   hora_int=18)
             if change:
-               self.tableWidget.item(row, 19).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 19).setBackground(QColor(0, 255, 0, 127))
 
             h19 = self.tableWidget.item(row, 20).text()
             header = str(self.tableWidget.horizontalHeaderItem(20).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h19, sentido_label=sentido,
                                   hora_int=19)
             if change:
-               self.tableWidget.item(row, 20).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 20).setBackground(QColor(0, 255, 0, 127))
 
             h20 = self.tableWidget.item(row, 21).text()
             header = str(self.tableWidget.horizontalHeaderItem(21).text())
             change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h20, sentido_label=sentido,
                                   hora_int=20)
             if change:
-               self.tableWidget.item(row,21).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row,21).setBackground(QColor(0, 255, 0, 127))
 
 
             h21 = self.tableWidget.item(row, 22).text()
             header = str(self.tableWidget.horizontalHeaderItem(22).text())
-            change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h21, sentido_label=sentido,
-                                  hora_int=21)
+            change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h21, sentido_label=sentido,hora_int=21)
             if change:
-               self.tableWidget.item(row, 22).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 22).setBackground(QColor(0, 255, 0, 127))
 
             h22= self.tableWidget.item(row, 23).text()
             header = str(self.tableWidget.horizontalHeaderItem(23).text())
-            change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h22, sentido_label=sentido,
-                                  hora_int=22)
+            change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h22, sentido_label=sentido, hora_int=22)
             if change:
-               self.tableWidget.item(row, 23).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 23).setBackground(QColor(0, 255, 0, 127))
 
             h23 = self.tableWidget.item(row, 24).text()
             header = str(self.tableWidget.horizontalHeaderItem(24).text())
-            change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h23, sentido_label=sentido,
-                                  hora_int=23)
+            change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h23, sentido_label=sentido,hora_int=23)
             if change:
-               self.tableWidget.item(row, 24).setBackground(QColor(255, 0, 0, 127))
+               self.tableWidget.item(row, 24).setBackground(QColor(0, 255, 0, 127))
 
             if col_count == 26:
-
                h24 = self.tableWidget.item(row, 25).text()
+               header = str(self.tableWidget.horizontalHeaderItem(25).text())
                change = self.___add_data_edit(df_sentido=df_sentido, header=header, hora_value=h24, sentido_label=sentido,
-                                     hora_int=25)
+                                     hora_int=24)
                if change:
-                  self.tableWidget.item(row, 10).setBackground(QColor(255, 0, 0, 127))
+                  self.tableWidget.item(row, 25).setBackground(QColor(0, 255, 0, 127))
                data = {'Sentidos': index, '00-01': h0, '01-02': h1,
                        '02-03': h2, '03-04': h3, '04-05': h4, '05-06': h5,'06-07': h6,
                        '07-08': h7, '08-09': h8, '09-10': h9, '10-11': h10,
@@ -592,55 +569,72 @@ class Main(QMainWindow,Ui_MainWindow):
          #    self.pushButton_GenTable.setVisible(True)
 
          try:
-            self.edit_informacion_hora(eneble=False)
-            self.lectura_fichero_SWE_D2_CapDoc_Prop()
+            if not df_mon_error.empty:
+               try:
+                  path_error=os.path.join(Rutas().directorio_fich_configuracion, 'Error_Crac.csv')
+                  df_mon_error.to_csv(path_or_buf=path_error,index=False,sep=';')
+                  QMessageBox.warning(self, __appname__, u'Hay lineas del IdReport que no existen en el excel del Crac. '
+                                                         u'\nSe ha generado las un archivo con dicha informacion en: {}'.format(path_error))
+               except:
+                  pass
 
-            # for col in self.df_table_ini.columns.values:
-            #    hora =self.df_table_ini[col].iloc[0]
-            #    if hora ==None:
-            #       self.df_table_ini.drop(col, axis=1, inplace=True)
+            dir = Rutas().directorio_input_xml_coreso
+            fileObj = QFileDialog.getOpenFileName(self, " Selecione el xml CapDoc", dir=dir,
+                                                  filter="Archivo XML (*.xml)")
+            path = fileObj[0]
 
-            self.columns_df= list(self.df_table_ini.columns.values)
-            self.load_tableWiget(df=self.df_table_ini)
+            if path != '':
+               self.edit_informacion_hora(eneble=False)
+               self.lectura_fichero_SWE_D2_CapDoc_Prop(path=path)
+
+               # for col in self.df_table_ini.columns.values:
+               #    hora =self.df_table_ini[col].iloc[0]
+               #    if hora ==None:
+               #       self.df_table_ini.drop(col, axis=1, inplace=True)
+
+               self.columns_df= list(self.df_table_ini.columns.values)
+               self.load_tableWiget(df=self.df_table_ini)
+               self.pushButton_EditTable.setVisible(True)
+               self.pushButton_GenTable.setVisible(True)
+               self.pushButton_GenCNE.setVisible(True)
          except Exception as e:
             raise SystemError('{}'.format(e))
-
-         self.pushButton_EditTable.setVisible(True)
-         self.pushButton_GenTable.setVisible(True)
-         self.pushButton_GenCNE.setVisible(True)
 
       except Exception as e:
          QMessageBox.warning(self, __appname__, 'Error cargar_xml_capdoc : {}'.format(e))
 
    def generar_xml_CapDocAns(self):
       try:
-         ok=self.check_info_genXML()
-         if ok:
-            dir = Rutas().directorio_output_xml
-            fileObj = QFileDialog.getSaveFileName(self, " Selecione el nombre", dir=dir,filter="Archivo XML (*.xml)")
 
-            path = fileObj[0]
+
+         dir = Rutas().directorio_output_xml
+         fileObj = QFileDialog.getSaveFileName(self, " Selecione el nombre", dir=dir,filter="Archivo XML (*.xml)")
+
+         path = fileObj[0]
+         if path !='':
             if self.change_table == True:
                acept = True
             else:
                acept = False
             if path !='':
-               create_XML_CapDoc(path_output = path, info_xml = self.class_info_xml, acept=True)
+               create_XML_CapDoc(path_output = path, info_xml = self.class_info_xml, acept=acept)
+               QMessageBox.information(self, __appname__, 'Fichero creado en la ruta :{}'.format(path))
 
       except Exception as e :
          raise SystemError('Error al generar_xml_salida : {}'.format(e))
 
    def generar_xml_CNEDetails(self):
       try:
-         dir = Rutas().directorio_output_xml
-         fileObj = QFileDialog.getSaveFileName(self, " Selecione el nombre", dir=dir,filter="Archivo XML (*.xml)")
-         path = fileObj[0]
-         if self.change_table == True:
-            acept = True
-         else:
-            acept = False
-
-         create_XML_CapDoc(path_output = path, info_xml = self.class_info_xml, acept=True)
+         ok, rechazada = self.check_info_genXML()
+         if ok and rechazada:
+            dir = Rutas().directorio_output_xml
+            fileObj = QFileDialog.getSaveFileName(self, " Selecione el nombre", dir=dir,filter="Archivo XML (*.xml)")
+            path = fileObj[0]
+            if path != '':
+               create_XML_CNE(path_output = path, info_xml = self.class_info_xml)
+               QMessageBox.information(self, __appname__, 'Fichero creado en la ruta :{}'.format(path))
+         if rechazada==False:
+            QMessageBox.information(self, __appname__, 'No hay intercambio modificado')
 
       except Exception as e :
          raise SystemError('Error al generar_xml_salida : {}'.format(e))
@@ -669,17 +663,17 @@ class Main(QMainWindow,Ui_MainWindow):
             for index, row in self.df_data_edit.iterrows():
                hora=row['hora']
                if row['sentido']=='ES -> FR':
-                  class_element = self.es_fr
-                  info_xml=self.class_info_xml.es_fr
-               elif row['sentido']=='FR -> ES':
                   class_element = self.fr_es
                   info_xml = self.class_info_xml.fr_es
+               elif row['sentido']=='FR -> ES':
+                  class_element = self.es_fr
+                  info_xml = self.class_info_xml.es_fr
                elif row['sentido']=='ES -> PT':
-                  class_element = self.es_pt
-                  info_xml = self.class_info_xml.es_pt
-               elif row['sentido'] == 'PT -> ES':
                   class_element = self.pt_es
                   info_xml = self.class_info_xml.pt_es
+               elif row['sentido'] == 'PT -> ES':
+                  class_element = self.es_pt
+                  info_xml = self.class_info_xml.es_pt
 
                list_ele=class_element.get_list_elementos()
                list_class_ele= filter(lambda x: x.hora==hora,list_ele)  #
@@ -746,14 +740,9 @@ class Main(QMainWindow,Ui_MainWindow):
       for x in self.pt_es.get_list_elementos():
          x.elementos.load_comboBox_Data()
 
-   def lectura_fichero_SWE_D2_CapDoc_Prop(self):
+   def lectura_fichero_SWE_D2_CapDoc_Prop(self,path):
 
       try:
-         dir = Rutas().ruta_input_xml_coreso
-         fileObj = QFileDialog.getOpenFileName(self, " Selecione el xml CapDoc", dir=dir,
-                                               filter="Archivo XML (*.xml)")
-         path=fileObj[0]
-
 
          self.class_info_xml=lectura_SWE_D2_CapDoc_Prop_tree(path = path)
          fecha=self.class_info_xml.periodo_end
@@ -774,27 +763,29 @@ class Main(QMainWindow,Ui_MainWindow):
       :return:
       """
       ok = True
+      rechazadas= False
       try:
 
          for frontera in [self.class_info_xml.es_pt, self.class_info_xml.pt_es, self.class_info_xml.fr_es, self.class_info_xml.es_fr]:
             for hora in filter(lambda x: x.aceptada==False, frontera.info_hora):
                element_ui =hora.elements_UI  # type: Elementos_UI
                explat_code=hora.explat_code
+               rechazadas=True
 
                if explat_code == None:
-                  raise SystemError('El codigo de Explat tiene que ser selecionado para la hora: {}'.format(hora.hora))
+                  raise SystemError('El codigo de explain tiene que ser selecionado para la hora: {} y flujo: {}-{}'.format(hora.hora, frontera.domain_out['id'],frontera.domain_in['id']))
 
                reason_code=hora.rea_code
                if reason_code == None:
-                  raise SystemError('El codigo de Reason tiene que ser selecionado para la hora: {}'.format(hora.hora))
+                  raise SystemError('El codigo de reason tiene que ser selecionado para la hora: {} y flujo: {}-{}'.format(hora.hora, frontera.domain_out['id'],frontera.domain_in['id']))
 
-               cont_mRid=hora.cont_mRid
-               if cont_mRid == None:
-                  raise SystemError('La contigencia tiene que ser selecionada para la hora: {}'.format(hora.hora))
-
-               mont_mRid = hora.mont_mRid
-               if mont_mRid == None:
-                  raise SystemError('El elemneto limitnate tiene que ser selecionada para la hora: {}'.format(hora.hora))
+               # cont_mRid=hora.cont_mRid
+               # if cont_mRid == None:
+               #    raise SystemError('La contigencia tiene que ser selecionada para la hora: {}'.format(hora.hora))
+               #
+               # mont_mRid = hora.mont_mRid
+               # if mont_mRid == None:
+               #    raise SystemError('El elemneto limitnate tiene que ser selecionada para la hora: {}'.format(hora.hora))
 
 
 
@@ -802,7 +793,7 @@ class Main(QMainWindow,Ui_MainWindow):
          ok=False
          QMessageBox.critical(self, __appname__, u'{}'.format(e))
 
-      return ok
+      return ok,rechazadas
 
 
 def main():

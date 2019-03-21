@@ -74,7 +74,7 @@ def lectura_SWE_D2_CapDoc_Prop_tree(path=None):
             for point in period.findall('{}Point'.format(namespace)):
                hora=int(point.find('{}position'.format(namespace)).text)
                potencia=float(point.find('{}quantity'.format(namespace)).text)
-               info_hora = filter(lambda x: x.hora == hora, list_info_hora)
+               info_hora = filter(lambda x: x.hora == hora-1, list_info_hora)
                if info_hora.__len__()>0:
                   info_hora=info_hora[0]
                   info_hora.potencia=potencia
@@ -122,8 +122,8 @@ def lectura_SWE_D2_CapDoc_Prop(path=None):
       raise SystemError('Error al leer  SWE_D2_CapDoc_Prop :{}'.format(e))
 
 def select_case():
-   dict = {'ESFR': get_domainFRES,
-           'FRES': get_domainESFR,
+   dict = {'ESFR': get_domainESFR,
+           'FRES': get_domainFRES,
            'ESPT': get_domainESPT,
            'PTES': get_domainPTES }
    return dict
@@ -378,7 +378,7 @@ def create_XML_CapDoc(path_output, info_xml, acept=True):
       __add_element(root=root, tag='process.processType', text=datosXML.processType, attrib={})
 
 
-      __add_element(root=root, tag='sender_MarketParticipant.mRID', text=datosXML.processType, attrib={'codingScheme':datosXML.codingScheme})
+      __add_element(root=root, tag='sender_MarketParticipant.mRID', text=datosXML.MarketParticipant_mRID_SO, attrib={'codingScheme':datosXML.codingScheme})
       __add_element(root=root, tag='sender_MarketParticipant.marketRole.typee', text=datosXML.MarketParticipant_Role_SO, attrib={})
       __add_element(root=root, tag='receiver_MarketParticipant.mRID', text=datosXML.MarketParticipant_mRID_CC, attrib={'codingScheme':datosXML.codingScheme})
       __add_element(root=root, tag='receiver_MarketParticipant.marketRole.typee', text=datosXML.MarketParticipant_Role_CC, attrib={})
@@ -420,7 +420,7 @@ def create_XML_CapDoc(path_output, info_xml, acept=True):
                hora_labe=hora.hora+1
                point=__add_subElment(parent=period, tag='Point', text=None, attrib={})
                __add_subElment(parent=point, tag='position', text=str(hora_labe), attrib={})
-               __add_subElment(parent=point, tag='quantity', text=str(hora.potencia), attrib={})
+               __add_subElment(parent=point, tag='quantity', text=str(int(hora.potencia)), attrib={})
 
                if hora.aceptada == False:
                   reason=__add_subElment(parent=point, tag='Reason', text=None, attrib={})
@@ -429,6 +429,139 @@ def create_XML_CapDoc(path_output, info_xml, acept=True):
 
          serie+=1
 
+
+
+
+      __save_xml(path_output = path_output, root=root)
+
+
+      # tree = ET.ElementTree(root)
+      # with open(path_output, "w") as fh:
+      #    tree.write(fh)
+
+
+
+   except Exception as e:
+      raise SystemError('Error create_XML_CapDoc: {}'.format(e))
+
+def create_XML_CNE(path_output, info_xml):
+   """
+
+   :param path_input:
+   :param path_output:
+   :param info_xml:
+   :type info_xml: InfoXML
+   :param acept:
+   :return:
+   """
+   try:
+      datosXML = ParamXML_CapDoc()
+      root = ET.Element("CriticalNetworkElement_MarketDocument", datosXML.atribute_CNE)
+      # root.set('xsi:schemaLocation','urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0 iec62325-451-3-capacity_v8_0.xsd')
+      # root.set('xmlns','urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0')
+      # root.set('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+
+      mrid = info_xml.fecha_end.strftime(datosXML.mRID_REE_CNE)
+      __add_element(root=root, tag='mRID', text=mrid, attrib={})
+      __add_element(root=root, tag='revisionNumber', text='1', attrib={})
+      __add_element(root=root, tag='type', text=datosXML.type_doc_CNE, attrib={})
+      __add_element(root=root, tag='process.processType', text=datosXML.processType, attrib={})
+
+
+      __add_element(root=root, tag='sender_MarketParticipant.mRID', text=datosXML.MarketParticipant_mRID_SO, attrib={'codingScheme':datosXML.codingScheme})
+      __add_element(root=root, tag='sender_MarketParticipant.marketRole.typee', text=datosXML.MarketParticipant_Role_SO, attrib={})
+      __add_element(root=root, tag='receiver_MarketParticipant.mRID', text=datosXML.MarketParticipant_mRID_CC, attrib={'codingScheme':datosXML.codingScheme})
+      __add_element(root=root, tag='receiver_MarketParticipant.marketRole.typee', text=datosXML.MarketParticipant_Role_CC, attrib={})
+
+
+      fecha_create_zulu=get_hora_zulu()
+      __add_element(root=root, tag='createdDateTime', text=fecha_create_zulu, attrib={})
+
+      ele =__add_element(root=root, tag='docStatus', text=None, attrib={})
+      __add_subElment(parent =ele, tag = 'value', text=datosXML.docStatus_Reject, attrib={})
+
+      ele = __add_element(root=root, tag='Received_MarketDocument', text=None, attrib={})
+      __add_subElment(parent=ele, tag='mRID', text=info_xml.mRID, attrib={})
+      __add_subElment(parent=ele, tag='revisionNumber', text=info_xml.revisionNumber, attrib={})
+
+      ele = __add_element(root=root, tag='period.timeInterval', text=None, attrib={})
+      __add_subElment(parent=ele, tag='start', text=info_xml.periodo_star, attrib={})
+      __add_subElment(parent=ele, tag='end', text=info_xml.periodo_end, attrib={})
+
+      __add_element(root=root, tag='domain.mRID', text=datosXML.domain_mRID, attrib={'codingScheme':datosXML.codingScheme})
+
+      serie=1
+      for flujo in [info_xml.fr_es, info_xml.es_fr, info_xml.pt_es, info_xml.es_pt]:  # type: InfoSentidos
+         modificado= filter(lambda x:  x.aceptada == False, flujo.info_hora).__len__()>0
+         if modificado == False:
+            continue
+
+         timeSerie=__add_element(root=root, tag='TimeSeries', text=None, attrib={})
+         __add_subElment(parent=timeSerie, tag='businessType', text=datosXML.businessType_CNE_TimeSerie, attrib={})
+         __add_subElment(parent=timeSerie, tag='in_Domain.mRID', text=flujo.domain_in['mRID'], attrib={'codingScheme':datosXML.codingScheme})
+         __add_subElment(parent=timeSerie, tag='out_Domain.mRID', text=flujo.domain_out['mRID'],attrib={'codingScheme': datosXML.codingScheme})
+         __add_subElment(parent=timeSerie, tag='curveType', text=datosXML.curveType_CNE, attrib={})
+         period = __add_subElment(parent=timeSerie, tag='Period', text=None, attrib={})
+         interval=__add_subElment(parent=period, tag='timeInterval', text=None, attrib={})
+         __add_subElment(parent=interval, tag='start', text=info_xml.periodo_star, attrib={})
+         __add_subElment(parent=interval, tag='end', text=info_xml.periodo_end, attrib={})
+         __add_subElment(parent=period, tag='resolution', text=datosXML.resolution, attrib={})
+
+         constrain=1
+         for hora in flujo.info_hora:  # type: InfoInterHora
+            if hora.aceptada == False:
+               hora_labe=hora.hora+1
+               if hora.cont_mRid==None  and  hora.mont_mRid==None:
+                  mrid_cont=datosXML.mRID_Constraint_Nan
+               elif hora.cont_mRid!=None  and  hora.mont_mRid==None:
+                  mrid_cont = datosXML.mRID_Constraint_Co
+               elif hora.cont_mRid==None  and  hora.mont_mRid!=None:
+                  mrid_cont = datosXML.mRID_Constraint_Mon
+               else:
+                  mrid_cont = datosXML.mRID_Constraint_CoMon
+               if constrain<10:
+                  mrid_cont = mrid_cont+'00'+str(constrain)
+               else:
+                  mrid_cont = mrid_cont + '0' + str(constrain)
+
+               point=__add_subElment(parent=period, tag='Point', text=None, attrib={})
+               __add_subElment(parent=point, tag='position', text=str(hora_labe), attrib={})
+               constraint=__add_subElment(parent=point, tag='Constraint_Series', text=None, attrib={})
+               __add_subElment(parent=constraint, tag='mRID', text=mrid_cont, attrib={})
+               __add_subElment(parent=constraint, tag='businessType', text=datosXML.businessType_CNE_TimeSerie, attrib={})
+               if hora.cont_mRid != None:
+                  Contingency_Series=__add_subElment(parent=constraint, tag='Contingency_Series', text=None,attrib={})
+                  __add_subElment(parent=Contingency_Series, tag='mRID', text=hora.cont_mRid,attrib={})
+                  __add_subElment(parent=Contingency_Series, tag='name', text=hora.cont_name, attrib={})
+               if hora.mont_mRid != None:
+                  Monitored_RegisteredResource = __add_subElment(parent=constraint, tag='Monitored_RegisteredResource', text=None, attrib={})
+                  __add_subElment(parent=Monitored_RegisteredResource, tag='mRID', text=hora.mont_mRid, attrib={})
+                  __add_subElment(parent=Monitored_RegisteredResource, tag='name', text=hora.mont_name, attrib={})
+                  __add_subElment(parent=Monitored_RegisteredResource, tag='in_Domain.mRID', text=hora.mont_domainIN, attrib={'codingScheme': datosXML.codingScheme})
+                  __add_subElment(parent=Monitored_RegisteredResource, tag='out_Domain.mRID', text=hora.mont_domainOUT, attrib={'codingScheme': datosXML.codingScheme})
+
+
+
+               Reason = __add_subElment(parent=constraint, tag='Reason', text=None,attrib={})
+               __add_subElment(parent=Reason, tag='code', text=hora.rea_code, attrib={})
+
+               reason_text = hora.rea_coment if hora.rea_text =='' else hora.rea_text
+               reason_text_ele = __add_subElment(parent=Reason, tag='text', text=reason_text, attrib={})
+
+               # reason_text_ele= None
+               # for x in reason_text.split('\n'):
+               #    if reason_text_ele == None:
+               #       reason_text_ele=__add_subElment(parent=Reason, tag='text', text=x, attrib={})
+               #    else:
+               #       text= reason_text_ele.text
+               #       reason_text_ele.text +=text+ '\n'+x
+
+               expla_text = hora.explat_coment if hora.explat_text == '' else hora.explat_text
+               Expla = __add_subElment(parent=constraint, tag='Reason', text=None,attrib={})
+               __add_subElment(parent=Expla, tag='code', text=hora.explat_code, attrib={})
+               __add_subElment(parent=Expla, tag='text', text=expla_text, attrib={})
+
+         serie+=1
 
 
 
@@ -468,7 +601,6 @@ def __add_element(root,tag,text=None,attrib={}):
       return ele
    except Exception as e:
       raise  SystemError('Error al add_element :{}. {}'.format(tag,e))
-
 
 def __add_subElment(parent, tag,text=None, attrib={}):
    try:

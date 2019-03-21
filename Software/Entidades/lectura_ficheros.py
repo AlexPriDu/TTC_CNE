@@ -208,7 +208,7 @@ def lectura_excel_crack():
 
       df_excel_MON_trafos = pd.concat([df_excel_MON_trafo_1, df_excel_MON_trafo_2, df_excel_MON_trafo_3,df_excel_MON_trafo_4,df_excel_MON_trafo_5,df_excel_MON_trafo_6], ignore_index=True)
 
-      df_excel_MON_des=pd.concat([df_excel_MON_trafos, df_excel_MON_lineas], ignore_index=True)
+      df_excel_MON_des=pd.concat([df_excel_MON_trafos, df_excel_MON_lineas], ignore_index=True, sort=False)
       columns_Mon.append('Cim ID')
       df_excel_MON_des = df_excel_MON_des[columns_Mon]
 
