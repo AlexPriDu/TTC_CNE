@@ -366,7 +366,7 @@ def create_XML_CapDoc(path_output, info_xml, acept=True):
    """
    try:
       datosXML = ParamXML_CapDoc()
-      root = ET.Element("Capacity_MarketDocumen", datosXML.atribute_capDoc)
+      root = ET.Element("Capacity_MarketDocument", datosXML.atribute_capDoc)
       # root.set('xsi:schemaLocation','urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0 iec62325-451-3-capacity_v8_0.xsd')
       # root.set('xmlns','urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0')
       # root.set('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')
@@ -379,9 +379,9 @@ def create_XML_CapDoc(path_output, info_xml, acept=True):
 
 
       __add_element(root=root, tag='sender_MarketParticipant.mRID', text=datosXML.MarketParticipant_mRID_SO, attrib={'codingScheme':datosXML.codingScheme})
-      __add_element(root=root, tag='sender_MarketParticipant.marketRole.typee', text=datosXML.MarketParticipant_Role_SO, attrib={})
+      __add_element(root=root, tag='sender_MarketParticipant.marketRole.type', text=datosXML.MarketParticipant_Role_SO, attrib={})
       __add_element(root=root, tag='receiver_MarketParticipant.mRID', text=datosXML.MarketParticipant_mRID_CC, attrib={'codingScheme':datosXML.codingScheme})
-      __add_element(root=root, tag='receiver_MarketParticipant.marketRole.typee', text=datosXML.MarketParticipant_Role_CC, attrib={})
+      __add_element(root=root, tag='receiver_MarketParticipant.marketRole.type', text=datosXML.MarketParticipant_Role_CC, attrib={})
 
 
       fecha_create_zulu=get_hora_zulu()
@@ -405,6 +405,7 @@ def create_XML_CapDoc(path_output, info_xml, acept=True):
          timeSerie=__add_element(root=root, tag='TimeSeries', text=None, attrib={})
          __add_subElment(parent=timeSerie, tag='mRID', text=datosXML.TimeSeries_mRID+'-'+str(serie), attrib={})
          __add_subElment(parent=timeSerie, tag='businessType', text=datosXML.businessType, attrib={})
+         __add_subElment(parent=timeSerie, tag='mRID', text=datosXML.product, attrib={})
          __add_subElment(parent=timeSerie, tag='in_Domain.mRID', text=flujo.domain_in['mRID'], attrib={'codingScheme':datosXML.codingScheme})
          __add_subElment(parent=timeSerie, tag='out_Domain.mRID', text=flujo.domain_out['mRID'],attrib={'codingScheme': datosXML.codingScheme})
          __add_subElment(parent=timeSerie, tag='measure_Unit.name', text=datosXML.measure_Unit,attrib={})
@@ -469,9 +470,9 @@ def create_XML_CNE(path_output, info_xml):
 
 
       __add_element(root=root, tag='sender_MarketParticipant.mRID', text=datosXML.MarketParticipant_mRID_SO, attrib={'codingScheme':datosXML.codingScheme})
-      __add_element(root=root, tag='sender_MarketParticipant.marketRole.typee', text=datosXML.MarketParticipant_Role_SO, attrib={})
+      __add_element(root=root, tag='sender_MarketParticipant.marketRole.type', text=datosXML.MarketParticipant_Role_SO, attrib={})
       __add_element(root=root, tag='receiver_MarketParticipant.mRID', text=datosXML.MarketParticipant_mRID_CC, attrib={'codingScheme':datosXML.codingScheme})
-      __add_element(root=root, tag='receiver_MarketParticipant.marketRole.typee', text=datosXML.MarketParticipant_Role_CC, attrib={})
+      __add_element(root=root, tag='receiver_MarketParticipant.marketRole.type', text=datosXML.MarketParticipant_Role_CC, attrib={})
 
 
       fecha_create_zulu=get_hora_zulu()
@@ -484,7 +485,7 @@ def create_XML_CNE(path_output, info_xml):
       __add_subElment(parent=ele, tag='mRID', text=info_xml.mRID, attrib={})
       __add_subElment(parent=ele, tag='revisionNumber', text=info_xml.revisionNumber, attrib={})
 
-      ele = __add_element(root=root, tag='period.timeInterval', text=None, attrib={})
+      ele = __add_element(root=root, tag='time_Period.timeInterval', text=None, attrib={})
       __add_subElment(parent=ele, tag='start', text=info_xml.periodo_star, attrib={})
       __add_subElment(parent=ele, tag='end', text=info_xml.periodo_end, attrib={})
 
@@ -497,6 +498,7 @@ def create_XML_CNE(path_output, info_xml):
             continue
 
          timeSerie=__add_element(root=root, tag='TimeSeries', text=None, attrib={})
+         __add_subElment(parent=timeSerie, tag='mRID', text=datosXML.TimeSeries_mRID + '-' + str(serie), attrib={})
          __add_subElment(parent=timeSerie, tag='businessType', text=datosXML.businessType_CNE_TimeSerie, attrib={})
          __add_subElment(parent=timeSerie, tag='in_Domain.mRID', text=flujo.domain_in['mRID'], attrib={'codingScheme':datosXML.codingScheme})
          __add_subElment(parent=timeSerie, tag='out_Domain.mRID', text=flujo.domain_out['mRID'],attrib={'codingScheme': datosXML.codingScheme})
@@ -535,7 +537,7 @@ def create_XML_CNE(path_output, info_xml):
                   __add_subElment(parent=Contingency_Series, tag='name', text=hora.cont_name, attrib={})
                if hora.mont_mRid != None:
                   Monitored_RegisteredResource = __add_subElment(parent=constraint, tag='Monitored_RegisteredResource', text=None, attrib={})
-                  __add_subElment(parent=Monitored_RegisteredResource, tag='mRID', text=hora.mont_mRid, attrib={})
+                  __add_subElment(parent=Monitored_RegisteredResource, tag='mRID', text=hora.mont_mRid, attrib={'codingScheme': datosXML.codingScheme})
                   __add_subElment(parent=Monitored_RegisteredResource, tag='name', text=hora.mont_name, attrib={})
                   __add_subElment(parent=Monitored_RegisteredResource, tag='in_Domain.mRID', text=hora.mont_domainIN, attrib={'codingScheme': datosXML.codingScheme})
                   __add_subElment(parent=Monitored_RegisteredResource, tag='out_Domain.mRID', text=hora.mont_domainOUT, attrib={'codingScheme': datosXML.codingScheme})

@@ -156,7 +156,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>10</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -372,6 +372,12 @@
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -385,6 +391,9 @@
                 <spacer name="horizontalSpacer">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Preferred</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -403,6 +412,12 @@
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -416,6 +431,9 @@
                 <spacer name="horizontalSpacer_6">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Preferred</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -434,6 +452,12 @@
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -447,6 +471,9 @@
                 <spacer name="horizontalSpacer_7">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Preferred</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -496,6 +523,12 @@
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -509,6 +542,9 @@
                 <spacer name="horizontalSpacer_5">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Preferred</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'D:\TTC_CNE\Software\Interfaz\vistas\xml_coreso.ui'
 #
-# Created: Thu Mar 21 12:38:46 2019
+# Created: Fri Mar 22 10:37:51 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -201,6 +201,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.comboBox_RC_FRES_1 = QtGui.QComboBox(self.groupBox)
         self.comboBox_RC_FRES_1.setEnabled(False)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_RC_FRES_1.sizePolicy().hasHeightForWidth())
+        self.comboBox_RC_FRES_1.setSizePolicy(sizePolicy)
         self.comboBox_RC_FRES_1.setObjectName("comboBox_RC_FRES_1")
         self.horizontalLayout_9.addWidget(self.comboBox_RC_FRES_1)
         self.label_21 = QtGui.QLabel(self.groupBox)
@@ -214,6 +219,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
         self.comboBox_RC_PTES_1 = QtGui.QComboBox(self.groupBox)
         self.comboBox_RC_PTES_1.setEnabled(False)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_RC_PTES_1.sizePolicy().hasHeightForWidth())
+        self.comboBox_RC_PTES_1.setSizePolicy(sizePolicy)
         self.comboBox_RC_PTES_1.setObjectName("comboBox_RC_PTES_1")
         self.horizontalLayout_14.addWidget(self.comboBox_RC_PTES_1)
         self.label_30 = QtGui.QLabel(self.groupBox)
@@ -227,6 +237,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
         self.comboBox_RC_ESPT_1 = QtGui.QComboBox(self.groupBox)
         self.comboBox_RC_ESPT_1.setEnabled(False)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_RC_ESPT_1.sizePolicy().hasHeightForWidth())
+        self.comboBox_RC_ESPT_1.setSizePolicy(sizePolicy)
         self.comboBox_RC_ESPT_1.setObjectName("comboBox_RC_ESPT_1")
         self.horizontalLayout_15.addWidget(self.comboBox_RC_ESPT_1)
         self.label_31 = QtGui.QLabel(self.groupBox)
@@ -253,6 +268,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
         self.comboBox_RC_ESFR_1 = QtGui.QComboBox(self.groupBox)
         self.comboBox_RC_ESFR_1.setEnabled(False)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_RC_ESFR_1.sizePolicy().hasHeightForWidth())
+        self.comboBox_RC_ESFR_1.setSizePolicy(sizePolicy)
         self.comboBox_RC_ESFR_1.setObjectName("comboBox_RC_ESFR_1")
         self.horizontalLayout_13.addWidget(self.comboBox_RC_ESFR_1)
         self.label_29 = QtGui.QLabel(self.groupBox)
@@ -7372,7 +7392,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(10)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

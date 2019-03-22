@@ -434,7 +434,7 @@ class ParamXML_CapDoc():
    def __init__(self):
       self.namespace_label = 'urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0'
       self.namespace='{urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0}'
-      self.atribute_capDoc={'xsi:schemaLocation':'urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0 iec62325-451-3-capacity_v8_0.xs',
+      self.atribute_capDoc={'xsi:schemaLocation':'urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0 iec62325-451-3-capacity_v8_0.xsd',
                            'xmlns':'urn:iec62325.351:tc57wg16:451-3:capacitydocument:8:0','xmlns:xsi':'http://www.w3.org/2001/XMLSchema-instance'}
       self.type_doc='A26'
 
@@ -465,15 +465,15 @@ class ParamXML_CapDoc():
       self.namespace_label_CNE = 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0'
       self.namespace_CNE = '{urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0'
       self.atribute_CNE = {
-         'xsi:schemaLocation': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:1 iec62325-451-n-cne_v2_1_draft.xsd',
-         'xmlns': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:1',
+         'xsi:schemaLocation': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0 iec62325-451-n-cne_v2_0_draft.xsd',
+         'xmlns': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0',
          'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
       self.type_doc_CNE = 'B06'
 
       self.mRID_REE_CNE = 'REE-%Y%m%d-SWECCD2-F020'
       self.businessType_CNE_TimeSerie = 'B37'
       self.businessType_CNE_Point = 'B37'
-      self.curveType_CNE = 'A2'
+      self.curveType_CNE = 'A02'
       self.mRID_Constraint_Co = 'REE-Constraint_Series-CoList-'
       self.mRID_Constraint_Mon = 'REE-Constraint_Series-MRList-'
       self.mRID_Constraint_CoMon = 'REE-Constraint_Series-CoMR-'
