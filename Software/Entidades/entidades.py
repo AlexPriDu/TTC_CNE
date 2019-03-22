@@ -465,7 +465,7 @@ class ParamXML_CapDoc():
       self.namespace_label_CNE = 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0'
       self.namespace_CNE = '{urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0'
       self.atribute_CNE = {
-         'xsi:schemaLocation': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0 iec62325-451-n-cne_v2_0_draft.xsd',
+         'xsi:schemaLocation': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0 iec62325-451-n-cne_v2_0.xsd',
          'xmlns': 'urn:iec62325.351:tc57wg16:451-n:cnedocument:2:0',
          'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
       self.type_doc_CNE = 'B06'

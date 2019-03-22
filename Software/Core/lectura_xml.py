@@ -405,7 +405,7 @@ def create_XML_CapDoc(path_output, info_xml, acept=True):
          timeSerie=__add_element(root=root, tag='TimeSeries', text=None, attrib={})
          __add_subElment(parent=timeSerie, tag='mRID', text=datosXML.TimeSeries_mRID+'-'+str(serie), attrib={})
          __add_subElment(parent=timeSerie, tag='businessType', text=datosXML.businessType, attrib={})
-         __add_subElment(parent=timeSerie, tag='mRID', text=datosXML.product, attrib={})
+         __add_subElment(parent=timeSerie, tag='product', text=datosXML.product, attrib={})
          __add_subElment(parent=timeSerie, tag='in_Domain.mRID', text=flujo.domain_in['mRID'], attrib={'codingScheme':datosXML.codingScheme})
          __add_subElment(parent=timeSerie, tag='out_Domain.mRID', text=flujo.domain_out['mRID'],attrib={'codingScheme': datosXML.codingScheme})
          __add_subElment(parent=timeSerie, tag='measure_Unit.name', text=datosXML.measure_Unit,attrib={})
