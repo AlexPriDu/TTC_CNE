@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1091</width>
-    <height>795</height>
+    <height>1039</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <normaloff>:/icono_1/iconos/torre.png</normaloff>:/icono_1/iconos/torre.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_77" rowstretch="0,0,2,0,0" rowminimumheight="0,0,4,0,0" columnminimumwidth="0,0">
+   <layout class="QGridLayout" name="gridLayout_77" rowstretch="0,0,0,0,0">
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0,0,0,0,0">
       <item>
@@ -92,7 +92,20 @@
      </widget>
     </item>
     <item row="2" column="0" colspan="2">
-     <widget class="QTableWidget" name="tableWidget"/>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>200</height>
+       </size>
+      </property>
+     </widget>
     </item>
     <item row="3" column="1">
      <layout class="QHBoxLayout" name="horizontalLayout_53">
@@ -125,13 +138,6 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QPushButton" name="pushButton_GenTable">
-          <property name="text">
-           <string>Generar CapDoc</string>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="1">
          <widget class="QPushButton" name="pushButton_EditTable">
           <property name="text">
@@ -146,6 +152,13 @@
           </property>
          </widget>
         </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="pushButton_GenTable">
+          <property name="text">
+           <string>Generar CapDoc</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
      </layout>
@@ -156,7 +169,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>23</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -264,18 +277,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_17">
+              <layout class="QHBoxLayout" name="horizontalLayout_17" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_1">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_37">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -306,18 +312,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_18">
+              <layout class="QHBoxLayout" name="horizontalLayout_18" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_1">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_38">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -366,24 +365,23 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_21">
-                 <property name="text">
-                  <string/>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
                  </property>
                 </widget>
                </item>
@@ -406,24 +404,23 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_14">
+              <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_30">
-                 <property name="text">
-                  <string/>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
                  </property>
                 </widget>
                </item>
@@ -433,7 +430,7 @@
                   <enum>Qt::Horizontal</enum>
                  </property>
                  <property name="sizeType">
-                  <enum>QSizePolicy::Preferred</enum>
+                  <enum>QSizePolicy::Expanding</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -446,24 +443,23 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_15">
+              <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_31">
-                 <property name="text">
-                  <string/>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
                  </property>
                 </widget>
                </item>
@@ -473,7 +469,7 @@
                   <enum>Qt::Horizontal</enum>
                  </property>
                  <property name="sizeType">
-                  <enum>QSizePolicy::Preferred</enum>
+                  <enum>QSizePolicy::Expanding</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -486,18 +482,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_16">
+              <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_1">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_36">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -517,24 +506,23 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_13">
+              <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_1">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_29">
-                 <property name="text">
-                  <string/>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
                  </property>
                 </widget>
                </item>
@@ -544,7 +532,7 @@
                   <enum>Qt::Horizontal</enum>
                  </property>
                  <property name="sizeType">
-                  <enum>QSizePolicy::Preferred</enum>
+                  <enum>QSizePolicy::Expanding</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -655,18 +643,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_19">
+              <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_1">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_39">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -910,18 +891,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_22">
+              <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_2">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_43">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -952,18 +926,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_24">
+              <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_2">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_44">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1012,18 +979,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_28">
+              <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_2">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_45">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1043,18 +1003,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_29">
+              <layout class="QHBoxLayout" name="horizontalLayout_29" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_2">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_46">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1074,18 +1027,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_30">
+              <layout class="QHBoxLayout" name="horizontalLayout_30" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_2">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_47">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1105,18 +1051,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_31">
+              <layout class="QHBoxLayout" name="horizontalLayout_31" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_2">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_48">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1136,18 +1075,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_32">
+              <layout class="QHBoxLayout" name="horizontalLayout_32" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_2">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_49">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1265,18 +1197,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_33">
+              <layout class="QHBoxLayout" name="horizontalLayout_33" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_2">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_64">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1433,300 +1358,33 @@
              <string/>
             </property>
             <layout class="QGridLayout" name="gridLayout_8">
-             <item row="2" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_34">
-               <item>
-                <widget class="QComboBox" name="comboBox_EL_ESPT_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="2" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_35">
-               <item>
-                <widget class="QComboBox" name="comboBox_EL_FRES_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="2" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_36">
-               <item>
-                <widget class="QComboBox" name="comboBox_EL_PTES_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="8" column="2">
-              <widget class="QPlainTextEdit" name="plainTextEdit_RT_PTES_3">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="2">
-              <widget class="QLabel" name="label_74">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_89">
                <property name="text">
-                <string>Reason Text</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;ES -&amp;gt; FR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
-             <item row="5" column="2">
-              <widget class="QLabel" name="label_75">
+             <item row="0" column="2">
+              <widget class="QLabel" name="label_90">
                <property name="text">
-                <string>Reason Code </string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;ES -&amp;gt; PT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
-             <item row="7" column="0">
-              <widget class="QLabel" name="label_76">
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_91">
                <property name="text">
-                <string>Reason Text</string>
+                <string>Elem. Limitante</string>
                </property>
               </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QLabel" name="label_77">
-               <property name="text">
-                <string>Cont. Limitante</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="QLabel" name="label_78">
-               <property name="text">
-                <string>Reason Code </string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_37">
-               <item>
-                <widget class="QComboBox" name="comboBox_CL_PTES_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_38">
-               <item>
-                <widget class="QComboBox" name="comboBox_EC_ESFR_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_79">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_19">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>185</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item row="2" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_39">
-               <item>
-                <widget class="QComboBox" name="comboBox_EL_ESFR_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_40">
-               <item>
-                <widget class="QComboBox" name="comboBox_EC_PTES_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_80">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_20">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>185</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item row="4" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_41">
-               <item>
-                <widget class="QComboBox" name="comboBox_CL_ESFR_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="4" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_42">
-               <item>
-                <widget class="QComboBox" name="comboBox_CL_FRES_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="4" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_43">
-               <item>
-                <widget class="QComboBox" name="comboBox_CL_ESPT_3"/>
-               </item>
-              </layout>
-             </item>
-             <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_44">
-               <item>
-                <widget class="QComboBox" name="comboBox_RC_FRES_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_81">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>185</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_45">
-               <item>
-                <widget class="QComboBox" name="comboBox_RC_PTES_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_82">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_21">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>185</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_46">
-               <item>
-                <widget class="QComboBox" name="comboBox_RC_ESPT_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_83">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_22">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>185</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_47">
+              <layout class="QHBoxLayout" name="horizontalLayout_47" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_3">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_84">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1746,18 +1404,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_48">
+              <layout class="QHBoxLayout" name="horizontalLayout_48" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_3">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_85">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1797,26 +1448,227 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_89">
-               <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;ES -&amp;gt; FR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <item row="2" column="3">
+              <layout class="QHBoxLayout" name="horizontalLayout_34">
+               <item>
+                <widget class="QComboBox" name="comboBox_EL_ESPT_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_36">
+               <item>
+                <widget class="QComboBox" name="comboBox_EL_PTES_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_35">
+               <item>
+                <widget class="QComboBox" name="comboBox_EL_FRES_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="8" column="2">
+              <widget class="QPlainTextEdit" name="plainTextEdit_RT_PTES_3">
+               <property name="enabled">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
-             <item row="0" column="2">
-              <widget class="QLabel" name="label_90">
+             <item row="7" column="2">
+              <widget class="QLabel" name="label_74">
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;ES -&amp;gt; PT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>Reason Text</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_91">
+             <item row="7" column="0">
+              <widget class="QLabel" name="label_76">
                <property name="text">
-                <string>Elem. Limitante</string>
+                <string>Reason Text</string>
                </property>
               </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QLabel" name="label_77">
+               <property name="text">
+                <string>Cont. Limitante</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="2">
+              <widget class="QLabel" name="label_75">
+               <property name="text">
+                <string>Reason Code </string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLabel" name="label_78">
+               <property name="text">
+                <string>Reason Code </string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_37">
+               <item>
+                <widget class="QComboBox" name="comboBox_CL_PTES_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_39">
+               <item>
+                <widget class="QComboBox" name="comboBox_EL_ESFR_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_41">
+               <item>
+                <widget class="QComboBox" name="comboBox_CL_ESFR_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="10" column="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_40" stretch="2,0">
+               <item>
+                <widget class="QComboBox" name="comboBox_EC_PTES_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_20">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>185</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="3">
+              <layout class="QHBoxLayout" name="horizontalLayout_43">
+               <item>
+                <widget class="QComboBox" name="comboBox_CL_ESPT_3"/>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_42">
+               <item>
+                <widget class="QComboBox" name="comboBox_CL_FRES_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="6" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_44" stretch="2,0">
+               <item>
+                <widget class="QComboBox" name="comboBox_RC_FRES_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>185</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item row="6" column="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_45" stretch="2,0">
+               <item>
+                <widget class="QComboBox" name="comboBox_RC_PTES_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_21">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>185</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item row="6" column="3">
+              <layout class="QHBoxLayout" name="horizontalLayout_46" stretch="2,0">
+               <item>
+                <widget class="QComboBox" name="comboBox_RC_ESPT_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_22">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>185</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
              </item>
              <item row="1" column="1">
               <widget class="QLabel" name="label_92">
@@ -1839,6 +1691,13 @@
                </property>
               </widget>
              </item>
+             <item row="5" column="3">
+              <widget class="QLabel" name="label_97">
+               <property name="text">
+                <string>Reason Code </string>
+               </property>
+              </widget>
+             </item>
              <item row="3" column="0">
               <widget class="QLabel" name="label_95">
                <property name="text">
@@ -1850,13 +1709,6 @@
               <widget class="QLabel" name="label_96">
                <property name="text">
                 <string>Cont. Limitante</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="3">
-              <widget class="QLabel" name="label_97">
-               <property name="text">
-                <string>Reason Code </string>
                </property>
               </widget>
              </item>
@@ -1874,19 +1726,19 @@
                </property>
               </widget>
              </item>
+             <item row="11" column="3">
+              <widget class="QLabel" name="label_101">
+               <property name="text">
+                <string>Explanation Text</string>
+               </property>
+              </widget>
+             </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_49">
+              <layout class="QHBoxLayout" name="horizontalLayout_49" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_3">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_100">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -1905,13 +1757,6 @@
                </item>
               </layout>
              </item>
-             <item row="11" column="3">
-              <widget class="QLabel" name="label_101">
-               <property name="text">
-                <string>Explanation Text</string>
-               </property>
-              </widget>
-             </item>
              <item row="12" column="2">
               <widget class="QPlainTextEdit" name="plainTextEdit_ET_PTES_3">
                <property name="enabled">
@@ -1926,15 +1771,15 @@
                </property>
               </widget>
              </item>
-             <item row="12" column="3">
-              <widget class="QPlainTextEdit" name="plainTextEdit_ET_ESPT_3">
+             <item row="12" column="0">
+              <widget class="QPlainTextEdit" name="plainTextEdit_ET_FRES_3">
                <property name="enabled">
                 <bool>false</bool>
                </property>
               </widget>
              </item>
-             <item row="12" column="0">
-              <widget class="QPlainTextEdit" name="plainTextEdit_ET_FRES_3">
+             <item row="12" column="3">
+              <widget class="QPlainTextEdit" name="plainTextEdit_ET_ESPT_3">
                <property name="enabled">
                 <bool>false</bool>
                </property>
@@ -1975,6 +1820,13 @@
                </property>
               </widget>
              </item>
+             <item row="9" column="2">
+              <widget class="QLabel" name="label_108">
+               <property name="text">
+                <string>Explanat. Code</string>
+               </property>
+              </widget>
+             </item>
              <item row="9" column="0">
               <widget class="QLabel" name="label_106">
                <property name="text">
@@ -1986,13 +1838,6 @@
               <widget class="QLabel" name="label_107">
                <property name="text">
                 <string>Explanation Text</string>
-               </property>
-              </widget>
-             </item>
-             <item row="9" column="2">
-              <widget class="QLabel" name="label_108">
-               <property name="text">
-                <string>Explanat. Code</string>
                </property>
               </widget>
              </item>
@@ -2016,6 +1861,30 @@
                 <bool>false</bool>
                </property>
               </widget>
+             </item>
+             <item row="10" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_38" stretch="2,0">
+               <item>
+                <widget class="QComboBox" name="comboBox_EC_ESFR_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_19">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>185</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
              </item>
             </layout>
            </widget>
@@ -2130,18 +1999,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_55">
+              <layout class="QHBoxLayout" name="horizontalLayout_55" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_4">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_115">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2172,18 +2034,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_57">
+              <layout class="QHBoxLayout" name="horizontalLayout_57" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_4">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_116">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2232,18 +2087,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_61">
+              <layout class="QHBoxLayout" name="horizontalLayout_61" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_4">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_117">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2262,50 +2110,12 @@
                </item>
               </layout>
              </item>
-             <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_62">
-               <item>
-                <widget class="QComboBox" name="comboBox_RC_PTES_4">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_118">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_30">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>185</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_63">
+              <layout class="QHBoxLayout" name="horizontalLayout_63" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_4">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_119">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2325,18 +2135,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_64">
+              <layout class="QHBoxLayout" name="horizontalLayout_64" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_4">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_120">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2356,18 +2159,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_65">
+              <layout class="QHBoxLayout" name="horizontalLayout_65" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_4">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_121">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2485,18 +2281,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_66">
+              <layout class="QHBoxLayout" name="horizontalLayout_66" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_4">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_136">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2627,6 +2416,30 @@
                </property>
               </widget>
              </item>
+             <item row="6" column="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_62" stretch="2,0">
+               <item>
+                <widget class="QComboBox" name="comboBox_RC_PTES_4">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_30">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>185</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
             </layout>
            </widget>
           </item>
@@ -2740,18 +2553,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_71">
+              <layout class="QHBoxLayout" name="horizontalLayout_71" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_5">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_151">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2782,18 +2588,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_73">
+              <layout class="QHBoxLayout" name="horizontalLayout_73" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_5">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_152">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2842,18 +2641,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_77">
+              <layout class="QHBoxLayout" name="horizontalLayout_77" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_5">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_153">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2873,18 +2665,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_78">
+              <layout class="QHBoxLayout" name="horizontalLayout_78" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_5">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_154">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2904,18 +2689,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_79">
+              <layout class="QHBoxLayout" name="horizontalLayout_79" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_5">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_155">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2935,18 +2713,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_80">
+              <layout class="QHBoxLayout" name="horizontalLayout_80" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_5">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_156">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -2966,18 +2737,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_81">
+              <layout class="QHBoxLayout" name="horizontalLayout_81" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_5">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_157">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3095,18 +2859,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_82">
+              <layout class="QHBoxLayout" name="horizontalLayout_82" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_5">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_172">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3350,18 +3107,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_87">
+              <layout class="QHBoxLayout" name="horizontalLayout_87" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_6">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_187">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3392,18 +3142,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_89">
+              <layout class="QHBoxLayout" name="horizontalLayout_89" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_6">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_188">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3452,18 +3195,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_93">
+              <layout class="QHBoxLayout" name="horizontalLayout_93" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_6">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_189">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3483,18 +3219,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_94">
+              <layout class="QHBoxLayout" name="horizontalLayout_94" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_6">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_190">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3514,18 +3243,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_95">
+              <layout class="QHBoxLayout" name="horizontalLayout_95" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_6">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_191">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3545,18 +3267,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_96">
+              <layout class="QHBoxLayout" name="horizontalLayout_96" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_6">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_192">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3576,18 +3291,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_97">
+              <layout class="QHBoxLayout" name="horizontalLayout_97" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_6">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_193">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3705,18 +3413,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_98">
+              <layout class="QHBoxLayout" name="horizontalLayout_98" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_6">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_208">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3960,18 +3661,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_103">
+              <layout class="QHBoxLayout" name="horizontalLayout_103" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_7">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_223">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4002,18 +3696,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_105">
+              <layout class="QHBoxLayout" name="horizontalLayout_105" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_7">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_224">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4062,18 +3749,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_109">
+              <layout class="QHBoxLayout" name="horizontalLayout_109" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_7">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_225">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4093,18 +3773,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_110">
+              <layout class="QHBoxLayout" name="horizontalLayout_110" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_7">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_226">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4123,50 +3796,12 @@
                </item>
               </layout>
              </item>
-             <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_111">
-               <item>
-                <widget class="QComboBox" name="comboBox_RC_ESPT_7">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_227">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_55">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>185</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_112">
+              <layout class="QHBoxLayout" name="horizontalLayout_112" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_7">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_228">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4186,18 +3821,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_113">
+              <layout class="QHBoxLayout" name="horizontalLayout_113" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_7">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_229">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4315,18 +3943,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_114">
+              <layout class="QHBoxLayout" name="horizontalLayout_114" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_7">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_244">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4457,6 +4078,30 @@
                </property>
               </widget>
              </item>
+             <item row="6" column="3">
+              <layout class="QHBoxLayout" name="horizontalLayout_111" stretch="2,0">
+               <item>
+                <widget class="QComboBox" name="comboBox_RC_ESPT_7">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_55">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>185</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
             </layout>
            </widget>
           </item>
@@ -4570,18 +4215,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_119">
+              <layout class="QHBoxLayout" name="horizontalLayout_119" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_8">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_259">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4612,18 +4250,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_121">
+              <layout class="QHBoxLayout" name="horizontalLayout_121" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_8">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_260">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4672,18 +4303,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_125">
+              <layout class="QHBoxLayout" name="horizontalLayout_125" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_8">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_261">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4703,18 +4327,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_126">
+              <layout class="QHBoxLayout" name="horizontalLayout_126" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_8">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_262">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4734,18 +4351,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_127">
+              <layout class="QHBoxLayout" name="horizontalLayout_127" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_8">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_263">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4765,18 +4375,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_128">
+              <layout class="QHBoxLayout" name="horizontalLayout_128" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_8">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_264">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4796,18 +4399,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_129">
+              <layout class="QHBoxLayout" name="horizontalLayout_129" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_8">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_265">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -4925,18 +4521,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_130">
+              <layout class="QHBoxLayout" name="horizontalLayout_130" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_8">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_280">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5180,18 +4769,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_135">
+              <layout class="QHBoxLayout" name="horizontalLayout_135" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_9">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_295">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5222,18 +4804,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_137">
+              <layout class="QHBoxLayout" name="horizontalLayout_137" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_9">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_296">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5282,18 +4857,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_141">
+              <layout class="QHBoxLayout" name="horizontalLayout_141" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_9">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_297">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5313,18 +4881,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_142">
+              <layout class="QHBoxLayout" name="horizontalLayout_142" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_9">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_298">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5344,18 +4905,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_143">
+              <layout class="QHBoxLayout" name="horizontalLayout_143" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_9">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_299">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5375,18 +4929,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_144">
+              <layout class="QHBoxLayout" name="horizontalLayout_144" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_9">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_300">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5406,18 +4953,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_145">
+              <layout class="QHBoxLayout" name="horizontalLayout_145" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_9">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_301">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5535,18 +5075,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_146">
+              <layout class="QHBoxLayout" name="horizontalLayout_146" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_9">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_316">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5790,18 +5323,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_151">
+              <layout class="QHBoxLayout" name="horizontalLayout_151" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_10">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_331">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5832,18 +5358,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_153">
+              <layout class="QHBoxLayout" name="horizontalLayout_153" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_10">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_332">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5892,18 +5411,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_157">
+              <layout class="QHBoxLayout" name="horizontalLayout_157" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_10">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_333">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5923,18 +5435,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_158">
+              <layout class="QHBoxLayout" name="horizontalLayout_158" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_10">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_334">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5954,18 +5459,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_159">
+              <layout class="QHBoxLayout" name="horizontalLayout_159" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_10">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_335">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -5985,18 +5483,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_160">
+              <layout class="QHBoxLayout" name="horizontalLayout_160" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_10">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_336">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6016,18 +5507,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_161">
+              <layout class="QHBoxLayout" name="horizontalLayout_161" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_10">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_337">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6145,18 +5629,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_162">
+              <layout class="QHBoxLayout" name="horizontalLayout_162" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_10">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_352">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6463,18 +5940,11 @@
               </widget>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_167">
+              <layout class="QHBoxLayout" name="horizontalLayout_167" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_11">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_367">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6505,18 +5975,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_169">
+              <layout class="QHBoxLayout" name="horizontalLayout_169" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_11">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_368">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6565,18 +6028,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_173">
+              <layout class="QHBoxLayout" name="horizontalLayout_173" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_11">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_369">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6596,18 +6052,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_174">
+              <layout class="QHBoxLayout" name="horizontalLayout_174" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_11">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_370">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6627,18 +6076,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_175">
+              <layout class="QHBoxLayout" name="horizontalLayout_175" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_11">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_371">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6658,18 +6100,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_176">
+              <layout class="QHBoxLayout" name="horizontalLayout_176" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_11">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_372">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6689,18 +6124,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_177">
+              <layout class="QHBoxLayout" name="horizontalLayout_177" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_11">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_373">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -6818,18 +6246,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_178">
+              <layout class="QHBoxLayout" name="horizontalLayout_178" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_11">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_388">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7010,18 +6431,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_183">
+              <layout class="QHBoxLayout" name="horizontalLayout_183" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_12">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_403">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7052,18 +6466,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_185">
+              <layout class="QHBoxLayout" name="horizontalLayout_185" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_12">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_404">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7112,18 +6519,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_189">
+              <layout class="QHBoxLayout" name="horizontalLayout_189" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_12">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_405">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7143,18 +6543,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_190">
+              <layout class="QHBoxLayout" name="horizontalLayout_190" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_12">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_406">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7174,18 +6567,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_191">
+              <layout class="QHBoxLayout" name="horizontalLayout_191" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_12">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_407">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7205,18 +6591,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_192">
+              <layout class="QHBoxLayout" name="horizontalLayout_192" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_12">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_408">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7236,18 +6615,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_193">
+              <layout class="QHBoxLayout" name="horizontalLayout_193" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_12">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_409">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7365,18 +6737,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_194">
+              <layout class="QHBoxLayout" name="horizontalLayout_194" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_12">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_424">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7620,18 +6985,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_199">
+              <layout class="QHBoxLayout" name="horizontalLayout_199" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_13">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_439">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7662,18 +7020,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_201">
+              <layout class="QHBoxLayout" name="horizontalLayout_201" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_13">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_440">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7722,18 +7073,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_205">
+              <layout class="QHBoxLayout" name="horizontalLayout_205" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_13">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_441">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7753,18 +7097,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_206">
+              <layout class="QHBoxLayout" name="horizontalLayout_206" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_13">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_442">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7784,18 +7121,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_207">
+              <layout class="QHBoxLayout" name="horizontalLayout_207" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_13">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_443">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7815,18 +7145,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_208">
+              <layout class="QHBoxLayout" name="horizontalLayout_208" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_13">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_444">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7846,18 +7169,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_209">
+              <layout class="QHBoxLayout" name="horizontalLayout_209" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_13">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_445">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -7975,18 +7291,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_210">
+              <layout class="QHBoxLayout" name="horizontalLayout_210" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_13">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_460">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8230,18 +7539,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_215">
+              <layout class="QHBoxLayout" name="horizontalLayout_215" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_14">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_475">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8272,18 +7574,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_217">
+              <layout class="QHBoxLayout" name="horizontalLayout_217" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_14">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_476">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8332,18 +7627,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_221">
+              <layout class="QHBoxLayout" name="horizontalLayout_221" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_14">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_477">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8363,18 +7651,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_222">
+              <layout class="QHBoxLayout" name="horizontalLayout_222" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_14">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_478">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8394,18 +7675,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_223">
+              <layout class="QHBoxLayout" name="horizontalLayout_223" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_14">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_479">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8425,18 +7699,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_224">
+              <layout class="QHBoxLayout" name="horizontalLayout_224" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_14">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_480">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8456,18 +7723,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_225">
+              <layout class="QHBoxLayout" name="horizontalLayout_225" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_14">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_481">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8585,18 +7845,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_226">
+              <layout class="QHBoxLayout" name="horizontalLayout_226" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_14">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_496">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8840,18 +8093,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_231">
+              <layout class="QHBoxLayout" name="horizontalLayout_231" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_15">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_511">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8882,18 +8128,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_233">
+              <layout class="QHBoxLayout" name="horizontalLayout_233" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_15">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_512">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8942,18 +8181,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_237">
+              <layout class="QHBoxLayout" name="horizontalLayout_237" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_15">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_513">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -8973,18 +8205,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_238">
+              <layout class="QHBoxLayout" name="horizontalLayout_238" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_15">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_514">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9004,18 +8229,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_239">
+              <layout class="QHBoxLayout" name="horizontalLayout_239" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_15">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_515">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9035,18 +8253,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_240">
+              <layout class="QHBoxLayout" name="horizontalLayout_240" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_15">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_516">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9066,18 +8277,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_241">
+              <layout class="QHBoxLayout" name="horizontalLayout_241" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_15">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_517">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9195,18 +8399,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_242">
+              <layout class="QHBoxLayout" name="horizontalLayout_242" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_15">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_532">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9450,18 +8647,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_247">
+              <layout class="QHBoxLayout" name="horizontalLayout_247" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_16">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_547">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9492,18 +8682,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_249">
+              <layout class="QHBoxLayout" name="horizontalLayout_249" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_16">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_548">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9552,18 +8735,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_253">
+              <layout class="QHBoxLayout" name="horizontalLayout_253" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_16">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_549">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9583,18 +8759,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_254">
+              <layout class="QHBoxLayout" name="horizontalLayout_254" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_16">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_550">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9614,18 +8783,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_255">
+              <layout class="QHBoxLayout" name="horizontalLayout_255" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_16">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_551">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9645,18 +8807,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_256">
+              <layout class="QHBoxLayout" name="horizontalLayout_256" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_16">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_552">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9676,18 +8831,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_257">
+              <layout class="QHBoxLayout" name="horizontalLayout_257" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_16">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_553">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -9805,18 +8953,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_258">
+              <layout class="QHBoxLayout" name="horizontalLayout_258" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_16">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_568">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10060,18 +9201,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_263">
+              <layout class="QHBoxLayout" name="horizontalLayout_263" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_17">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_583">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10102,18 +9236,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_265">
+              <layout class="QHBoxLayout" name="horizontalLayout_265" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_17">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_584">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10162,18 +9289,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_269">
+              <layout class="QHBoxLayout" name="horizontalLayout_269" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_17">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_585">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10193,18 +9313,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_270">
+              <layout class="QHBoxLayout" name="horizontalLayout_270" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_17">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_586">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10224,18 +9337,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_271">
+              <layout class="QHBoxLayout" name="horizontalLayout_271" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_17">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_587">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10255,18 +9361,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_272">
+              <layout class="QHBoxLayout" name="horizontalLayout_272" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_17">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_588">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10286,18 +9385,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_273">
+              <layout class="QHBoxLayout" name="horizontalLayout_273" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_17">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_589">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10415,18 +9507,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_274">
+              <layout class="QHBoxLayout" name="horizontalLayout_274" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_17">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_604">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10670,18 +9755,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_279">
+              <layout class="QHBoxLayout" name="horizontalLayout_279" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_18">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_619">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10712,18 +9790,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_281">
+              <layout class="QHBoxLayout" name="horizontalLayout_281" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_18">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_620">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10772,18 +9843,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_285">
+              <layout class="QHBoxLayout" name="horizontalLayout_285" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_18">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_621">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10803,18 +9867,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_286">
+              <layout class="QHBoxLayout" name="horizontalLayout_286" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_18">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_622">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10834,18 +9891,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_287">
+              <layout class="QHBoxLayout" name="horizontalLayout_287" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_18">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_623">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10865,18 +9915,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_288">
+              <layout class="QHBoxLayout" name="horizontalLayout_288" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_18">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_624">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -10896,18 +9939,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_289">
+              <layout class="QHBoxLayout" name="horizontalLayout_289" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_18">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_625">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11025,18 +10061,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_290">
+              <layout class="QHBoxLayout" name="horizontalLayout_290" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_18">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_640">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11280,18 +10309,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_295">
+              <layout class="QHBoxLayout" name="horizontalLayout_295" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_19">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_655">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11322,18 +10344,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_297">
+              <layout class="QHBoxLayout" name="horizontalLayout_297" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_19">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_656">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11382,18 +10397,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_301">
+              <layout class="QHBoxLayout" name="horizontalLayout_301" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_19">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_657">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11413,18 +10421,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_302">
+              <layout class="QHBoxLayout" name="horizontalLayout_302" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_19">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_658">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11444,18 +10445,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_303">
+              <layout class="QHBoxLayout" name="horizontalLayout_303" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_19">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_659">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11475,18 +10469,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_304">
+              <layout class="QHBoxLayout" name="horizontalLayout_304" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_19">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_660">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11506,18 +10493,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_305">
+              <layout class="QHBoxLayout" name="horizontalLayout_305" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_19">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_661">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11635,18 +10615,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_306">
+              <layout class="QHBoxLayout" name="horizontalLayout_306" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_19">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_676">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11890,18 +10863,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_311">
+              <layout class="QHBoxLayout" name="horizontalLayout_311" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_20">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_691">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11932,18 +10898,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_313">
+              <layout class="QHBoxLayout" name="horizontalLayout_313" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_20">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_692">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -11992,18 +10951,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_317">
+              <layout class="QHBoxLayout" name="horizontalLayout_317" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_20">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_693">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12023,18 +10975,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_318">
+              <layout class="QHBoxLayout" name="horizontalLayout_318" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_20">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_694">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12054,18 +10999,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_319">
+              <layout class="QHBoxLayout" name="horizontalLayout_319" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_20">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_695">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12085,18 +11023,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_320">
+              <layout class="QHBoxLayout" name="horizontalLayout_320" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_20">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_696">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12116,18 +11047,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_321">
+              <layout class="QHBoxLayout" name="horizontalLayout_321" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_20">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_697">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12245,18 +11169,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_322">
+              <layout class="QHBoxLayout" name="horizontalLayout_322" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_20">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_712">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12500,18 +11417,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_327">
+              <layout class="QHBoxLayout" name="horizontalLayout_327" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_21">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_727">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12542,18 +11452,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_329">
+              <layout class="QHBoxLayout" name="horizontalLayout_329" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_21">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_728">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12602,18 +11505,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_333">
+              <layout class="QHBoxLayout" name="horizontalLayout_333" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_21">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_729">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12633,18 +11529,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_334">
+              <layout class="QHBoxLayout" name="horizontalLayout_334" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_21">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_730">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12664,18 +11553,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_335">
+              <layout class="QHBoxLayout" name="horizontalLayout_335" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_21">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_731">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12695,18 +11577,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_336">
+              <layout class="QHBoxLayout" name="horizontalLayout_336" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_21">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_732">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12726,18 +11601,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_337">
+              <layout class="QHBoxLayout" name="horizontalLayout_337" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_21">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_733">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -12855,18 +11723,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_338">
+              <layout class="QHBoxLayout" name="horizontalLayout_338" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_21">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_748">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13110,18 +11971,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_343">
+              <layout class="QHBoxLayout" name="horizontalLayout_343" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_22">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_763">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13152,18 +12006,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_345">
+              <layout class="QHBoxLayout" name="horizontalLayout_345" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_22">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_764">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13212,18 +12059,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_349">
+              <layout class="QHBoxLayout" name="horizontalLayout_349" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_22">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_765">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13243,18 +12083,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_350">
+              <layout class="QHBoxLayout" name="horizontalLayout_350" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_22">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_766">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13274,18 +12107,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_351">
+              <layout class="QHBoxLayout" name="horizontalLayout_351" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_22">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_767">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13305,18 +12131,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_352">
+              <layout class="QHBoxLayout" name="horizontalLayout_352" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_22">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_768">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13336,18 +12155,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_353">
+              <layout class="QHBoxLayout" name="horizontalLayout_353" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_22">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_769">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13465,18 +12277,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_354">
+              <layout class="QHBoxLayout" name="horizontalLayout_354" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_22">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_784">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13720,18 +12525,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_359">
+              <layout class="QHBoxLayout" name="horizontalLayout_359" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_23">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_799">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13762,18 +12560,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_361">
+              <layout class="QHBoxLayout" name="horizontalLayout_361" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_23">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_800">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13822,18 +12613,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_365">
+              <layout class="QHBoxLayout" name="horizontalLayout_365" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_23">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_801">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13853,18 +12637,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_366">
+              <layout class="QHBoxLayout" name="horizontalLayout_366" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_23">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_802">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13884,18 +12661,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_367">
+              <layout class="QHBoxLayout" name="horizontalLayout_367" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_23">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_803">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13915,18 +12685,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_368">
+              <layout class="QHBoxLayout" name="horizontalLayout_368" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_23">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_804">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -13946,18 +12709,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_369">
+              <layout class="QHBoxLayout" name="horizontalLayout_369" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_23">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_805">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14075,18 +12831,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_370">
+              <layout class="QHBoxLayout" name="horizontalLayout_370" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_23">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_820">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14330,18 +13079,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_375">
+              <layout class="QHBoxLayout" name="horizontalLayout_375" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_24">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_835">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14372,18 +13114,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_377">
+              <layout class="QHBoxLayout" name="horizontalLayout_377" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_24">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_836">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14432,18 +13167,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_381">
+              <layout class="QHBoxLayout" name="horizontalLayout_381" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_24">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_837">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14463,18 +13191,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_382">
+              <layout class="QHBoxLayout" name="horizontalLayout_382" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_24">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_838">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14494,18 +13215,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_383">
+              <layout class="QHBoxLayout" name="horizontalLayout_383" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_24">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_839">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14525,18 +13239,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_384">
+              <layout class="QHBoxLayout" name="horizontalLayout_384" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_24">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_840">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14556,18 +13263,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_385">
+              <layout class="QHBoxLayout" name="horizontalLayout_385" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_24">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_841">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14685,18 +13385,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_386">
+              <layout class="QHBoxLayout" name="horizontalLayout_386" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_24">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_856">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14940,18 +13633,11 @@
               </layout>
              </item>
              <item row="10" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_391">
+              <layout class="QHBoxLayout" name="horizontalLayout_391" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESFR_25">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_871">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -14982,18 +13668,11 @@
               </layout>
              </item>
              <item row="10" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_393">
+              <layout class="QHBoxLayout" name="horizontalLayout_393" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_PTES_25">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_872">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -15042,18 +13721,11 @@
               </layout>
              </item>
              <item row="6" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_397">
+              <layout class="QHBoxLayout" name="horizontalLayout_397" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_FRES_25">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_873">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -15073,18 +13745,11 @@
               </layout>
              </item>
              <item row="6" column="2">
-              <layout class="QHBoxLayout" name="horizontalLayout_398">
+              <layout class="QHBoxLayout" name="horizontalLayout_398" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_PTES_25">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_874">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -15104,18 +13769,11 @@
               </layout>
              </item>
              <item row="6" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_399">
+              <layout class="QHBoxLayout" name="horizontalLayout_399" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESPT_25">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_875">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -15135,18 +13793,11 @@
               </layout>
              </item>
              <item row="10" column="0">
-              <layout class="QHBoxLayout" name="horizontalLayout_400">
+              <layout class="QHBoxLayout" name="horizontalLayout_400" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_FRES_25">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_876">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -15166,18 +13817,11 @@
               </layout>
              </item>
              <item row="6" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_401">
+              <layout class="QHBoxLayout" name="horizontalLayout_401" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_RC_ESFR_25">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_877">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>
@@ -15295,18 +13939,11 @@
               </widget>
              </item>
              <item row="10" column="3">
-              <layout class="QHBoxLayout" name="horizontalLayout_402">
+              <layout class="QHBoxLayout" name="horizontalLayout_402" stretch="2,0">
                <item>
                 <widget class="QComboBox" name="comboBox_EC_ESPT_25">
                  <property name="enabled">
                   <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_892">
-                 <property name="text">
-                  <string/>
                  </property>
                 </widget>
                </item>

@@ -571,7 +571,7 @@ class Main(QMainWindow,Ui_MainWindow):
          try:
             if not df_mon_error.empty:
                try:
-                  path_error=os.path.join(Rutas().directorio_fich_configuracion, 'Error_Crac.csv')
+                  path_error=os.path.join(Rutas().directorio_output_xml, 'Error_Crac.csv')
                   df_mon_error.to_csv(path_or_buf=path_error,index=False,sep=';')
                   QMessageBox.warning(self, __appname__, u'Hay lineas del IdReport que no existen en el excel del Crac. '
                                                          u'\nSe ha generado las un archivo con dicha informacion en: {}'.format(path_error))
@@ -682,8 +682,10 @@ class Main(QMainWindow,Ui_MainWindow):
                   if str(row['valor_new']) !=str(np.nan):
                      x.edit=True
                      x.value_potencia=row['valor_new']
-                     x.enable(enable=True)
-                     x.load_comboBox_Data()
+                     if x.get_load_data() == False:
+                        # En caso de que se quiera volver a editar que no se borrre lo actual
+                        x.enable(enable=True)
+                        x.load_comboBox_Data()
                   else:
                      x.value_potencia = row['valor_old']
 
@@ -693,8 +695,8 @@ class Main(QMainWindow,Ui_MainWindow):
                   if info_xml_hora.__len__() > 0:
                      info_xml_hora = info_xml_hora[0]
                   else:
-                     raise SystemError(
-                        'No se encnutra la hora {} en la clase donde se gurda la info del xml'.format(hora))
+                     raise SystemError('No se encnutra la hora {} en la clase donde se gurda la info del xml'.format(hora))
+
                   info_xml_hora.aceptada = False
 
                   info_xml_hora.reason_code=''
@@ -1594,5 +1596,10 @@ class Elementos_UI():
       self.line_reason_text.clear()
       self.line_expla_code.clear()
       self.line_expla_text.clear()
+
+   def get_load_data(self):
+      """ Identifica si el elemento ya tien datos cargados"""
+      enable=self.combox_ele_limitante.isEnabled()
+      return enable
 
 
