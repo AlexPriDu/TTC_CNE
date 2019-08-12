@@ -52,10 +52,10 @@ def lectura_excel_crack():
       df_excel_MON['NPSSE_TO'] = df_excel_MON['NPSSE_TO'].astype(int)
       df_excel_MON['CKT'] = df_excel_MON['CKT'].astype(str)
 
-      df_nudos_X = read_nudosX()
+      df_nudos_X = read_nudosX(ruta_excel=Rutas().ruta_dic_nudox)
       df_nudos_X['ckt'] = df_nudos_X['ckt'].str.strip()
 
-      datos_idReport=read_idReport()
+      datos_idReport=read_idReport(ruta_excel=Rutas().ruta_idReport)
       df_idReport_lineas=datos_idReport['df_branch']
       df_idReport_trafo = datos_idReport['df_trafo']
 
@@ -228,9 +228,8 @@ def lectura_excel_crack():
       raise SystemError ('Error en la lectura_excel_crack: {}'.format(e))
 
 
-def read_idReport():
+def read_idReport(ruta_excel = None):
    try:
-      ruta_excel = Rutas().ruta_idReport
 
       if not os.path.exists(ruta_excel):
          raise SystemError('No existe el excel del idReport en la ruta: {}'.format(ruta_excel))
@@ -302,8 +301,7 @@ def read_idReport():
    except Exception as e:
       raise SystemError('Error al leer el fichero IdReport: {}'.format(e))
 
-def read_nudosX():
-   ruta_excel = Rutas().ruta_dic_nudox
+def read_nudosX(ruta_excel=None):
 
    if not os.path.exists(ruta_excel):
       raise SystemError('No existe el excel del NudosX en la ruta: {}'.format(ruta_excel))
@@ -325,3 +323,117 @@ def read_nudosX():
    df = pd.DataFrame(list_datos)
 
    return df
+
+
+def get_mRID_by_PSEEId(bus_i, bus_j, ckt, ruta_idReport, ruta_nudosX, bus_k=0, trafo = False):
+   def __get_branch_original(row):
+
+      if row['indicator'] == 'both':
+         if (row['Raw Bus1'] == row['bus_X']) and (row['Raw Bus2'] == row['bus_to']):
+            #  En este caso el bus1 del IdReport es el nudoX. Hay que cambairlo por el origial. Sinedo el roginal el bus_form -->(row['Raw Bus2']==row['bus_to'])
+            row['Raw Bus1'] = row['bus_from']
+         elif (row['Raw Bus1'] == row['bus_X']) and (row['Raw Bus2'] == row['bus_from']):
+            row['Raw Bus1'] = row['bus_to']
+         elif (row['Raw Bus2'] == row['bus_X']) and (row['Raw Bus1'] == row['bus_from']):
+            row['Raw Bus2'] = row['bus_to']
+         elif (row['Raw Bus2'] == row['bus_X']) and (row['Raw Bus1'] == row['bus_to']):
+            row['Raw Bus2'] = row['bus_from']
+
+         row['bus_X_add'] = row['bus_X']
+
+      return row
+   try:
+      ID = None
+      df_nudos_X = read_nudosX(ruta_excel=ruta_nudosX)
+      df_nudos_X['ckt'] = df_nudos_X['ckt'].str.strip()
+
+      datos_idReport = read_idReport(ruta_excel=ruta_idReport)
+      df_idReport_lineas = datos_idReport['df_branch']
+      df_idReport_trafo = datos_idReport['df_trafo']
+
+
+      df_idReport_lineas['Raw Bus1'] = df_idReport_lineas['Raw Bus1'].astype(int)
+      df_idReport_lineas['Raw Bus2'] = df_idReport_lineas['Raw Bus2'].astype(int)
+      df_idReport_lineas['Branch ID'] = df_idReport_lineas['Branch ID'].astype(str)
+      df_idReport_lineas['Branch ID'] = df_idReport_lineas['Branch ID'].str.strip()
+      df_idReport_lineas['Raw Bus1_sep'] = df_idReport_lineas['Raw Bus1'] - 40000
+      df_idReport_lineas['Raw Bus2_sep'] = df_idReport_lineas['Raw Bus2'] - 40000
+
+      columns_IdReport = list(df_idReport_lineas.columns.values)
+
+      df_idReport_trafo['Raw Bus1'] = df_idReport_trafo['Raw Bus1'].astype(int)
+      df_idReport_trafo['Raw Bus2'] = df_idReport_trafo['Raw Bus2'].astype(int)
+      df_idReport_trafo['Transformer ID'] = df_idReport_trafo['Transformer ID'].astype(str)
+      df_idReport_trafo['Transformer ID'] = df_idReport_trafo['Transformer ID'].str.strip()
+      df_idReport_trafo['Raw Bus1_sep'] = df_idReport_trafo['Raw Bus1'] - 40000
+      df_idReport_trafo['Raw Bus2_sep'] = df_idReport_trafo['Raw Bus2'] - 40000
+
+      df_nudos_X['ckt'] = df_nudos_X['ckt'].astype(str)
+
+      # Comparoel IDrEPORT CONTRA EN FICHERO DE NUDOS x
+      # Las lineas de interconexion oroginales se parten mediante el nudo X:
+      # Es dicr la linea del MON: 18105-18195-1--> Sera en el ID Report: 13996-18195-1
+      # Donde en el fichero Nudox: 18105 18195 1 XLL_BA11  13996
+      # POr lo que tengo que cambiar todos las lineas con nudos X del IdReport por susu originales: IdReport: 13996-18195-1 -->
+      columns_IdReport.append('bus_X_add')
+      df_idReport_lineas['bus_X_add'] = None
+
+      df_idReport_lineas = pd.merge(df_idReport_lineas, df_nudos_X, left_on=['Raw Bus1', 'Raw Bus2', 'Branch ID'],
+                                    right_on=['bus_from', 'bus_X', 'ckt'],
+                                    how='outer', suffixes=('', '_2'), indicator='indicator')
+      df_idReport_lineas = df_idReport_lineas.apply(lambda row: __get_branch_original(row), axis=1)
+      df_idReport_lineas = df_idReport_lineas.loc[
+                           lambda df: (df['indicator'] == 'both') | (df['indicator'] == 'left_only'), :]
+      df_idReport_lineas = df_idReport_lineas[columns_IdReport]
+
+      df_idReport_lineas = pd.merge(df_idReport_lineas, df_nudos_X, left_on=['Raw Bus1', 'Raw Bus2', 'Branch ID'],
+                                    right_on=['bus_X', 'bus_from', 'ckt'],
+                                    how='outer', suffixes=('', '_2'), indicator='indicator')
+
+      df_idReport_lineas = df_idReport_lineas.apply(lambda row: __get_branch_original(row), axis=1)
+      df_idReport_lineas = df_idReport_lineas.loc[
+                           lambda df: (df['indicator'] == 'both') | (df['indicator'] == 'left_only'), :]
+      df_idReport_lineas = df_idReport_lineas[columns_IdReport]
+      df_idReport_lineas = pd.merge(df_idReport_lineas, df_nudos_X, left_on=['Raw Bus1', 'Raw Bus2', 'Branch ID'],
+                                    right_on=['bus_to', 'bus_X', 'ckt'],
+                                    how='outer', suffixes=('', '_2'), indicator='indicator')
+
+      df_idReport_lineas = df_idReport_lineas.apply(lambda row: __get_branch_original(row), axis=1)
+      df_idReport_lineas = df_idReport_lineas.loc[
+                           lambda df: (df['indicator'] == 'both') | (df['indicator'] == 'left_only'), :]
+      df_idReport_lineas = df_idReport_lineas[columns_IdReport]
+
+      df_idReport_lineas = pd.merge(df_idReport_lineas, df_nudos_X, left_on=['Raw Bus1', 'Raw Bus2', 'Branch ID'],
+                                    right_on=['bus_X', 'bus_to', 'ckt'],
+                                    how='outer', suffixes=('', '_2'), indicator='indicator')
+      df_idReport_lineas = df_idReport_lineas.apply(lambda row: __get_branch_original(row), axis=1)
+      df_idReport_lineas = df_idReport_lineas.loc[ lambda df: (df['indicator'] == 'both') | (df['indicator'] == 'left_only'), :]
+      df_idReport_lineas = df_idReport_lineas[columns_IdReport]
+
+      df = pd.DataFrame()
+
+      if trafo == False:
+         df = df_idReport_lineas.loc[lambda df: (((df['Raw Bus1'] == bus_i) & (df['Raw Bus2'] == bus_j)) | (
+                  (df['Raw Bus1'] == bus_j) & (df['Raw Bus2'] == bus_i)))
+                                                & (df['Branch ID'] == ckt), :]
+      elif trafo == True and bus_k == 0:
+         df = df_idReport_trafo.loc[lambda df: (((df['Raw Bus1'] == bus_i) & (df['Raw Bus2'] == bus_j))
+                                                | ((df['Raw Bus1'] == bus_j) & (df['Raw Bus2'] == bus_i)))
+                                               & (df['Transformer ID'] == ckt), :]
+      else:
+         df = df_idReport_trafo.loc[lambda df: (((df['Raw Bus1'] == bus_i) & (df['Raw Bus2'] == bus_j)  & (df['Raw Bus3'] == bus_k))
+                                                | ((df['Raw Bus1'] == bus_j) & (df['Raw Bus2'] == bus_i)) & (df['Raw Bus3'] == bus_k)) & (df['Transformer ID'] == ckt), :]
+
+      if df.empty == False:
+         ID = df.iloc[0]['Cim ID']
+      else:
+         raise SystemError('No se ha encontrado el mRID para el elemento {}-{}-{}'.format(bus_i, bus_j, ckt))
+
+      return ID
+   except Exception as e:
+      raise SystemError('Error al get_mRID_by_PSEE {}'.format(e))
+
+
+if __name__ == '__main__':
+   get_mRID_by_PSEEId(bus_i=21060, bus_j=1905, ckt='2', ruta_idReport = "C:\Users\GerardoGuerra\Desktop\Nueva carpeta\REE_IdReport.csv",
+                      ruta_nudosX= "C:\Users\GerardoGuerra\Desktop\Nueva carpeta\DICCIONARIO_NUDOS_X.txt", bus_k=0, trafo= True)
